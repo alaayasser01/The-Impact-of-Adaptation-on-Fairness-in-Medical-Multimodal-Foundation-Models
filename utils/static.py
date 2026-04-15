@@ -6,4 +6,5 @@ CLIP_MODELS = [
     "CLIP",
     "BLIP",
     "BLIP2",
+    "CLIPftFairVLMed"
 ]

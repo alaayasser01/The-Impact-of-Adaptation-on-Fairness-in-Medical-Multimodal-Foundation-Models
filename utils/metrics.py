@@ -4,7 +4,7 @@ import pandas as pd
 import sklearn.metrics as sklm
 import torch
 import torch.nn as nn
-from sklearn.metrics import accuracy_score, confusion_matrix, roc_auc_score
+from sklearn.metrics import accuracy_score, confusion_matrix, roc_auc_score, balanced_accuracy_score
 
 
 # adapted from https://github.com/LalehSeyyed/Underdiagnosis_NatMed/blob/main/CXP/classification/predictions.py
@@ -35,14 +35,25 @@ def bce_loss(pred_probs, labels):
 
 def binary_classification_report(pred, y, threshold=0.5, suffix=""):
     auc = roc_auc_score(y, pred)
+    
+    try:
+        pauc = roc_auc_score(y, pred, max_fpr=0.1)
+    except ValueError:
+        # Prevents a crash if a minority subgroup has 0 positive cases in the test set
+        pauc = np.nan
+
     ece = expected_calibration_error(pred, y)
     bce = bce_loss(pred, y)
 
     tn, fp, fn, tp = confusion_matrix(
         y, (pred > threshold).astype(int)).ravel()
+    
+    bal_acc = balanced_accuracy_score(y, (pred > threshold).astype(int))
     report = {
         f"auc{suffix}": auc,
+        f"pauc{suffix}": pauc,
         f"acc{suffix}": (tp + tn) / (tn + fp + fn + tp),
+        f"bal_acc{suffix}": bal_acc,
         f"bce{suffix}": bce,
         f"ece{suffix}": ece,
         f"tpr{suffix}": tp / (tp + fn),
@@ -130,7 +141,9 @@ def evaluate_binary(pred, Y, A):
 
 def organize_results(overall_metrics, subgroup_metrics):
     subgroup_auc = subgroup_metrics["auc"]
+    subgroup_pauc = subgroup_metrics["pauc"]
     subgroup_acc = subgroup_metrics["acc@best_f1"]
+    subgroup_bal_acc = subgroup_metrics["bal_acc@best_f1"]
     subgroup_bce = subgroup_metrics["bce"]
     subgroup_ece = subgroup_metrics["ece"]
     subgroup_tpr = subgroup_metrics["tpr@best_f1"]
@@ -138,11 +151,15 @@ def organize_results(overall_metrics, subgroup_metrics):
 
     result = {
         "overall-auc": overall_metrics["auc"],
+        "overall-pauc": overall_metrics["pauc"],
         "overall-acc": overall_metrics["acc@best_f1"],
+        "overall-bal-acc": overall_metrics["bal_acc@best_f1"],
         "overall-bce": overall_metrics["bce"],
         "overall-ece": overall_metrics["ece"],
         "worst-auc": min(subgroup_auc),
         "auc-gap": max(subgroup_auc) - min(subgroup_auc),
+        "pauc-gap": max(subgroup_pauc) - min(subgroup_pauc),
+        "bal-acc-gap": max(subgroup_bal_acc) - min(subgroup_bal_acc),
         "acc-gap": max(subgroup_acc) - min(subgroup_acc),
         "bce-gap": max(subgroup_bce) - min(subgroup_bce),
         "ece-gap": max(subgroup_ece) - min(subgroup_ece),
@@ -153,33 +170,33 @@ def organize_results(overall_metrics, subgroup_metrics):
     return result
 
 
-def evaluate_seg(dsc_list, sensitive_list):
-    dsc_list, sensitive_list = np.array(
-        dsc_list), np.array(sensitive_list).squeeze()
+# def evaluate_seg(dsc_list, sensitive_list):
+#     dsc_list, sensitive_list = np.array(
+#         dsc_list), np.array(sensitive_list).squeeze()
 
-    mean_dice = dsc_list.mean()
-    # TODO: modify for multi-class sensitive
-    class_0_dice = dsc_list[sensitive_list == 0]
-    class_1_dice = dsc_list[sensitive_list == 1]
+#     mean_dice = dsc_list.mean()
+#     # TODO: modify for multi-class sensitive
+#     class_0_dice = dsc_list[sensitive_list == 0]
+#     class_1_dice = dsc_list[sensitive_list == 1]
 
-    mean_class_0_dice = class_0_dice.mean()
-    mean_class_1_dice = class_1_dice.mean()
+#     mean_class_0_dice = class_0_dice.mean()
+#     mean_class_1_dice = class_1_dice.mean()
 
-    min_dice = min(mean_class_0_dice, mean_class_1_dice)
-    max_dice = max(mean_class_0_dice, mean_class_1_dice)
-    delta_dice = abs(mean_class_0_dice - mean_class_1_dice)
-    sk_dice = (1 - min_dice) / (1 - max_dice)
-    std_dice = np.array([mean_class_0_dice, mean_class_1_dice]).std()
-    es_dice = mean_dice / (1 + std_dice)
+#     min_dice = min(mean_class_0_dice, mean_class_1_dice)
+#     max_dice = max(mean_class_0_dice, mean_class_1_dice)
+#     delta_dice = abs(mean_class_0_dice - mean_class_1_dice)
+#     sk_dice = (1 - min_dice) / (1 - max_dice)
+#     std_dice = np.array([mean_class_0_dice, mean_class_1_dice]).std()
+#     es_dice = mean_dice / (1 + std_dice)
 
-    result = {
-        "mean_dice": mean_dice,
-        "min_dice": min_dice,
-        "max_dice": max_dice,
-        "delta_dice": delta_dice,
-        "skewness_dice": sk_dice,
-        "std_dice": std_dice,
-        "es_dice": es_dice
-    }
+#     result = {
+#         "mean_dice": mean_dice,
+#         "min_dice": min_dice,
+#         "max_dice": max_dice,
+#         "delta_dice": delta_dice,
+#         "skewness_dice": sk_dice,
+#         "std_dice": std_dice,
+#         "es_dice": es_dice
+#     }
 
-    return result
+#     return result
