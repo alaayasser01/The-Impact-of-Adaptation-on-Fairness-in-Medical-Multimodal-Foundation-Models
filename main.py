@@ -175,16 +175,37 @@ def create_exerpiment_setting(args):
     #     usage_path_name = "full-ft-eval"
     # ################
 
+    safe_backbone = str(args.backbone).replace("/", "_") if hasattr(args, 'backbone') else "NoBackbone"
+    
+    # 2. Format the hyperparameters for the folder name
+    # e.g., "100ep_0.025lr"
+    hyperparams = f"{args.total_epochs}ep_{args.lr}lr"
+    
+    # 3. Build the highly detailed, self-documenting path!
     args.save_folder = os.path.join(
-        args.exp_path,
-        args.task,
-        args.usage,
-        args.method,
-        args.dataset,
-        args.model,
-        args.sensitive_name,
-        f"seed{args.random_seed}",
+        args.exp_path,            # ./output
+        args.task,                # cls
+        args.usage,               # clip-adapt
+        safe_backbone,            # ViT-B_32
+        args.method,              # erm
+        hyperparams,              # 100ep_0.025lr
+        args.dataset,             # FairVLMed10k
+        args.model,               # CLIP
+        args.sensitive_name,      # All
+        f"seed{args.random_seed}",# seed0
     )
+
+
+    # args.save_folder = os.path.join(
+    #     args.exp_path,
+    #     args.task,
+    #     args.usage,
+    #     args.method,
+    #     args.dataset,
+    #     args.model,
+    #     args.sensitive_name,
+    #     f"seed{args.random_seed}",
+    # )
 
     args.resume_path = args.save_folder
     basics.creat_folder(args.save_folder)
