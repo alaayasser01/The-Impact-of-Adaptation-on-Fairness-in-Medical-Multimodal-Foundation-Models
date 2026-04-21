@@ -37,7 +37,7 @@ import clip
 
 
 class CLIP(nn.Module):
-    def __init__(self, backbone="ViT-B/16", *args, **kwargs) -> None:
+    def __init__(self, backbone="ViT-B/32", *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
 
         self.model, _ = clip.load(backbone, device="cpu")
