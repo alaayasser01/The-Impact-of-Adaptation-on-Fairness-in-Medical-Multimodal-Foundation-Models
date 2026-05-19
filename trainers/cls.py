@@ -31,8 +31,8 @@ class CLSTrainer(BaseTrainer):
             if val_dataloader is not None:
                 self.evaluate(val_dataloader)
             
-            if self.epoch % 5 == 0:
-                self.evaluate(self.test_loader)
+            # if self.epoch % 5 == 0:
+            #     self.evaluate(self.test_loader)
 
             # save model
             torch.save(
@@ -50,6 +50,10 @@ class CLSTrainer(BaseTrainer):
 
             self.epoch += 1
             
+             # After training, check prototype movement
+        if hasattr(self.model, 'initial_prototypes'):
+            movement = (self.model.prototypes - self.model.initial_prototypes).norm().item()
+            self.logger.info(f"[DEBUG] Prototype movement after training: {movement:.6f}")
     def train_epoch(self, train_dataloader):
         loss_epoch = []
         for minibatch in train_dataloader:
@@ -88,6 +92,7 @@ class CLSTrainer(BaseTrainer):
 
         self.optimizer.zero_grad()
         loss.backward()
+        torch.nn.utils.clip_grad_norm_(self.model.parameters(), max_norm=1.0)
         self.optimizer.step()
 
         return loss
@@ -114,6 +119,9 @@ class CLSTrainer(BaseTrainer):
                     logits = torch.stack([logits_sliced[i, idx] for i, idx in enumerate(indices)])
                 else:
                     logits = self.model(x)
+                    if torch.isnan(logits).any():
+                        self.logger.warning("NaN detected in logits during evaluation!")
+                        logits =torch.zeros_like(logits)
             prob = F.softmax(logits, dim=-1)
 
             logits_list.append(logits)

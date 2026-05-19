@@ -179,22 +179,38 @@ def create_exerpiment_setting(args):
     
     # 2. Format the hyperparameters for the folder name
     # e.g., "100ep_0.025lr"
-    hyperparams = f"{args.total_epochs}ep_{args.lr}lr"
-    
-    # 3. Build the highly detailed, self-documenting path!
-    args.save_folder = os.path.join(
-        args.exp_path,            # ./output
-        args.task,                # cls
-        args.usage,               # clip-adapt
-        safe_backbone,            # ViT-B_32
-        args.method,              # erm
-        hyperparams,              # 100ep_0.025lr
-        args.dataset,             # FairVLMed10k
-        args.model,               # CLIP
-        args.sensitive_name,      # All
-        f"seed{args.random_seed}",# seed0
-    )
+    # hyperparams = f"{args.total_epochs}ep_{args.lr}lr"
+    # hyperparams = f"ep{args.total_epochs}_lr{args.lr}"
+    # # 3. Build the highly detailed, self-documenting path!
+    # args.save_folder = os.path.join(
+    #     args.exp_path,            # ./output
+    #     args.task,                # cls
+    #     args.usage,               # clip-adapt
+    #     safe_backbone,            # ViT-B_32
+    #     args.method,              # erm
+    #     hyperparams,              # 100ep_0.025lr
+    #     args.dataset,             # FairVLMed10k
+    #     args.model,               # CLIP
+    #     args.sensitive_name,      # All
+    #     f"seed{args.random_seed}",# seed0
+    # )
 
+    hyperparams = f"ep{args.total_epochs}_lr{args.lr}"
+
+    text_source = getattr(args, "text_source", "template")
+    args.save_folder = os.path.join(
+        args.exp_path,
+        args.task,
+        args.usage,
+        text_source,                 # <-- ADD THIS
+        safe_backbone,
+        args.method,
+        hyperparams,
+        args.dataset,
+        args.model,
+        args.sensitive_name,
+        f"seed{args.random_seed}",
+    )
 
     # args.save_folder = os.path.join(
     #     args.exp_path,
@@ -254,7 +270,31 @@ def create_exerpiment_setting(args):
 
     return args
 
+# def evaluate_all_attributes(args, trainer, attributes_to_test, save_prefix):
+#     for attr in attributes_to_test:
+#         logger.info(f"\n--- Evaluating {attr} ---")
 
+#         args.sensitive_name = attr
+
+#         _, specific_test_loader, _ = get_dataset(args, split="test")
+
+#         trainer.evaluate(
+#             specific_test_loader,
+#             save_path=os.path.join(
+#                 args.save_folder,
+#                 f"{save_prefix}_{attr}"
+#             )
+#         )
+
+def evaluate_all_attributes(args, trainer, logger, attributes_to_test, save_prefix):
+    for attr in attributes_to_test:
+        logger.info(f"\n--- Evaluating {attr} ---")
+        args.sensitive_name = attr
+        _, specific_test_loader, _ = get_dataset(args, split="test")
+        trainer.evaluate(
+            specific_test_loader,
+            save_path=os.path.join(args.save_folder, f"{save_prefix}_{attr}")
+        )        
 if __name__ == "__main__":
     args = parse_args.collect_args()
     args = create_exerpiment_setting(args)
@@ -299,92 +339,104 @@ if __name__ == "__main__":
     # Determine which attributes to evaluate based on the argument
     # ==========================================================
     if args.sensitive_name == "All":
-        attributes_to_test = ["Sex","Age", "Race", "Language"]
+        attributes_to_test = ["Sex","Age", "Race", "Language", "Ethnicity", "MaritalStatus"]
         logger.info("====== INITIATING MULTI-ATTRIBUTE EVALUATION ======")
     else:
         attributes_to_test = [args.sensitive_name]
 
-    # ==========================================================
-    # Execution Blocks
-    # ==========================================================
+    # ==========================================
+    # ZERO-SHOT ONLY
+    # ==========================================
     if args.usage == "clip-zs":
-        logger.info(f"Evaluating CLIP model (Zero-Shot)...")
-        
-        # Loop through the attributes
-        for attr in attributes_to_test:
-            logger.info(f"\n--- Evaluating {attr} ---")
-            args.sensitive_name = attr
-            _, specific_test_loader, _ = get_dataset(args, split="test")
-            
-            trainer.evaluate(specific_test_loader, save_path=os.path.join(
-                args.save_folder, f"eval_results_{attr}"))
+
+        logger.info("Evaluating CLIP Zero-Shot...")
+
+        evaluate_all_attributes(
+            args,
+            trainer,
+            logger,
+            attributes_to_test,
+            save_prefix="clip_zs_final"
+        )
         exit(0)
 
-    elif args.usage == "clip-adapt":
-        logger.info("CLIP-Adaptor performance:")
+    # ==========================================
+    # TRAINING METHODS
+    # ==========================================
+    elif args.usage in [
+        "clip-adapt",
+        "lp",
+        "full-ft",
+        "full-ft-zs",
+        "lora-lp",
+        "lora-zs"
+    ]:
+
+        logger.info(f"{args.usage} training...")
+
         trainer.init_optimizers()
-        
-        # Train ONCE
+
         trainer.train(train_dataloader)
-        
-        # Evaluate multiple times
-        for attr in attributes_to_test:
-            logger.info(f"\n--- Evaluating {attr} ---")
-            args.sensitive_name = attr
-            _, specific_test_loader, _ = get_dataset(args, split="test")
-            
-            trainer.evaluate(specific_test_loader, save_path=os.path.join(
-                args.save_folder, f"clip_adaptor_final_{attr}"))
+
+        evaluate_all_attributes(
+            args,
+            trainer,
+            logger,
+            attributes_to_test,
+            save_prefix=f"{args.usage}_final"
+        )
         exit(0)
 
-    elif args.usage == "lp":
-        logger.info("Linear probing performance:")
-        trainer.init_optimizers()
-        
-        # Train ONCE
-        trainer.train(train_dataloader)
-        
-        # Evaluate multiple times
-        for attr in attributes_to_test:
-            logger.info(f"\n--- Evaluating {attr} ---")
-            args.sensitive_name = attr
-            _, specific_test_loader, _ = get_dataset(args, split="test")
-            
-            trainer.evaluate(specific_test_loader, save_path=os.path.join(
-                args.save_folder, f"lp_final_{attr}"))
-        exit(0)
-
-    elif args.usage == "lora":
-        logger.info("LoRA Finetuning performance:")
-        trainer.init_optimizers()
-        
-        # Train ONCE
-        trainer.train(train_dataloader)
-        
-        # Evaluate multiple times
-        for attr in attributes_to_test:
-            logger.info(f"\n--- Evaluating {attr} ---")
-            args.sensitive_name = attr
-            _, specific_test_loader, _ = get_dataset(args, split="test")
-            
-            trainer.evaluate(specific_test_loader, save_path=os.path.join(
-                args.save_folder, f"lora_final_{attr}"))
-        exit(0)
-
+    # ==========================================
+    # SEGMENTATION
+    # ==========================================
     elif args.usage == "seg2d":
-        logger.info(f"2D SegFM using {args.prompt} prompt performance:")
-        trainer.evaluate(test_dataloader, save_path=os.path.join(
-            args.save_folder, args.prompt))
-        exit(0)
+
+        trainer.evaluate(
+            test_dataloader,
+            save_path=os.path.join(args.save_folder, args.prompt)
+        )
 
     elif args.usage == "seg3d-center":
-        logger.info("3D SegFM using 1 center point prompt performance:")
-        trainer.evaluate(test_dataloader, save_path=os.path.join(
-            args.save_folder, "center"))
-        exit(0)
+
+        trainer.evaluate(
+            test_dataloader,
+            save_path=os.path.join(args.save_folder, "center")
+        )
 
     else:
         raise NotImplementedError
+        # elif args.usage == "lora":
+        #     logger.info("LoRA Finetuning performance:")
+        #     trainer.init_optimizers()
+            
+        #     # Train ONCE
+        #     trainer.train(train_dataloader)
+            
+        #     # Evaluate multiple times
+        #     for attr in attributes_to_test:
+        #         logger.info(f"\n--- Evaluating {attr} ---")
+        #         args.sensitive_name = attr
+        #         _, specific_test_loader, _ = get_dataset(args, split="test")
+                
+        #         trainer.evaluate(specific_test_loader, save_path=os.path.join(
+        #             args.save_folder, f"lora_final_{attr}"))
+        #     exit(0)
+
+        # elif args.usage == "seg2d":
+        #     logger.info(f"2D SegFM using {args.prompt} prompt performance:")
+        #     trainer.evaluate(test_dataloader, save_path=os.path.join(
+        #         args.save_folder, args.prompt))
+        #     exit(0)
+
+        # elif args.usage == "seg3d-center":
+        #     logger.info("3D SegFM using 1 center point prompt performance:")
+        #     trainer.evaluate(test_dataloader, save_path=os.path.join(
+        #         args.save_folder, "center"))
+        #     exit(0)
+
+        # else:
+        #     raise NotImplementedError
 
 #### I edited this to include the full-ft evaluation when pretrained_path is provided for clip-zs usage.####
 #     if args.usage == "clip-zs":

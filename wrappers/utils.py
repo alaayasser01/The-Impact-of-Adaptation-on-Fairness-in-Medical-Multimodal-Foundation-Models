@@ -1,92 +1,119 @@
-# import json
 
-# import torch
-
-# import models
-# from utils.static import CLIP_MODELS
-# from utils.tokenizer import tokenize_text
-
-
-# def get_warpped_model(args, model, data_engine=None):
-
-#     if args.task == "cls":
-#         if args.usage == "lp":
-#             from wrappers import LinearProbeWrapper
-
-#             model_warpped = LinearProbeWrapper(model)
-#         elif args.usage in ["clip-zs", "clip-adapt"]:
-#             assert args.model in CLIP_MODELS, f"{args.usage} is not applicable for {args.model}"
-#             from wrappers import CLIPWrapper
-
-#             text = tokenize_text(args, args.data_setting["class_names"])
-#             text_features = model.encode_text(text.to(args.device))
-
-#             model_warpped = CLIPWrapper(model, text_features)
-#         elif args.usage == "lora":
-#             from wrappers import LoRAWrapper
-
-#             model_setting = args.model_setting
-
-#             assert (
-#                 "lora_targets" in model_setting.keys()
-#             ), f"LoRA is not applicable for {args.model}, either because it's not a ViT-based model or it's not supported in the current version"
-
-#             model_warpped = LoRAWrapper(
-#                 model, lora_targets=model_setting["lora_targets"])
-#         else:
-#             raise NotImplementedError()
-
-#     elif args.task == "seg":
-#         from wrappers import SAMWrapper
-#         model_warpped = SAMWrapper(model, data_engine=data_engine)
-#     else:
-#         raise NotImplementedError
-
-#     return model_warpped
 
 import json
-
 import torch
 
 import models
 from utils.static import CLIP_MODELS
-from utils.tokenizer import tokenize_text
-
+from utils.text_sources import build_text_features
+import pandas as pd
+import clip
 
 def get_warpped_model(args, model, data_engine=None):
 
-    if args.task == "cls":
-        if args.usage == "lp":
-            from wrappers import LinearProbeWrapper
+    if args.task != "cls":
+        raise NotImplementedError(
+            f"Task '{args.task}' is not implemented"
+        )
 
-            model_warpped = LinearProbeWrapper(model)
-        elif args.usage in ["clip-zs", "clip-adapt"]:
-            assert args.model in CLIP_MODELS, f"{args.usage} is not applicable for {args.model}"
+    # -------------------------------------------------
+    # PURE VISION METHODS
+    # -------------------------------------------------
+
+    if args.usage == "lp":
+        from wrappers import LinearProbeWrapper
+        return LinearProbeWrapper(model)
+
+    elif args.usage == "full-ft":
+        from wrappers.full_ft import FullFTWrapper
+        return FullFTWrapper(model)
+
+    elif args.usage == "lora-lp":
+        from wrappers.lora import LoRALPWrapper
+
+        targets = args.model_setting.get(
+            "lora_targets",
+            ["in_proj", "out_proj", "c_fc", "c_proj"]
+        ) if args.model_setting else [
+            "in_proj", "out_proj", "c_fc", "c_proj"
+        ]
+
+        return LoRALPWrapper(
+            model,
+            lora_targets=targets
+        )
+
+    # -------------------------------------------------
+    # TEXT-GUIDED METHODS
+    # -------------------------------------------------
+
+    elif args.usage in [
+        "clip-zs",
+        "clip-adapt",
+        "lora-zs",
+        "full-ft-zs",
+    ]:
+
+        assert args.model in CLIP_MODELS, (
+            f"{args.usage} is not applicable for {args.model}"
+        )
+
+        text_features = build_text_features(args, model)
+
+        # -----------------------------
+        # CLIP prototype tuning
+        # -----------------------------
+        if args.usage in [
+            "clip-zs",
+            "clip-adapt",
+        ]:
+
             from wrappers import CLIPWrapper
 
-            text = tokenize_text(args, args.data_setting["class_names"])
-            text_features = model.encode_text(text.to(args.device))
+            return CLIPWrapper(
+                model,
+                text_features,
+                proto_agg=args.proto_agg
+            )
 
-            model_warpped = CLIPWrapper(model, text_features)
-        elif args.usage == "lora":
-            from wrappers import LoRAWrapper
+        # -----------------------------
+        # LoRA zero-shot alignment
+        # -----------------------------
 
-            model_setting = args.model_setting
+        elif args.usage == "lora-zs":
 
-            assert (
-                "lora_targets" in model_setting.keys()
-            ), f"LoRA is not applicable for {args.model}, either because it's not a ViT-based model or it's not supported in the current version"
+            from wrappers.lora import LoRAZSWrapper
 
-            model_warpped = LoRAWrapper(
-                model, lora_targets=model_setting["lora_targets"])
-        else:
-            raise NotImplementedError()
+            targets = args.model_setting.get(
+                "lora_targets",
+                ["in_proj", "out_proj", "c_fc", "c_proj"]
+            ) if args.model_setting else [
+                "in_proj", "out_proj", "c_fc", "c_proj"
+            ]
 
-    # elif args.task == "seg":
-    #     from wrappers import SAMWrapper
-    #     model_warpped = SAMWrapper(model, data_engine=data_engine)
+            return LoRAZSWrapper(
+                model,
+                text_features,
+                lora_targets=targets,
+                proto_agg=args.proto_agg
+            )
+
+        # -----------------------------
+        # Full fine-tuning with text anchors
+        # -----------------------------
+
+        elif args.usage == "full-ft-zs":
+
+            from wrappers.full_ft import FullFTZSWrapper
+
+            return FullFTZSWrapper(
+                model,
+                text_features,
+                proto_agg=args.proto_agg
+            )
+
     else:
-        raise NotImplementedError
-
-    return model_warpped
-
+        raise NotImplementedError(
+            f"Usage '{args.usage}' is not implemented"
+        )
+        

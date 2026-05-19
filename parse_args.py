@@ -143,13 +143,20 @@ def collect_args():
     # experiments
     
     parser.add_argument("--task", default="cls", choices=["cls", "seg"])
+    # In collect_args()
     parser.add_argument(
         "--usage",
         type=str,
         default='clip-zs',
-        choices=["lp", "clip-zs", "clip-adapt", 'full-ft',"lora", "seg2d-rand",
-                 "seg2d-rands", "seg2d-center", "seg2d-bbox", "seg2d"],
+        choices=["lp", "clip-zs", "clip-adapt", 'full-ft', 'full-ft-zs', "lora-lp", "lora-zs",
+                "seg2d-rand", "seg2d-rands", "seg2d-center", "seg2d-bbox", "seg2d"],
     )
+    parser.add_argument("--text_source", type=str, default="template",
+                    choices=["template", "gpt4_avg", "all_summaries", "clustered_summaries"],
+                    help="source of text prototypes for CLIP-based methods")
+    parser.add_argument("--proto_agg", type=str, default="max",
+                    choices=["max", "mean"],
+                    help="aggregation method for multi-prototype text sources")
     parser.add_argument("--method", default="erm",
                         choices=["erm", "resampling", "group-dro", "laftr"])
     parser.add_argument(

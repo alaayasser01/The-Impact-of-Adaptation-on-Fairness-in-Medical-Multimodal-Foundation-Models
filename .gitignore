@@ -164,3 +164,28 @@ cython_debug/
 data/
 output/
 pretrained/
+
+# datasets / large data
+data/
+output/
+output_*/
+output_*/*
+pretrained/
+allisgood*/
+output_test/
+
+# experiment outputs
+refactored_code_output/
+refactored_code_output_*/
+runs/
+logs/
+wandb/
+
+# results files (VERY IMPORTANT for your case)
+final_results_*.csv
+wide_format_subgroup_results.csv
+
+# checkpoints
+*.pth
+*.ckpt
+*.pt
