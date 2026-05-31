@@ -2,14 +2,14 @@ import torch
 from models.utils import get_model
 from wrappers.utils import get_warpped_model
 
-def get_trainer(args, model, logger, test_dataloader=None):
+def get_trainer(args, model, logger, test_dataloader=None, val_dataloader=None):
     if args.task == "cls":
         if args.method == "erm":
             from trainers import CLSTrainer
-            return CLSTrainer(args, model, test_dataloader, logger)
+            return CLSTrainer(args, model, test_dataloader, logger, val_dataloader)
         elif args.method == "sa":
             from trainers import SATrainer
-            return SATrainer(args, model, test_dataloader, logger)
+            return SATrainer(args, model, test_dataloader, logger, val_dataloader)
         else:
             raise NotImplementedError
     elif args.task == "seg":

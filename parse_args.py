@@ -151,6 +151,7 @@ def collect_args():
         choices=["lp", "clip-zs", "clip-adapt", 'full-ft', 'full-ft-zs', "lora-lp", "lora-zs",
                 "seg2d-rand", "seg2d-rands", "seg2d-center", "seg2d-bbox", "seg2d"],
     )
+    parser.add_argument("--eval_only", action="store_true", help="Skip training, evaluate only.")
     parser.add_argument("--text_source", type=str, default="template",
                     choices=["template", "gpt4_avg", "all_summaries", "clustered_summaries"],
                     help="source of text prototypes for CLIP-based methods")

@@ -164,6 +164,9 @@ cython_debug/
 data/
 output/
 pretrained/
+lr_sweep/
+poster_data/
+text_sweep/
 
 # datasets / large data
 data/

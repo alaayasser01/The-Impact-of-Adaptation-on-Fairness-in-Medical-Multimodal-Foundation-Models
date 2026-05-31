@@ -1,11 +1,13 @@
 {
-    "train_meta_path": "/home/hnn/Desktop/rhome/aym/FairMedFM/data/Harvard FairVLMed (Harvard-FairVLMed）/train.csv",
-    "test_sex_meta_path": "/home/hnn/Desktop/rhome/aym/FairMedFM/data/Harvard FairVLMed (Harvard-FairVLMed）/test.csv",
-    "test_age_meta_path": "/home/hnn/Desktop/rhome/aym/FairMedFM/data/Harvard FairVLMed (Harvard-FairVLMed）/test.csv",
-    "test_race_meta_path": "/home/hnn/Desktop/rhome/aym/FairMedFM/data/Harvard FairVLMed (Harvard-FairVLMed）/test.csv",
-    "test_language_meta_path": "/home/hnn/Desktop/rhome/aym/FairMedFM/data/Harvard FairVLMed (Harvard-FairVLMed）/test.csv",
-    "image_train_path": "/home/hnn/Desktop/rhome/aym/FairMedFM/data/Harvard FairVLMed (Harvard-FairVLMed）/Dataset",
-    "image_test_path": "/home/hnn/Desktop/rhome/aym/FairMedFM/data/Harvard FairVLMed (Harvard-FairVLMed）/Dataset",
+    "train_meta_path": "/home/aym/Desktop/rhome/aym/FairMedFM/data/Harvard FairVLMed (Harvard-FairVLMed）/train.csv",
+    "test_sex_meta_path": "/home/aym/Desktop/rhome/aym/FairMedFM/data/Harvard FairVLMed (Harvard-FairVLMed）/test.csv",
+    "test_age_meta_path": "/home/aym/Desktop/rhome/aym/FairMedFM/data/Harvard FairVLMed (Harvard-FairVLMed）/test.csv",
+    "test_race_meta_path": "/home/aym/Desktop/rhome/aym/FairMedFM/data/Harvard FairVLMed (Harvard-FairVLMed）/test.csv",
+    "test_language_meta_path": "/home/aym/Desktop/rhome/aym/FairMedFM/data/Harvard FairVLMed (Harvard-FairVLMed）/test.csv",
+    "image_train_path": "/home/aym/Desktop/rhome/aym/FairMedFM/data/Harvard FairVLMed (Harvard-FairVLMed）/Dataset",
+    "image_test_path": "/home/aym/Desktop/rhome/aym/FairMedFM/data/Harvard FairVLMed (Harvard-FairVLMed）/Dataset",
+    "validation_meta_path": "/home/aym/Desktop/rhome/aym/FairMedFM/data/Harvard FairVLMed (Harvard-FairVLMed）/val.csv",
+    "image_validation_path": "/home/aym/Desktop/rhome/aym/FairMedFM/data/Harvard FairVLMed (Harvard-FairVLMed）/Dataset",
     "text_template": "a scanning laser ophthalmoscope fundus image of a {}",
     "class_names": ["normal", "glaucoma"]
 }

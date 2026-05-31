@@ -47,7 +47,7 @@ set +e   # Do NOT exit on error – we want to continue after failures
 DATASET="FairVLMed10k"
 MODEL="CLIP"
 BACKBONE="ViT-B/32"
-EPOCHS=1            # Quick test
+EPOCHS=100            # Quick test
 LR=0.0001
 BATCH_SIZE=128
 OUTPUT_DIR="./output_test"

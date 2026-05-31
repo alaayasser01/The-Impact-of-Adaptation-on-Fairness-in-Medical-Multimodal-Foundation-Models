@@ -87,7 +87,14 @@ class FairVLMed10k(BaseDataset):
             
         elif self.sens_name == "Language" or self.sens_name == "language":
             return self.dataframe["language_group"].values.astype(np.float32)
-            
+        
+        elif self.sens_name == "Ethnicity":
+            # Map every unique string to an integer automatically
+            return self.dataframe["ethnicity"].astype('category').cat.codes.values.astype(np.float32)
+
+        elif self.sens_name == "MaritalStatus":
+            # Same – preserves all original categories
+            return self.dataframe["maritalstatus"].astype('category').cat.codes.values.astype(np.float32)
         elif self.sens_name == "All":
             # Dummy array just to keep PyTorch happy during the training loop.
             return np.zeros(len(self.dataframe)).astype(np.float32)

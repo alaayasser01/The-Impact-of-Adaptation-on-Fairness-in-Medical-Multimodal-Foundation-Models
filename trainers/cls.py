@@ -14,12 +14,56 @@ from utils.lr_sched import adjust_learning_rate
 
 
 class CLSTrainer(BaseTrainer):
-    def __init__(self, args, model, test_loader, logger) -> None:
+    def __init__(self, args, model, test_loader, logger, val_loader=None) -> None:
         super().__init__(args, model, logger)
         self.test_loader = test_loader
+        if val_loader is not None:
+            self.val_loader = val_loader
+
+    # def train(self, train_dataloader, val_dataloader=None):
+    #     self.model.train()
+
+    #     while self.epoch < self.total_epochs:
+    #         adjust_learning_rate(self.optimizer, self.epoch + 1, self.args)
+
+    #         loss = self.train_epoch(train_dataloader)
+    #         self.logger.info("epoch {}: lr {}, loss {}".format(
+    #             self.epoch, self.optimizer.param_groups[0]["lr"], loss))
+
+    #         if val_dataloader is not None:
+    #             self.evaluate(val_dataloader)
+            
+    #         # if self.epoch % 5 == 0:
+    #         #     self.evaluate(self.test_loader)
+
+    #         # save model
+    #         torch.save(
+    #             {
+    #                 "model": self.model.state_dict(),
+    #                 "optimizer": self.optimizer.state_dict(),
+    #                 "epoch": self.epoch,
+    #             },
+    #             os.path.join(self.args.save_folder, "ckpt.pth"),
+    #         )
+
+    #         if self.args.early_stopping and val_dataloader is not None:
+    #             if self.epoch > 10 and (max(self.last_five_auc) - min(self.last_five_auc) < 1e-5):
+    #                 break
+
+    #         self.epoch += 1
+            
+    #          # After training, check prototype movement
+    #     if hasattr(self.model, 'initial_prototypes'):
+    #         movement = (self.model.prototypes - self.model.initial_prototypes).norm().item()
+    #         self.logger.info(f"[DEBUG] Prototype movement after training: {movement:.6f}")
     
     def train(self, train_dataloader, val_dataloader=None):
         self.model.train()
+        best_val_auc = 0.0
+        best_epoch = 0
+        best_state = None
+        patience_counter = 0
+        patience = 10          # stop if no improvement for 10 validations
 
         while self.epoch < self.total_epochs:
             adjust_learning_rate(self.optimizer, self.epoch + 1, self.args)
@@ -29,31 +73,33 @@ class CLSTrainer(BaseTrainer):
                 self.epoch, self.optimizer.param_groups[0]["lr"], loss))
 
             if val_dataloader is not None:
-                self.evaluate(val_dataloader)
-            
-            # if self.epoch % 5 == 0:
-            #     self.evaluate(self.test_loader)
+                auc = self.evaluate(val_dataloader, return_auc=True)   # modify evaluate to return AUC
+                self.logger.info(f"epoch {self.epoch}: val AUC = {auc:.4f}")
 
-            # save model
-            torch.save(
-                {
-                    "model": self.model.state_dict(),
-                    "optimizer": self.optimizer.state_dict(),
-                    "epoch": self.epoch,
-                },
-                os.path.join(self.args.save_folder, "ckpt.pth"),
-            )
+                if auc > best_val_auc:
+                    best_val_auc = auc
+                    best_epoch = self.epoch
+                    best_state = {k: v.cpu().clone() for k, v in self.model.state_dict().items()}
+                    patience_counter = 0
+                    # save best checkpoint
+                    torch.save(
+                        {"model": best_state, "optimizer": self.optimizer.state_dict(), "epoch": self.epoch},
+                        os.path.join(self.args.save_folder, "best_ckpt.pth"),
+                    )
+                else:
+                    patience_counter += 1
 
-            if self.args.early_stopping and val_dataloader is not None:
-                if self.epoch > 10 and (max(self.last_five_auc) - min(self.last_five_auc) < 1e-5):
+                if patience_counter >= patience:
+                    self.logger.info(f"Early stopping at epoch {self.epoch}, best val AUC {best_val_auc:.4f} at epoch {best_epoch}")
                     break
 
             self.epoch += 1
-            
-             # After training, check prototype movement
-        if hasattr(self.model, 'initial_prototypes'):
-            movement = (self.model.prototypes - self.model.initial_prototypes).norm().item()
-            self.logger.info(f"[DEBUG] Prototype movement after training: {movement:.6f}")
+
+        # After training, load best checkpoint
+        if best_state is not None:
+            self.model.load_state_dict(best_state)
+            self.logger.info(f"Loaded best checkpoint from epoch {best_epoch} with val AUC {best_val_auc:.4f}")
+        
     def train_epoch(self, train_dataloader):
         loss_epoch = []
         for minibatch in train_dataloader:
@@ -97,7 +143,7 @@ class CLSTrainer(BaseTrainer):
 
         return loss
 
-    def evaluate(self, dataloader, save_path=None):
+    def evaluate(self, dataloader, save_path=None, return_auc=False):
         self.model.eval()
 
         logits_list = []
@@ -171,3 +217,6 @@ class CLSTrainer(BaseTrainer):
 
             with open(os.path.join(save_path, "predictions.pkl"), "wb") as f:
                 pickle.dump({"epoch": self.epoch, "logits": logits_list, "label": target_list}, f)
+            
+        if return_auc:
+            return overall_metrics["auc"]

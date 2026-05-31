@@ -315,6 +315,11 @@ if __name__ == "__main__":
 
     train_data, train_dataloader, train_meta = get_dataset(args, split="train")
     test_data, test_dataloader, test_meta = get_dataset(args, split="test")
+    val_loader = None
+    if args.usage not in ["clip-zs"]:   # only for trainable usages
+        if "validation_meta_path" in args.data_setting:
+            args.data_setting["image_val_path"] = args.data_setting["image_validation_path"]
+            _, val_loader, _ = get_dataset(args, split="validation")
     model = get_model(args).to(args.device)
  
   ##I added ##
@@ -333,7 +338,8 @@ if __name__ == "__main__":
         model = get_warpped_model(args, model, test_data).to(
             args.device)  # SAMLearner
 
-    trainer = get_trainer(args, model, logger, test_dataloader)
+    # trainer = get_trainer(args, model, logger, test_dataloader)
+    trainer = get_trainer(args, model, logger, test_dataloader, val_loader)
 
 # ==========================================================
     # Determine which attributes to evaluate based on the argument
@@ -344,6 +350,20 @@ if __name__ == "__main__":
     else:
         attributes_to_test = [args.sensitive_name]
 
+    if getattr(args, 'eval_only', False):
+        import glob as globlib
+        search_dir = args.exp_path
+        matches = globlib.glob(os.path.join(search_dir, "**", "best_ckpt.pth"), recursive=True)
+        if not matches:
+            raise FileNotFoundError(f"No best_ckpt.pth found inside {search_dir}")
+        ckpt_path = matches[0]   # there will be exactly one
+        logger.info(f"Found checkpoint: {ckpt_path}")
+        ckpt = torch.load(ckpt_path, map_location=args.device)
+        model.load_state_dict(ckpt["model"])
+        logger.info(f"Loaded checkpoint from {ckpt_path}")
+        evaluate_all_attributes(args, trainer, logger, attributes_to_test,
+                                save_prefix=f"{args.usage}_eval")
+        exit(0)
     # ==========================================
     # ZERO-SHOT ONLY
     # ==========================================
@@ -376,7 +396,7 @@ if __name__ == "__main__":
 
         trainer.init_optimizers()
 
-        trainer.train(train_dataloader)
+        trainer.train(train_dataloader, val_dataloader=val_loader)
 
         evaluate_all_attributes(
             args,
