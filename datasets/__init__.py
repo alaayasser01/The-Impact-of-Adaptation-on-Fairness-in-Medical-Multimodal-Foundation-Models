@@ -9,3 +9,4 @@ from datasets.ADNI import ADNI
 from datasets.BREST import BREST
 from datasets.MIMIC_CXR import MIMIC_CXR
 from datasets.GF3300 import GF3300
+from datasets.DDI import DDI

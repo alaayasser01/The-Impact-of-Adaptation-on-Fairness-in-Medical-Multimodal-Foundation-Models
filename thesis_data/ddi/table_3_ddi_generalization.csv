@@ -1,0 +1,5 @@
+Method,Overall AUC,EoD (Fitzpatrick),Light (I-II) AUC,Medium (III-IV) AUC,Dark (V-VI) AUC
+Baseline (clip-zs),0.5060,0.9017,0.4969,0.4909,0.5500
+Full-FT,0.6751,0.9344,0.6156,0.7313,0.6719
+LoRA-Text,0.7216,0.8973,0.6406,0.7535,0.7625
+Full-FT-Text,0.7119,0.8854,0.6594,0.7717,0.6437

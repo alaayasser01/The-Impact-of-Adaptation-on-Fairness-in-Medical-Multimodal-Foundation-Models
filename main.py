@@ -243,6 +243,9 @@ def create_exerpiment_setting(args):
             data_setting = json.load(f)
             data_setting["augment"] = False
             
+            if getattr(args, 'train_meta_path', None):
+                data_setting["train_meta_path"] = args.train_meta_path
+            
             if args.sensitive_name != "All":
                 specific_test_key = f"test_{str.lower(args.sensitive_name)}_meta_path"
                 if specific_test_key in data_setting:

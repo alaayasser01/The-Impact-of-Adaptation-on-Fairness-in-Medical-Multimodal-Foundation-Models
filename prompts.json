@@ -1,0 +1,47 @@
+
+{
+    "normal": [
+        "a healthy optic disc with no cupping",
+        "normal neuroretinal rim",
+        "fundus without glaucomatous damage",
+        "no nerve fiber layer defect",
+        "optic nerve head appears normal",
+        "no signs of glaucoma",
+        "healthy retinal nerve fiber layer",
+        "cup-to-disc ratio within normal limits",
+        "no optic disc hemorrhage",
+        "intact neuroretinal rim",
+        "normal optic nerve head morphology",
+        "absence of parapapillary atrophy",
+        "no RNFL thinning",
+        "optic disc margins sharp and pink",
+        "no excavation of the optic disc",
+        "healthy appearing optic nerve",
+        "no progressive cupping",
+        "normal IOP and disc appearance",
+        "no glaucomatous changes",
+        "optic nerve head well perfused"
+    ],
+    "glaucoma": [
+        "glaucomatous optic neuropathy with cupping",
+        "enlarged cup-to-disc ratio",
+        "optic disc cupping indicative of glaucoma",
+        "nerve fiber layer thinning due to glaucoma",
+        "notch in the neuroretinal rim",
+        "optic atrophy from advanced glaucoma",
+        "parapapillary atrophy consistent with glaucoma",
+        "loss of retinal nerve fiber layer",
+        "cupping of the optic nerve head",
+        "glaucomatous excavation of the disc",
+        "progressive optic disc damage",
+        "glaucoma suspect with suspicious cupping",
+        "optic disc hemorrhage in glaucoma",
+        "bayoneting of vessels at disc margin",
+        "lamina cribrosa visible due to cupping",
+        "advanced glaucomatous cupping",
+        "glaucoma with visual field loss",
+        "optic nerve head appears pale and cupped",
+        "deep cup with undermined edges",
+        "retinal nerve fiber layer defect"
+    ]
+}

@@ -151,6 +151,7 @@ def collect_args():
         choices=["lp", "clip-zs", "clip-adapt", 'full-ft', 'full-ft-zs', "lora-lp", "lora-zs",
                 "seg2d-rand", "seg2d-rands", "seg2d-center", "seg2d-bbox", "seg2d"],
     )
+    parser.add_argument("--train_meta_path", type=str, default="")
     parser.add_argument("--eval_only", action="store_true", help="Skip training, evaluate only.")
     parser.add_argument("--text_source", type=str, default="template",
                     choices=["template", "gpt4_avg", "all_summaries", "clustered_summaries"],
@@ -160,6 +161,8 @@ def collect_args():
                     help="aggregation method for multi-prototype text sources")
     parser.add_argument("--method", default="erm",
                         choices=["erm", "resampling", "group-dro", "laftr"])
+    parser.add_argument("--save_test_per_epoch", action="store_true",
+                    help="Evaluate on test set after every epoch and save results")
     parser.add_argument(
         "--dataset",
         default="CXP",
@@ -171,6 +174,7 @@ def collect_args():
             "ADNI",
             "COVID_CT_MD",
             "FairVLMed10k",
+            "DDI",
             "BREST",
             "GF3300",
             "HAM10000-Seg",
@@ -180,7 +184,7 @@ def collect_args():
         ],
     )
     parser.add_argument("--sensitive_name", default="Sex",
-                        choices=["Sex", "Age", "Race", "Language", "All"])
+                        choices=["Sex", "Age", "Race", "Language", "All", "fitzpatrick"])
     parser.add_argument("--is_3d", action="store_true")
     parser.add_argument("--augment", action="store_true")
 

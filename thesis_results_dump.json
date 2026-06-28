@@ -1,0 +1,165 @@
+{
+  "lr_table": {
+    "clip-adapt": [
+      0.6087,
+      0.626,
+      0.6365,
+      null,
+      0.6863,
+      0.7126,
+      0.728
+    ],
+    "lp": [
+      0.5418,
+      0.5949,
+      0.6119,
+      null,
+      0.6829,
+      0.7051,
+      0.7199
+    ],
+    "lora-lp": [
+      0.5692,
+      0.605,
+      0.6246,
+      null,
+      0.7581,
+      0.7946,
+      0.7973
+    ],
+    "lora-text": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "full-ft": [
+      0.6789,
+      0.7235,
+      0.7485,
+      null,
+      0.7881,
+      0.7961,
+      0.7987
+    ],
+    "full-ft-text": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  },
+  "summary": {
+    "clip-zs": {
+      "auc_vals": [],
+      "auc_mean": null,
+      "auc_std": null,
+      "eod_vals": [],
+      "eod_mean": null,
+      "eod_std": null,
+      "best_epochs": [],
+      "mean_delta_auc": null,
+      "worst_attr": "TBD",
+      "worst_val": null,
+      "attr_deltas": {}
+    },
+    "biomedclip-zs": {
+      "auc_vals": [],
+      "auc_mean": null,
+      "auc_std": null,
+      "eod_vals": [],
+      "eod_mean": null,
+      "eod_std": null,
+      "best_epochs": [],
+      "mean_delta_auc": null,
+      "worst_attr": "TBD",
+      "worst_val": null,
+      "attr_deltas": {}
+    },
+    "clip-adapt": {
+      "auc_vals": [],
+      "auc_mean": null,
+      "auc_std": null,
+      "eod_vals": [],
+      "eod_mean": null,
+      "eod_std": null,
+      "best_epochs": [],
+      "mean_delta_auc": null,
+      "worst_attr": "TBD",
+      "worst_val": null,
+      "attr_deltas": {}
+    },
+    "lp": {
+      "auc_vals": [],
+      "auc_mean": null,
+      "auc_std": null,
+      "eod_vals": [],
+      "eod_mean": null,
+      "eod_std": null,
+      "best_epochs": [],
+      "mean_delta_auc": null,
+      "worst_attr": "TBD",
+      "worst_val": null,
+      "attr_deltas": {}
+    },
+    "lora-lp": {
+      "auc_vals": [],
+      "auc_mean": null,
+      "auc_std": null,
+      "eod_vals": [],
+      "eod_mean": null,
+      "eod_std": null,
+      "best_epochs": [],
+      "mean_delta_auc": null,
+      "worst_attr": "TBD",
+      "worst_val": null,
+      "attr_deltas": {}
+    },
+    "lora-text": {
+      "auc_vals": [],
+      "auc_mean": null,
+      "auc_std": null,
+      "eod_vals": [],
+      "eod_mean": null,
+      "eod_std": null,
+      "best_epochs": [],
+      "mean_delta_auc": null,
+      "worst_attr": "TBD",
+      "worst_val": null,
+      "attr_deltas": {}
+    },
+    "full-ft": {
+      "auc_vals": [],
+      "auc_mean": null,
+      "auc_std": null,
+      "eod_vals": [],
+      "eod_mean": null,
+      "eod_std": null,
+      "best_epochs": [],
+      "mean_delta_auc": null,
+      "worst_attr": "TBD",
+      "worst_val": null,
+      "attr_deltas": {}
+    },
+    "full-ft-text": {
+      "auc_vals": [],
+      "auc_mean": null,
+      "auc_std": null,
+      "eod_vals": [],
+      "eod_mean": null,
+      "eod_std": null,
+      "best_epochs": [],
+      "mean_delta_auc": null,
+      "worst_attr": "TBD",
+      "worst_val": null,
+      "attr_deltas": {}
+    }
+  },
+  "dynamics": {}
+}

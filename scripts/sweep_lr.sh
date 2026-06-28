@@ -70,7 +70,7 @@ BACKBONE="ViT-B/32"
 EPOCHS=100
 BATCH_SIZE=128
 OUTPUT_DIR="./lr_sweep"
-SEED=0
+SEED=1
 TEXT_SOURCE="template"
 
 USAGES=("lp" "clip-adapt" "full-ft" "full-ft-zs" "lora-lp" "lora-zs")

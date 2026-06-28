@@ -167,6 +167,9 @@ pretrained/
 lr_sweep/
 poster_data/
 text_sweep/
+Data_ablation/
+baseline/biomedclip_zs/
+ddi_results/
 
 # datasets / large data
 data/
@@ -191,4 +194,4 @@ wide_format_subgroup_results.csv
 # checkpoints
 *.pth
 *.ckpt
-*.pt
+*.ptMiniconda3-latest-Linux-x86_64.sh

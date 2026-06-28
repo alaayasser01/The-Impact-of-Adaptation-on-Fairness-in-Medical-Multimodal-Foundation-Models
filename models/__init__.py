@@ -1,6 +1,6 @@
 # from .sam_builder import build_sammed2d, build_tinysam
 
-# from models.biomed_clip import BiomedCLIP
+from models.biomed_clip import BiomedCLIP
 # from models.blip import BLIP
 # from models.blip2 import BLIP2
 # from models.c2l import C2L
@@ -11,7 +11,7 @@ CLIPftFairVLMed = CLIP
 # from models.medlvm import MedLVM
 # from models.medmae import MedMAE
 # from models.moco_cxr import MoCoCXR
-# from models.pubmed_clip import PubMedCLIP
+from models.pubmed_clip import PubMedCLIP
 # from models.plip import PLIP
 # from models.siglip import MedSigLIP
 # from models.medsiglip import MedSigLIP

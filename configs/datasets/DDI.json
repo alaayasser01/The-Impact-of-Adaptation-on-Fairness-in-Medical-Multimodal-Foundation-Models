@@ -1,0 +1,10 @@
+{
+    "train_meta_path": "/home/aym/Desktop/rhome/aym/FairMedFM/data/DDI/train.csv",
+    "validation_meta_path": "/home/aym/Desktop/rhome/aym/FairMedFM/data/DDI/val.csv",
+    "test_fitzpatrick_meta_path": "/home/aym/Desktop/rhome/aym/FairMedFM/data/DDI/test.csv",
+    "image_train_path": "/home/aym/Desktop/rhome/aym/FairMedFM/data/DDI/images",
+    "image_validation_path": "/home/aym/Desktop/rhome/aym/FairMedFM/data/DDI/images",
+    "image_test_path": "/home/aym/Desktop/rhome/aym/FairMedFM/data/DDI/images",
+    "text_template": "a clinical photograph of a {} skin lesion",
+    "class_names": ["benign", "malignant"]
+}
