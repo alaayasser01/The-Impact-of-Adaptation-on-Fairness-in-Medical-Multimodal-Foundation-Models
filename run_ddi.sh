@@ -7,7 +7,7 @@ BACKBONE="ViT-B/32"
 EPOCHS=100            # Kept at 100 to let Early Stopping do its job
 BATCH_SIZE=32         # Lowered to 32 for stable gradients on a 459-image dataset
 TEXT_SOURCE="template"
-SEED=0
+SEED=2
 
 OUTPUT_DIR="./ddi_results"
 mkdir -p "$OUTPUT_DIR"
@@ -42,6 +42,7 @@ for usage in "${USAGES[@]}"; do
             --batch_size $BATCH_SIZE \
             --text_source "$TEXT_SOURCE" \
             --exp_path "$SAVE_DIR" \
+            --random_seed "$SEED"
     else
         python main.py \
             --task cls \
@@ -56,7 +57,9 @@ for usage in "${USAGES[@]}"; do
             --total_epochs $EPOCHS \
             --blr "$lr" \
             --random_seed "$SEED" \
-            --exp_path "$SAVE_DIR"
+            --exp_path "$SAVE_DIR" \
+            --random_seed "$SEED"
+
     fi
 done
 

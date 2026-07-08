@@ -195,3 +195,5 @@ wide_format_subgroup_results.csv
 *.pth
 *.ckpt
 *.ptMiniconda3-latest-Linux-x86_64.sh
+Miniconda3-latest-Linux-x86_64.sh
+*Miniconda3-latest-Linux-x86_64.sh
