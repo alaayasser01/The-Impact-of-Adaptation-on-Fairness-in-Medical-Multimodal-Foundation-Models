@@ -48,12 +48,38 @@ def create_exerpiment_setting(args):
             data_setting = json.load(f)
             data_setting["augment"] = False
 
-            # Automatically resolve paths if folder is located at ./<name> instead of ./data/<name>
-            for k, v in list(data_setting.items()):
-                if isinstance(v, str) and v.startswith("./data/"):
-                    alt_path = v.replace("./data/", "./")
-                    if not os.path.exists(v) and os.path.exists(alt_path):
-                        data_setting[k] = alt_path
+            # Automatically resolve paths if folder is located at ./<name> or has alternate naming
+            first_meta = data_setting.get("train_meta_path", "")
+            if not os.path.exists(first_meta):
+                for k, v in list(data_setting.items()):
+                    if isinstance(v, str) and v.startswith("./data/"):
+                        alt_path = v.replace("./data/", "./")
+                        if os.path.exists(alt_path):
+                            data_setting[k] = alt_path
+
+                # If still not found, search for matching folders (e.g. 'Harvard FairVLMed (Harvard-FairVLMed）')
+                if not os.path.exists(data_setting.get("train_meta_path", "")):
+                    candidates = []
+                    for search_root in [".", "./data"]:
+                        if os.path.exists(search_root):
+                            for d in os.listdir(search_root):
+                                p = os.path.join(search_root, d)
+                                if os.path.isdir(p):
+                                    if "fairvlmed" in d.lower() or "chexpert" in d.lower() or "ddi" in d.lower():
+                                        candidates.append(p)
+
+                    for cand in candidates:
+                        if os.path.exists(os.path.join(cand, "train.csv")) or os.path.exists(os.path.join(cand, "train_processed.csv")):
+                            for k, v in list(data_setting.items()):
+                                if isinstance(v, str):
+                                    if "Dataset" in v:
+                                        data_setting[k] = os.path.join(cand, "Dataset")
+                                    elif v.endswith(".csv"):
+                                        data_setting[k] = os.path.join(cand, os.path.basename(v))
+                                    elif "image" in k:
+                                        data_setting[k] = cand
+                            break
+
 
             if getattr(args, "train_meta_path", None):
                 data_setting["train_meta_path"] = args.train_meta_path

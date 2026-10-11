@@ -213,7 +213,22 @@ def check_dataset_paths(dataset_name):
     with open(config_file, "r") as f:
         cfg = json.load(f)
 
-    print(f"[*] Dataset Config: {config_file}")
+    # Discover folder if named differently (e.g., Harvard FairVLMed (Harvard-FairVLMed）)
+    discovered_dir = None
+    first_p = cfg.get("train_meta_path", "")
+    if not os.path.exists(first_p) and not (alt_img_dir and os.path.exists(alt_img_dir)):
+        for search_root in [".", "./data"]:
+            if os.path.exists(search_root):
+                for d in os.listdir(search_root):
+                    cand = os.path.join(search_root, d)
+                    if os.path.isdir(cand) and "fairvlmed" in d.lower():
+                        if os.path.exists(os.path.join(cand, "train.csv")):
+                            discovered_dir = cand
+                            break
+
+    if discovered_dir:
+        print(f"[*] Discovered FairVLMed Directory: [OK] -> {discovered_dir}")
+
     img_dir = cfg.get("image_train_path") or cfg.get("image_test_path")
     alt_img_dir = img_dir.replace("./data/", "./") if img_dir and img_dir.startswith("./data/") else None
     
@@ -221,6 +236,8 @@ def check_dataset_paths(dataset_name):
         print(f"[*] Image Root: [OK] Found at {img_dir}")
     elif alt_img_dir and os.path.exists(alt_img_dir):
         print(f"[*] Image Root: [OK] Found at {alt_img_dir} (fallback)")
+    elif discovered_dir and os.path.exists(os.path.join(discovered_dir, "Dataset")):
+        print(f"[*] Image Root: [OK] Found at {os.path.join(discovered_dir, 'Dataset')} (auto-detected)")
     else:
         print(f"[*] Image Root: [MISSING] neither '{img_dir}' nor '{alt_img_dir}' exist locally.")
 
@@ -230,11 +247,16 @@ def check_dataset_paths(dataset_name):
     for k in meta_keys:
         p = cfg[k]
         alt_p = p.replace("./data/", "./") if p.startswith("./data/") else None
+        disc_p = os.path.join(discovered_dir, os.path.basename(p)) if discovered_dir else None
+
         if os.path.exists(p):
             status = f"[OK] Found -> {p}"
             found_any = True
         elif alt_p and os.path.exists(alt_p):
             status = f"[OK] Found (fallback) -> {alt_p}"
+            found_any = True
+        elif disc_p and os.path.exists(disc_p):
+            status = f"[OK] Found (auto-detected) -> {disc_p}"
             found_any = True
         else:
             status = f"[MISSING] -> {p}"

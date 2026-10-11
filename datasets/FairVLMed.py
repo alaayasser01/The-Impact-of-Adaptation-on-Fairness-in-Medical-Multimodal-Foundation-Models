@@ -63,7 +63,27 @@ class FairVLMed10k(BaseDataset):
         if self.path_to_labels is not None:
             img = Image.fromarray(self.tol_images[idx])
         else:
-            img = Image.open(os.path.join(self.path_to_images, f"{item['path']}")).convert("RGB")
+            raw_path = str(item["path"])
+            candidates = [
+                os.path.join(self.path_to_images, raw_path),
+                raw_path,
+            ]
+            if self.path_to_images:
+                candidates.append(os.path.join(self.path_to_images, "Dataset", raw_path))
+                candidates.append(os.path.join(self.path_to_images, raw_path.replace("Dataset/", "")))
+                parent = os.path.dirname(self.path_to_images.rstrip("/\\"))
+                candidates.append(os.path.join(parent, raw_path))
+                candidates.append(os.path.join(parent, "Dataset", raw_path))
+
+            full_path = None
+            for p in candidates:
+                if os.path.exists(p):
+                    full_path = p
+                    break
+            if full_path is None:
+                full_path = candidates[0]
+
+            img = Image.open(full_path).convert("RGB")
 
         if self.transform is not None:
             img = self.transform(img)
