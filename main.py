@@ -48,6 +48,13 @@ def create_exerpiment_setting(args):
             data_setting = json.load(f)
             data_setting["augment"] = False
 
+            # Automatically resolve paths if folder is located at ./<name> instead of ./data/<name>
+            for k, v in list(data_setting.items()):
+                if isinstance(v, str) and v.startswith("./data/"):
+                    alt_path = v.replace("./data/", "./")
+                    if not os.path.exists(v) and os.path.exists(alt_path):
+                        data_setting[k] = alt_path
+
             if getattr(args, "train_meta_path", None):
                 data_setting["train_meta_path"] = args.train_meta_path
 
@@ -57,6 +64,7 @@ def create_exerpiment_setting(args):
                     data_setting["test_meta_path"] = data_setting[specific_test_key]
             else:
                 data_setting["test_meta_path"] = data_setting.get("test_sex_meta_path")
+
 
             args.data_setting = data_setting
 

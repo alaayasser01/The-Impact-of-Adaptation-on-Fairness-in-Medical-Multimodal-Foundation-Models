@@ -47,7 +47,23 @@ class CXP(BaseDataset):
         if self.path_to_labels is not None:
             img = Image.fromarray(self.tol_images[idx])
         else:
-            img = Image.open(os.path.join(self.path_to_images, f"{item['Path']}")).convert("RGB")
+            raw_path = str(item["Path"])
+            candidates = [
+                os.path.join(self.path_to_images, raw_path),
+                os.path.join(self.path_to_images, raw_path.replace("CheXpert-v1.0-small/", "")),
+                raw_path,
+                os.path.join("./CheXpert", raw_path.replace("CheXpert-v1.0-small/", "")),
+                os.path.join("./data/CheXpert", raw_path.replace("CheXpert-v1.0-small/", "")),
+            ]
+            full_path = None
+            for p in candidates:
+                if os.path.exists(p):
+                    full_path = p
+                    break
+            if full_path is None:
+                full_path = candidates[0]
+
+            img = Image.open(full_path).convert("RGB")
 
         if self.transform is not None:
             img = self.transform(img)

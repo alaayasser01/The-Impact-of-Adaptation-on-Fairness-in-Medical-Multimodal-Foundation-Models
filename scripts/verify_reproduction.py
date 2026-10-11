@@ -105,9 +105,40 @@ PAPER_TARGETS = {
     },
     "CXP": {
         "clip-zs": {
-            "overall_auc": 0.5120,
-            "mean_eod": 0.9750,
-        }
+            "overall_auc": 0.529,
+            "mean_eod": 0.978,
+            "Age_eod": 0.977,
+        },
+        "lp": {
+            "overall_auc": 0.790,
+            "mean_eod": 0.800,
+            "Age_eod": 0.617,
+        },
+        "clip-adapt": {
+            "overall_auc": 0.793,
+            "mean_eod": 0.798,
+            "Age_eod": 0.613,
+        },
+        "lora-lp": {
+            "overall_auc": 0.854,
+            "mean_eod": 0.794,
+            "Age_eod": 0.607,
+        },
+        "full-ft": {
+            "overall_auc": 0.847,
+            "mean_eod": 0.787,
+            "Age_eod": 0.591,
+        },
+        "lora-text": {
+            "overall_auc": 0.854,
+            "mean_eod": 0.800,
+            "Age_eod": 0.610,
+        },
+        "full-ft-text": {
+            "overall_auc": 0.849,
+            "mean_eod": 0.801,
+            "Age_eod": 0.618,
+        },
     },
 }
 
@@ -184,26 +215,33 @@ def check_dataset_paths(dataset_name):
 
     print(f"[*] Dataset Config: {config_file}")
     img_dir = cfg.get("image_train_path") or cfg.get("image_test_path")
-    print(f"[*] Image Root: {img_dir}")
-    if img_dir and not os.path.exists(img_dir):
-        print(f"    [!] Note: Directory '{img_dir}' does not exist locally.")
-        print("        Ensure your datasets are downloaded or symlinked to ./data/")
+    alt_img_dir = img_dir.replace("./data/", "./") if img_dir and img_dir.startswith("./data/") else None
+    
+    if img_dir and os.path.exists(img_dir):
+        print(f"[*] Image Root: [OK] Found at {img_dir}")
+    elif alt_img_dir and os.path.exists(alt_img_dir):
+        print(f"[*] Image Root: [OK] Found at {alt_img_dir} (fallback)")
+    else:
+        print(f"[*] Image Root: [MISSING] neither '{img_dir}' nor '{alt_img_dir}' exist locally.")
 
     # Check metadata CSVs
     meta_keys = [k for k in cfg.keys() if "meta_path" in k]
     found_any = False
     for k in meta_keys:
         p = cfg[k]
-        exists = os.path.exists(p)
-        status = "[OK] Found" if exists else "[MISSING]"
-        print(f"    - {k:<28}: {status} -> {p}")
-        if exists:
+        alt_p = p.replace("./data/", "./") if p.startswith("./data/") else None
+        if os.path.exists(p):
+            status = f"[OK] Found -> {p}"
             found_any = True
+        elif alt_p and os.path.exists(alt_p):
+            status = f"[OK] Found (fallback) -> {alt_p}"
+            found_any = True
+        else:
+            status = f"[MISSING] -> {p}"
+        print(f"    - {k:<28}: {status}")
 
     if not found_any:
         print(f"\n[!] WARNING: No metadata CSV files were found for {dataset_name}.")
-        print("    Did you run the pre-processing script, e.g.:")
-        print(f"    jupyter nbconvert --to notebook --execute pre-processing/classification/{dataset_name}.ipynb")
         return False
 
     return True
