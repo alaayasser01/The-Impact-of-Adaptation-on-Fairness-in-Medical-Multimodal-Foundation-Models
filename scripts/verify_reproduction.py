@@ -31,6 +31,7 @@ import glob
 import json
 import os
 import pickle
+import re
 import subprocess
 import sys
 
@@ -341,11 +342,39 @@ def parse_and_compare_results(exp_dir, dataset="FairVLMed10k", protocol="clip-zs
                 if "overall_auc" not in extracted and "auc" in overall:
                     extracted["overall_auc"] = overall["auc"]
 
-                if "eod" in subgroup:
+                # Calculate EoD from subgroup tpr/tnr arrays
+                if "tpr@best_f1" in subgroup and "tnr@best_f1" in subgroup:
+                    tpr_vals = [float(x) for x in subgroup["tpr@best_f1"]]
+                    tnr_vals = [float(x) for x in subgroup["tnr@best_f1"]]
+                    val_eod = 1.0 - ((max(tpr_vals) - min(tpr_vals)) + (max(tnr_vals) - min(tnr_vals))) / 2.0
+                    extracted[f"{attr}_eod"] = val_eod
+                    eod_values.append(val_eod)
+                elif "eod" in subgroup:
                     extracted[f"{attr}_eod"] = subgroup["eod"]
                     eod_values.append(subgroup["eod"])
         except Exception as e:
             print(f"    [!] Warning: Could not read {fpath}: {e}")
+
+    # Fallback to history.log if needed
+    log_files = glob.glob(os.path.join(exp_dir, "**", "history.log"), recursive=True)
+    if log_files:
+        current_attr = None
+        with open(log_files[0], "r", encoding="utf-8", errors="ignore") as f:
+            for line in f:
+                if "--- Evaluating " in line:
+                    current_attr = line.split("--- Evaluating ")[-1].replace("---", "").strip()
+                elif "overall-auc:" in line and "overall_auc" not in extracted:
+                    m = re.search(r"overall-auc:\s*([\d\.]+)", line)
+                    if m:
+                        extracted["overall_auc"] = float(m.group(1))
+                elif "eod:" in line and current_attr:
+                    m = re.search(r"\beod:\s*([\d\.]+)", line)
+                    if m:
+                        val = float(m.group(1))
+                        if f"{current_attr}_eod" not in extracted:
+                            extracted[f"{current_attr}_eod"] = val
+                            eod_values.append(val)
+
 
     if eod_values and "mean_eod" not in extracted:
         extracted["mean_eod"] = sum(eod_values) / len(eod_values)

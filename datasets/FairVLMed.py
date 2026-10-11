@@ -7,46 +7,71 @@ from .base import BaseDataset
 
 
 class FairVLMed10k(BaseDataset):
-    def __init__(self, dataframe, sens_name, transform, path_to_images=None, path_to_pickles=None):
+    def __init__(self, dataframe, sens_name, transform, path_to_images=None, path_to_pickles=None, binarize=False):
+        self.binarize = binarize
         super().__init__(dataframe, sens_name, transform, path_to_images, path_to_pickles)
 
     def set_sensitive(self):
         if self.sens_name == "Sex":
             # Female: 1, Male: 0
-            sa_array = np.asarray(self.dataframe["gender"].str.lower() != "male").astype(np.float32)
+            sa_array = np.asarray(self.dataframe["gender"].astype(str).str.lower() != "male").astype(np.float32)
             class_0_count = np.sum(sa_array == 0)
             class_1_count = np.sum(sa_array == 1)
             total_count_sa = len(sa_array)
-            weight_class_0 = total_count_sa / (2 * class_0_count)
-            weight_class_1 = total_count_sa / (2 * class_1_count)
+            weight_class_0 = total_count_sa / (2 * class_0_count) if class_0_count > 0 else 1.0
+            weight_class_1 = total_count_sa / (2 * class_1_count) if class_1_count > 0 else 1.0
             self.class_weights_sa = torch.tensor([weight_class_0, weight_class_1], dtype=torch.float32)
             return sa_array
 
         elif self.sens_name == "Age":
-            # Senior (>60): 1, Non-Senior (<=60): 0
-            return np.asarray(self.dataframe["age"] > 60).astype(np.float32)
+            if getattr(self, "binarize", False):
+                # Binarized: Senior (>60): 1, Non-Senior (<=60): 0
+                return np.asarray(self.dataframe["age"] > 60).astype(np.float32)
+            # Native Cardinality: 4 Age Quartiles (matching paper & thesis)
+            if "age_group" in self.dataframe.columns:
+                return self.dataframe["age_group"].values.astype(np.float32)
+            elif "age" in self.dataframe.columns:
+                return np.asarray(pd.qcut(self.dataframe["age"], q=4, labels=False, duplicates="drop")).astype(np.float32)
+            return np.zeros(len(self.dataframe)).astype(np.float32)
 
         elif self.sens_name == "Race":
-            # White: 1, Non-White: 0
-            return np.asarray(self.dataframe["race"].str.lower() == "white").astype(np.float32)
+            if getattr(self, "binarize", False):
+                # Binarized: White: 1, Non-White: 0
+                return np.asarray(self.dataframe["race"].astype(str).str.lower() == "white").astype(np.float32)
+            # Native Cardinality: Preserves all discrete race categories
+            if "race_group" in self.dataframe.columns:
+                return self.dataframe["race_group"].values.astype(np.float32)
+            return self.dataframe["race"].astype("category").cat.codes.values.astype(np.float32)
 
         elif self.sens_name in ["Language", "language"]:
-            # English: 1, Non-English: 0
-            return np.asarray(self.dataframe["language"].str.lower() == "english").astype(np.float32)
+            if getattr(self, "binarize", False):
+                # Binarized: English: 1, Non-English: 0
+                return np.asarray(self.dataframe["language"].astype(str).str.lower() == "english").astype(np.float32)
+            # Native Cardinality: Preserves discrete language groups
+            if "language_group" in self.dataframe.columns:
+                return self.dataframe["language_group"].values.astype(np.float32)
+            return self.dataframe["language"].astype("category").cat.codes.values.astype(np.float32)
 
         elif self.sens_name == "Ethnicity":
-            # Hispanic: 1, Non-Hispanic/Unknown: 0
-            return np.asarray(self.dataframe["ethnicity"].str.lower() != "non-hispanic").astype(np.float32)
+            if getattr(self, "binarize", False):
+                # Binarized: Hispanic: 1, Non-Hispanic/Unknown: 0
+                return np.asarray(self.dataframe["ethnicity"].astype(str).str.lower() != "non-hispanic").astype(np.float32)
+            # Native Cardinality
+            return self.dataframe["ethnicity"].astype("category").cat.codes.values.astype(np.float32)
 
         elif self.sens_name == "MaritalStatus":
-            # Married/Partnered: 1, Unmarried (Single, Widowed, etc.): 0
-            return np.asarray(self.dataframe["maritalstatus"].str.lower() == "married or partnered").astype(np.float32)
+            if getattr(self, "binarize", False):
+                # Binarized: Married: 1, Unmarried: 0
+                return np.asarray(self.dataframe["maritalstatus"].astype(str).str.lower() == "married or partnered").astype(np.float32)
+            # Native Cardinality: Preserves all granular marital categories
+            return self.dataframe["maritalstatus"].astype("category").cat.codes.values.astype(np.float32)
 
         elif self.sens_name == "All":
             return np.zeros(len(self.dataframe)).astype(np.float32)
 
         else:
             raise NotImplementedError(f"Sensitive attribute '{self.sens_name}' is not supported.")
+
 
     def set_label(self):
         Y = np.where(

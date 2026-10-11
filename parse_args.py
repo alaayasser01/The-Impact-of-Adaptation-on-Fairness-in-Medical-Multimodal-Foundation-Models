@@ -47,6 +47,11 @@ def collect_args():
         help="Sensitive demographic attribute to evaluate fairness across",
     )
     parser.add_argument(
+        "--binarize_attributes",
+        action="store_true",
+        help="Binarize demographic attributes (ablation study). Defaults to False (native cardinality as in paper).",
+    )
+    parser.add_argument(
         "--model",
         default="CLIP",
         choices=["CLIP", "BiomedCLIP", "CLIPftFairVLMed"],
