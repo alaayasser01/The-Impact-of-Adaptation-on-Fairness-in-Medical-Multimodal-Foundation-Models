@@ -1,9 +1,5 @@
 # The Impact of Adaptation on Fairness in Medical Multimodal Foundation Models
 
-<p align="center">
-  <img src="./readme-figs/main.png" alt="Adaptation Protocols and Fairness Benchmark" width="95%">
-</p>
-
 This repository contains the official PyTorch implementation, reproduction scripts, and fairness evaluation benchmarks for the research study:
 
 > **The Impact of Adaptation on Fairness in Medical Multimodal Foundation Models**  
@@ -25,19 +21,29 @@ In this work, we present a comprehensive empirical investigation into how downst
 
 ---
 
-## 🔬 Adaptation Protocols Evaluated
+## 🔬 Adaptation Protocols & Architectural Taxonomy
+
+Downstream adaptation of multimodal foundation models can be structured along two fundamental axes: **how predictions are formed** (unimodal classifier vs. vision-language cosine alignment) and **which components are updated** (frozen, parameter-efficient LoRA, or full fine-tuning).
+
+<p align="center">
+  <img src="./readme-figs/main.png" alt="Taxonomy of Adaptation Protocols" width="92%">
+  <br>
+  <em><b>Figure 1: Taxonomy of Adaptation Protocols in Medical Multimodal Foundation Models.</b><br>
+  (Left, Blue): Unimodal adaptation discarding the text encoder and training a linear classification head (<code>lp</code>, <code>lora-lp</code>, <code>full-ft</code>).<br>
+  (Right, Green): Multimodal adaptation retaining vision-language cosine similarity against prompt anchors or learned prototypes (<code>clip-adapt</code>, <code>lora-text</code>, <code>full-ft-text</code>).</em>
+</p>
 
 We evaluate 7 adaptation protocols ranked by their trainable capacity and multimodal integration:
 
-| Protocol | `--usage` Flag | Trainable Parameters | Description |
-| :--- | :--- | :--- | :--- |
-| **Zero-Shot** | `clip-zs` | None (0%) | Zero-shot classification using prompt-derived text prototypes |
-| **Linear Probing** | `lp` | Classifier Head only | Freeze vision backbone; train linear classification head |
-| **CLIP-Adapt** | `clip-adapt` | Residual Bottleneck Head | Two-layer residual adapter on frozen vision embeddings |
-| **LoRA (Linear Probe)** | `lora-lp` | LoRA weights + Head | Low-Rank Adaptation on attention layers with linear head |
-| **LoRA (Text-Guided)** | `lora-text` | LoRA weights only | LoRA on vision backbone aligned with fixed text embeddings |
-| **Full Fine-Tuning** | `full-ft` | Entire Backbone + Head | End-to-end retraining of vision backbone with linear head |
-| **Full-FT (Text-Guided)** | `full-ft-text` | Entire Vision Backbone | End-to-end retraining aligned with text anchor embeddings |
+| Protocol | `--usage` Flag | Trainable Parameters | Prediction Paradigm | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| **Zero-Shot** | `clip-zs` | None (0%) | Cosine Similarity | Zero-shot inference against fixed prompt text prototypes |
+| **Linear Probing** | `lp` | Classifier Head only | Linear Classifier | Freeze vision backbone; train linear classification head |
+| **CLIP-Adapt** | `clip-adapt` | Residual Bottleneck Head | Cosine Similarity | Two-layer residual adapter on frozen vision embeddings |
+| **LoRA (Linear Probe)** | `lora-lp` | LoRA weights + Head | Linear Classifier | Low-Rank Adaptation on attention layers with linear head |
+| **LoRA (Text-Guided)** | `lora-text` | LoRA weights only | Cosine Similarity | LoRA on vision backbone aligned with fixed text embeddings |
+| **Full Fine-Tuning** | `full-ft` | Entire Backbone + Head | Linear Classifier | End-to-end retraining of vision backbone with linear head |
+| **Full-FT (Text-Guided)** | `full-ft-text` | Entire Vision Backbone | Cosine Similarity | End-to-end retraining aligned with text anchor embeddings |
 
 *(Note: `lora-zs` and `full-ft-zs` are retained as aliases for backward compatibility).*
 
