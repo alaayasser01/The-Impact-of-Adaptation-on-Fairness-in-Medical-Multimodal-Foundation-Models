@@ -1,282 +1,125 @@
-# import argparse
-# import os
-# from ast import parse
-
-
-# def collect_args():
-#     parser = argparse.ArgumentParser()
-
-#     # experiments
-
-#     parser.add_argument("--task", default="cls", choices=["cls", "seg"])
-#     parser.add_argument(
-#         "--usage",
-#         type=str,
-#         default='clip-zs',
-#         choices=["lp", "clip-zs", "clip-adapt", "seg2d-rand",
-#                  "seg2d-rands", "seg2d-center", "seg2d-bbox", "seg2d"],
-#     )
-#     parser.add_argument("--method", default="erm",
-#                         choices=["erm", "resampling", "group-dro", "laftr"])
-#     parser.add_argument(
-#         "--dataset",
-#         default="CXP",
-#         choices=[
-#             "CXP",
-#             "MIMIC_CXR",
-#             "HAM10000",
-#             "PAPILA",
-#             "ADNI",
-#             "COVID_CT_MD",
-#             "FairVLMed10k",
-#             "BREST",
-#             "GF3300",
-#             "HAM10000-Seg",
-#             "FairSeg",
-#             "montgomery",
-#             "TUSC"
-#         ],
-#     )
-#     parser.add_argument("--sensitive_name", default="Sex",
-#                         choices=["Sex", "Age", "Race", "Language"])
-#     parser.add_argument("--is_3d", action="store_true")
-#     parser.add_argument("--augment", action="store_true")
-
-#     parser.add_argument("--experiment_name", type=str, default="test")
-#     parser.add_argument("--wandb_name", type=str, default="baseline")
-#     parser.add_argument("--if_wandb", type=bool, default=False)
-
-#     parser.add_argument("--resume_path", type=str, default="",
-#                         help="explicitly indentify checkpoint path to resume.")
-
-#     # training
-#     parser.add_argument("--random_seed", type=int, default=0)
-#     parser.add_argument("--batch_size", type=int, default=1024)
-#     parser.add_argument("--optimizer", default="adamw",
-#                         choices=["sgd", "adam", "adamw"])
-#     parser.add_argument("--blr", type=float, default=1e-4,
-#                         help="learning rate")
-#     parser.add_argument("--min_lr", type=float, default=1e-5)
-#     parser.add_argument("--fixed_lr", action="store_true")
-#     parser.add_argument("--weight_decay", type=float,
-#                         default=1e-4, help="weight decay for optimizer")
-#     parser.add_argument("--lr_decay_rate", type=float,
-#                         default=0.1, help="decay rate of the learning rate")
-#     parser.add_argument("--lr_decay_period", type=float,
-#                         default=10, help="decay period of the learning rate")
-#     parser.add_argument("--total_epochs", type=int,
-#                         default=100, help="total training epochs")
-#     parser.add_argument("--early_stopping", type=int,
-#                         default=1, help="early stopping epochs")
-#     parser.add_argument("--test_mode", type=bool,
-#                         default=False, help="if using test mode")
-#     parser.add_argument("--warmup_epochs", type=int, default=5)
-#     parser.add_argument("--no_cuda", dest="cuda", action="store_false")
-#     parser.add_argument("--no_cls_balance",
-#                         dest="cls_balance", action="store_false")
-
-#     # network
-#     parser.add_argument(
-#         "--model",
-#         default="BiomedCLIP",
-#         choices=[
-#             "BiomedCLIP",
-#             "PubMedCLIP",
-#             "MedCLIP",
-#             "PLIP",
-#             "CLIP",
-#             "BLIP",
-#             "BLIP2",
-#             "DINOv2",
-#             "MedLVM",
-#             "C2L",
-#             "MedMAE",
-#             "MoCoCXR",
-#             "SAM",
-#             "MedSAM",
-#             "SAMMed2D",
-#             "FT-SAM",
-#             "TinySAM",
-#             "MobileSAM"
-#         ],
-#     )
-#     parser.add_argument("--context_length", default=77)
-
-#     # testing
-#     parser.add_argument("--hash_id", type=str, default="")
-
-#     # strategy for validation
-#     parser.add_argument(
-#         "--val_strategy",
-#         type=str,
-#         default="loss",
-#         choices=["loss", "worst_auc"],
-#         help="strategy for selecting val model",
-#     )
-
-#     parser.set_defaults(cuda=True)
-
-#     # logging
-#     parser.add_argument("--log_freq", type=int, default=50,
-#                         help="logging frequency (step)")
-#     parser.add_argument("--exp_path", type=str, default="./output")
-
-#     # segment_specific
-#     parser.add_argument("--pos_class", type=int, default=None)
-#     parser.add_argument("--img_size", type=int, default=256)
-#     parser.add_argument("--sam_ckpt_path", type=str)
-#     parser.add_argument("--prompt", type=str,
-#                         choices=["bbox", "rand", "rands", "center"])
-
-#     args = parser.parse_args()
-#     return args
-
-
 import argparse
-import os
-from ast import parse
 
 
 def collect_args():
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(
+        description="The Impact of Adaptation on Fairness in Medical Multimodal Foundation Models"
+    )
 
-    # experiments
-    
-    parser.add_argument("--task", default="cls", choices=["cls", "seg"])
-    # In collect_args()
+    # Experiment settings
+    parser.add_argument("--task", default="cls", choices=["cls"])
     parser.add_argument(
         "--usage",
         type=str,
-        default='clip-zs',
-        choices=["lp", "clip-zs", "clip-adapt", 'full-ft', 'full-ft-zs', "lora-lp", "lora-zs",
-                "seg2d-rand", "seg2d-rands", "seg2d-center", "seg2d-bbox", "seg2d"],
+        default="clip-zs",
+        choices=[
+            "clip-zs",
+            "lp",
+            "clip-adapt",
+            "lora-lp",
+            "lora-text",
+            "lora-zs",
+            "full-ft",
+            "full-ft-text",
+            "full-ft-zs",
+        ],
+        help="Adaptation protocol to evaluate or train",
     )
-    parser.add_argument("--train_meta_path", type=str, default="")
-    parser.add_argument("--eval_only", action="store_true", help="Skip training, evaluate only.")
-    parser.add_argument("--text_source", type=str, default="template",
-                    choices=["template", "gpt4_avg", "all_summaries", "clustered_summaries"],
-                    help="source of text prototypes for CLIP-based methods")
-    parser.add_argument("--proto_agg", type=str, default="max",
-                    choices=["max", "mean"],
-                    help="aggregation method for multi-prototype text sources")
-    parser.add_argument("--method", default="erm",
-                        choices=["erm", "resampling", "group-dro", "laftr"])
-    parser.add_argument("--save_test_per_epoch", action="store_true",
-                    help="Evaluate on test set after every epoch and save results")
     parser.add_argument(
         "--dataset",
-        default="CXP",
-        choices=[
-            "CXP",
-            "MIMIC_CXR",
-            "HAM10000",
-            "PAPILA",
-            "ADNI",
-            "COVID_CT_MD",
-            "FairVLMed10k",
-            "DDI",
-            "BREST",
-            "GF3300",
-            "HAM10000-Seg",
-            "FairSeg",
-            "montgomery",
-            "TUSC"
-        ],
+        default="FairVLMed10k",
+        choices=["FairVLMed10k", "CXP", "DDI"],
+        help="Dataset to use for experiment",
     )
-    parser.add_argument("--sensitive_name", default="Sex",
-                        choices=["Sex", "Age", "Race", "Language","Ethnicity", "MaritalStatus", "All", "fitzpatrick"])
-    parser.add_argument("--is_3d", action="store_true")
-    parser.add_argument("--augment", action="store_true")
-
-    parser.add_argument("--experiment_name", type=str, default="test")
-    parser.add_argument("--wandb_name", type=str, default="baseline")
-    parser.add_argument("--if_wandb", type=bool, default=False)
-
-    parser.add_argument("--resume_path", type=str, default="",
-                        help="explicitly indentify checkpoint path to resume.")
-
-    # training
-    parser.add_argument("--random_seed", type=int, default=0)
-    parser.add_argument("--batch_size", type=int, default=1024)
-    parser.add_argument("--optimizer", default="adamw",
-                        choices=["sgd", "adam", "adamw"])
-    parser.add_argument("--blr", type=float, default=1e-4,
-                        help="learning rate")
-    parser.add_argument("--min_lr", type=float, default=1e-5)
-    parser.add_argument("--fixed_lr", action="store_true")
-    parser.add_argument("--weight_decay", type=float,
-                        default=1e-4, help="weight decay for optimizer")
-    parser.add_argument("--lr_decay_rate", type=float,
-                        default=0.1, help="decay rate of the learning rate")
-    parser.add_argument("--lr_decay_period", type=float,
-                        default=10, help="decay period of the learning rate")
-    parser.add_argument("--total_epochs", type=int,
-                        default=100, help="total training epochs")
-    parser.add_argument("--early_stopping", type=int,
-                        default=1, help="early stopping epochs")
-    parser.add_argument("--test_mode", type=bool,
-                        default=False, help="if using test mode")
-    parser.add_argument("--warmup_epochs", type=int, default=5)
-    parser.add_argument("--no_cuda", dest="cuda", action="store_false")
-    parser.add_argument("--no_cls_balance",
-                        dest="cls_balance", action="store_false")
-
-    # network
+    parser.add_argument(
+        "--sensitive_name",
+        default="All",
+        choices=[
+            "Sex",
+            "Age",
+            "Race",
+            "Language",
+            "Ethnicity",
+            "MaritalStatus",
+            "All",
+            "fitzpatrick",
+        ],
+        help="Sensitive demographic attribute to evaluate fairness across",
+    )
     parser.add_argument(
         "--model",
-        default="BiomedCLIP",
-        choices=[
-            "BiomedCLIP",
-            "PubMedCLIP",
-            "MedCLIP",
-            "PLIP",
-            "CLIP",
-            "BLIP",
-            "BLIP2",
-            "DINOv2",
-            "MedLVM",
-            "C2L",
-            "MedMAE",
-            "MoCoCXR",
-            "SAM",
-            "MedSAM",
-            "SAMMed2D",
-            "FT-SAM",
-            "TinySAM",
-            "MobileSAM", 
-            "CLIPftFairVLMed"
-        ],
+        default="CLIP",
+        choices=["CLIP", "BiomedCLIP", "CLIPftFairVLMed"],
+        help="Vision-language foundation model",
     )
-    
-    parser.add_argument("--backbone", default="ViT-B/32", choices=["ViT-B/32", "ViT-B/16"])
+    parser.add_argument(
+        "--backbone",
+        default="ViT-B/32",
+        choices=["ViT-B/32", "ViT-B/16"],
+        help="Vision encoder backbone architecture",
+    )
+    parser.add_argument(
+        "--method",
+        default="erm",
+        choices=["erm"],
+        help="Training algorithm (Empirical Risk Minimization)",
+    )
+
+    # Text prototypes & text sources for text-guided adaptation
+    parser.add_argument(
+        "--text_source",
+        type=str,
+        default="template",
+        choices=["template", "gpt4_avg", "all_summaries", "clustered_summaries"],
+        help="Source of text prototypes for CLIP-based methods",
+    )
+    parser.add_argument(
+        "--proto_agg",
+        type=str,
+        default="max",
+        choices=["max", "mean"],
+        help="Aggregation method for multi-prototype text sources",
+    )
+
+    # Paths and evaluation controls
+    parser.add_argument("--train_meta_path", type=str, default="", help="Custom train metadata path")
     parser.add_argument("--pretrained_path", type=str, default="", help="Path to fine-tuned .pth file")
-    parser.add_argument("--context_length", default=77)
+    parser.add_argument("--eval_only", action="store_true", help="Skip training, evaluate checkpoint only")
+    parser.add_argument(
+        "--save_test_per_epoch",
+        action="store_true",
+        help="Evaluate on test set after every epoch and save results",
+    )
+    parser.add_argument("--exp_path", type=str, default="./output", help="Directory for experiment outputs")
+    parser.add_argument("--resume_path", type=str, default="", help="Checkpoint path to resume")
 
-    # testing
-    parser.add_argument("--hash_id", type=str, default="")
-
-    # strategy for validation
+    # Optimization & training hyperparameters
+    parser.add_argument("--random_seed", type=int, default=0, help="Random seed for reproducibility")
+    parser.add_argument("--batch_size", type=int, default=128, help="Batch size for training")
+    parser.add_argument("--optimizer", default="adamw", choices=["sgd", "adam", "adamw"])
+    parser.add_argument("--blr", type=float, default=1e-2, help="Base learning rate")
+    parser.add_argument("--min_lr", type=float, default=1e-5, help="Minimum learning rate")
+    parser.add_argument("--fixed_lr", action="store_true", help="Keep learning rate fixed")
+    parser.add_argument("--weight_decay", type=float, default=1e-4, help="Weight decay for optimizer")
+    parser.add_argument("--lr_decay_rate", type=float, default=0.1, help="Decay rate of learning rate")
+    parser.add_argument("--lr_decay_period", type=float, default=10, help="Decay period of learning rate")
+    parser.add_argument("--total_epochs", type=int, default=100, help="Total training epochs")
+    parser.add_argument("--early_stopping", type=int, default=1, help="Early stopping flag")
+    parser.add_argument("--warmup_epochs", type=int, default=5, help="Warmup epochs")
+    parser.add_argument("--no_cuda", dest="cuda", action="store_false", help="Disable CUDA")
+    parser.add_argument("--no_cls_balance", dest="cls_balance", action="store_false")
+    parser.add_argument("--context_length", default=77, type=int, help="CLIP context length")
     parser.add_argument(
         "--val_strategy",
         type=str,
         default="loss",
         choices=["loss", "worst_auc"],
-        help="strategy for selecting val model",
+        help="Strategy for selecting best validation model",
     )
+    parser.add_argument("--log_freq", type=int, default=50, help="Logging frequency in steps")
+    parser.add_argument("--pos_class", type=int, default=None)
 
     parser.set_defaults(cuda=True)
-
-    # logging
-    parser.add_argument("--log_freq", type=int, default=50,
-                        help="logging frequency (step)")
-    parser.add_argument("--exp_path", type=str, default="./output")
-
-    # segment_specific
-    parser.add_argument("--pos_class", type=int, default=None)
-    parser.add_argument("--img_size", type=int, default=256)
-    parser.add_argument("--sam_ckpt_path", type=str)
-    parser.add_argument("--prompt", type=str,
-                        choices=["bbox", "rand", "rands", "center"])
 
     args = parser.parse_args()
     return args
