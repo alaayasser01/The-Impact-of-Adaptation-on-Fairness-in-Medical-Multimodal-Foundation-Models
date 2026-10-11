@@ -45,9 +45,8 @@ We evaluate 7 adaptation protocols ranked by their trainable capacity and multim
 | **Full Fine-Tuning** | `full-ft` | Entire Backbone + Head | Linear Classifier | End-to-end retraining of vision backbone with linear head |
 | **Full-FT (Text-Guided)** | `full-ft-text` | Entire Vision Backbone | Cosine Similarity | End-to-end retraining aligned with text anchor embeddings |
 
-*(Note: `lora-zs` and `full-ft-zs` are retained as aliases for backward compatibility).*
-
 ---
+
 
 ## 📊 Datasets & Benchmarks
 

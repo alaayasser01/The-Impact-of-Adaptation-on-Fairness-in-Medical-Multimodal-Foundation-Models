@@ -213,6 +213,9 @@ def check_dataset_paths(dataset_name):
     with open(config_file, "r") as f:
         cfg = json.load(f)
 
+    img_dir = cfg.get("image_train_path") or cfg.get("image_test_path")
+    alt_img_dir = img_dir.replace("./data/", "./") if img_dir and img_dir.startswith("./data/") else None
+
     # Discover folder if named differently (e.g., Harvard FairVLMed (Harvard-FairVLMed）)
     discovered_dir = None
     first_p = cfg.get("train_meta_path", "")
@@ -229,8 +232,6 @@ def check_dataset_paths(dataset_name):
     if discovered_dir:
         print(f"[*] Discovered FairVLMed Directory: [OK] -> {discovered_dir}")
 
-    img_dir = cfg.get("image_train_path") or cfg.get("image_test_path")
-    alt_img_dir = img_dir.replace("./data/", "./") if img_dir and img_dir.startswith("./data/") else None
     
     if img_dir and os.path.exists(img_dir):
         print(f"[*] Image Root: [OK] Found at {img_dir}")
