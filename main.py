@@ -57,19 +57,26 @@ def create_exerpiment_setting(args):
                         if os.path.exists(alt_path):
                             data_setting[k] = alt_path
 
-                # If still not found, search for matching folders (e.g. 'Harvard FairVLMed (Harvard-FairVLMed）')
+                # If still not found, search for matching folders for this specific dataset
                 if not os.path.exists(data_setting.get("train_meta_path", "")):
+                    if "fairvlmed" in args.dataset.lower():
+                        dataset_key = "fairvlmed"
+                    elif args.dataset.lower() in ["cxp", "chexpert"]:
+                        dataset_key = "chexpert"
+                    else:
+                        dataset_key = "ddi"
+
                     candidates = []
                     for search_root in [".", "./data"]:
                         if os.path.exists(search_root):
                             for d in os.listdir(search_root):
                                 p = os.path.join(search_root, d)
-                                if os.path.isdir(p):
-                                    if "fairvlmed" in d.lower() or "chexpert" in d.lower() or "ddi" in d.lower():
-                                        candidates.append(p)
+                                if os.path.isdir(p) and dataset_key in d.lower():
+                                    candidates.append(p)
 
                     for cand in candidates:
-                        if os.path.exists(os.path.join(cand, "train.csv")) or os.path.exists(os.path.join(cand, "train_processed.csv")):
+                        has_train = os.path.exists(os.path.join(cand, "train.csv")) or os.path.exists(os.path.join(cand, "train_processed.csv"))
+                        if has_train:
                             for k, v in list(data_setting.items()):
                                 if isinstance(v, str):
                                     if "Dataset" in v:
@@ -79,6 +86,7 @@ def create_exerpiment_setting(args):
                                     elif "image" in k:
                                         data_setting[k] = cand
                             break
+
 
 
             if getattr(args, "train_meta_path", None):
