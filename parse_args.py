@@ -184,7 +184,7 @@ def collect_args():
         ],
     )
     parser.add_argument("--sensitive_name", default="Sex",
-                        choices=["Sex", "Age", "Race", "Language", "All", "fitzpatrick"])
+                        choices=["Sex", "Age", "Race", "Language","Ethnicity", "MaritalStatus", "All", "fitzpatrick"])
     parser.add_argument("--is_3d", action="store_true")
     parser.add_argument("--augment", action="store_true")
 

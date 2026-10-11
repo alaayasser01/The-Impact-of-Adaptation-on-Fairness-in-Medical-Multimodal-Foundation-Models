@@ -378,7 +378,7 @@ class CLSTrainer(BaseTrainer):
         best_epoch = 0
         best_state = None
         patience_counter = 0
-        patience = 10
+        patience = 5
 
         while self.epoch < self.total_epochs:
             adjust_learning_rate(self.optimizer, self.epoch + 1, self.args)

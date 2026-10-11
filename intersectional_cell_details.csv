@@ -1,0 +1,1380 @@
+Attribute 1,Attribute 2,Group 1,Group 2,N,Status,AUC,Method
+Age,Marital,0,divorced,14,VALID,0.675,clip-zs
+Age,Marital,0,legally separated,3,SPARSE,,clip-zs
+Age,Marital,0,married or partnered,236,VALID,0.5518429487179487,clip-zs
+Age,Marital,0,single,237,VALID,0.5693730729701952,clip-zs
+Age,Marital,0,unknown,11,VALID,0.5,clip-zs
+Age,Marital,0,widowed,1,SPARSE,,clip-zs
+Age,Marital,1,divorced,38,VALID,0.6231884057971014,clip-zs
+Age,Marital,1,legally separated,10,VALID,0.5833333333333333,clip-zs
+Age,Marital,1,married or partnered,303,VALID,0.606325075075075,clip-zs
+Age,Marital,1,single,124,VALID,0.5690104166666666,clip-zs
+Age,Marital,1,unknown,8,SPARSE,,clip-zs
+Age,Marital,1,widowed,13,VALID,0.5,clip-zs
+Age,Marital,2,divorced,43,VALID,0.5526315789473684,clip-zs
+Age,Marital,2,legally separated,4,SPARSE,,clip-zs
+Age,Marital,2,married or partnered,321,VALID,0.603641456582633,clip-zs
+Age,Marital,2,single,99,VALID,0.5096073517126148,clip-zs
+Age,Marital,2,unknown,8,SPARSE,,clip-zs
+Age,Marital,2,widowed,27,VALID,0.5592105263157895,clip-zs
+Age,Marital,3,divorced,35,VALID,0.748,clip-zs
+Age,Marital,3,legally separated,5,SPARSE,,clip-zs
+Age,Marital,3,married or partnered,298,VALID,0.5481647520313814,clip-zs
+Age,Marital,3,single,69,VALID,0.7172619047619048,clip-zs
+Age,Marital,3,unknown,8,SPARSE,,clip-zs
+Age,Marital,3,widowed,85,VALID,0.5041459369817578,clip-zs
+Race,Language,asian,english,125,VALID,0.6056338028169015,clip-zs
+Race,Language,asian,other,1,SPARSE,,clip-zs
+Race,Language,asian,spanish,0,EMPTY,,clip-zs
+Race,Language,asian,unknown,32,VALID,0.4895833333333333,clip-zs
+Race,Language,black,english,276,VALID,0.598613595706619,clip-zs
+Race,Language,black,other,3,SPARSE,,clip-zs
+Race,Language,black,spanish,5,SPARSE,,clip-zs
+Race,Language,black,unknown,21,VALID,0.425925925925926,clip-zs
+Race,Language,white,english,1467,VALID,0.586701860231272,clip-zs
+Race,Language,white,other,7,SPARSE,,clip-zs
+Race,Language,white,spanish,26,VALID,0.7142857142857142,clip-zs
+Race,Language,white,unknown,37,VALID,0.7266666666666667,clip-zs
+Gender,Marital,female,divorced,86,VALID,0.6244565217391304,clip-zs
+Gender,Marital,female,legally separated,10,VALID,0.3333333333333333,clip-zs
+Gender,Marital,female,married or partnered,574,VALID,0.5975633528265107,clip-zs
+Gender,Marital,female,single,304,VALID,0.5767296688052713,clip-zs
+Gender,Marital,female,unknown,21,VALID,0.4727272727272728,clip-zs
+Gender,Marital,female,widowed,101,VALID,0.5378787878787878,clip-zs
+Gender,Marital,male,divorced,44,VALID,0.703125,clip-zs
+Gender,Marital,male,legally separated,12,VALID,0.9375,clip-zs
+Gender,Marital,male,married or partnered,584,VALID,0.61847398979532,clip-zs
+Gender,Marital,male,single,225,VALID,0.6149952546662449,clip-zs
+Gender,Marital,male,unknown,14,VALID,0.2653061224489796,clip-zs
+Gender,Marital,male,widowed,25,VALID,0.6029411764705883,clip-zs
+Language,Marital,english,divorced,123,VALID,0.643048128342246,clip-zs
+Language,Marital,english,legally separated,20,VALID,0.68,clip-zs
+Language,Marital,english,married or partnered,1072,VALID,0.6003146853146853,clip-zs
+Language,Marital,english,single,504,VALID,0.5758957398220332,clip-zs
+Language,Marital,english,unknown,31,VALID,0.3541666666666667,clip-zs
+Language,Marital,english,widowed,118,VALID,0.546875,clip-zs
+Language,Marital,other,divorced,0,EMPTY,,clip-zs
+Language,Marital,other,legally separated,0,EMPTY,,clip-zs
+Language,Marital,other,married or partnered,9,SPARSE,,clip-zs
+Language,Marital,other,single,0,EMPTY,,clip-zs
+Language,Marital,other,unknown,2,SPARSE,,clip-zs
+Language,Marital,other,widowed,0,EMPTY,,clip-zs
+Language,Marital,spanish,divorced,0,EMPTY,,clip-zs
+Language,Marital,spanish,legally separated,1,SPARSE,,clip-zs
+Language,Marital,spanish,married or partnered,20,VALID,0.71875,clip-zs
+Language,Marital,spanish,single,5,SPARSE,,clip-zs
+Language,Marital,spanish,unknown,1,SPARSE,,clip-zs
+Language,Marital,spanish,widowed,4,SPARSE,,clip-zs
+Language,Marital,unknown,divorced,7,SPARSE,,clip-zs
+Language,Marital,unknown,legally separated,1,SPARSE,,clip-zs
+Language,Marital,unknown,married or partnered,57,VALID,0.5698412698412699,clip-zs
+Language,Marital,unknown,single,20,VALID,0.7380952380952381,clip-zs
+Language,Marital,unknown,unknown,1,SPARSE,,clip-zs
+Language,Marital,unknown,widowed,4,SPARSE,,clip-zs
+Age,Language,0,english,476,VALID,0.558329378262933,clip-zs
+Age,Language,0,other,3,SPARSE,,clip-zs
+Age,Language,0,spanish,6,SPARSE,,clip-zs
+Age,Language,0,unknown,17,VALID,0.6142857142857143,clip-zs
+Age,Language,1,english,468,VALID,0.5635628765347365,clip-zs
+Age,Language,1,other,1,SPARSE,,clip-zs
+Age,Language,1,spanish,6,SPARSE,,clip-zs
+Age,Language,1,unknown,21,VALID,0.75,clip-zs
+Age,Language,2,english,469,VALID,0.5721403891616659,clip-zs
+Age,Language,2,other,3,SPARSE,,clip-zs
+Age,Language,2,spanish,9,SPARSE,,clip-zs
+Age,Language,2,unknown,21,VALID,0.6428571428571428,clip-zs
+Age,Language,3,english,455,VALID,0.5876922323440101,clip-zs
+Age,Language,3,other,4,SPARSE,,clip-zs
+Age,Language,3,spanish,10,VALID,0.6875,clip-zs
+Age,Language,3,unknown,31,VALID,0.45108695652173914,clip-zs
+Ethnicity,Marital,hispanic,divorced,2,SPARSE,,clip-zs
+Ethnicity,Marital,hispanic,legally separated,1,SPARSE,,clip-zs
+Ethnicity,Marital,hispanic,married or partnered,38,VALID,0.6861111111111111,clip-zs
+Ethnicity,Marital,hispanic,single,29,VALID,0.5336538461538461,clip-zs
+Ethnicity,Marital,hispanic,unknown,3,SPARSE,,clip-zs
+Ethnicity,Marital,hispanic,widowed,3,SPARSE,,clip-zs
+Ethnicity,Marital,non-hispanic,divorced,117,VALID,0.6378698224852071,clip-zs
+Ethnicity,Marital,non-hispanic,legally separated,20,VALID,0.6060606060606061,clip-zs
+Ethnicity,Marital,non-hispanic,married or partnered,1066,VALID,0.6098544532921615,clip-zs
+Ethnicity,Marital,non-hispanic,single,462,VALID,0.5909610769461527,clip-zs
+Ethnicity,Marital,non-hispanic,unknown,29,VALID,0.2666666666666666,clip-zs
+Ethnicity,Marital,non-hispanic,widowed,122,VALID,0.5583333333333332,clip-zs
+Ethnicity,Marital,unknown,divorced,11,VALID,0.7777777777777778,clip-zs
+Ethnicity,Marital,unknown,legally separated,1,SPARSE,,clip-zs
+Ethnicity,Marital,unknown,married or partnered,54,VALID,0.5260989010989011,clip-zs
+Ethnicity,Marital,unknown,single,38,VALID,0.6222222222222222,clip-zs
+Ethnicity,Marital,unknown,unknown,3,SPARSE,,clip-zs
+Ethnicity,Marital,unknown,widowed,1,SPARSE,,clip-zs
+Race,Marital,asian,divorced,4,SPARSE,,clip-zs
+Race,Marital,asian,legally separated,0,EMPTY,,clip-zs
+Race,Marital,asian,married or partnered,110,VALID,0.5693478980470043,clip-zs
+Race,Marital,asian,single,34,VALID,0.7017543859649122,clip-zs
+Race,Marital,asian,unknown,5,SPARSE,,clip-zs
+Race,Marital,asian,widowed,5,SPARSE,,clip-zs
+Race,Marital,black,divorced,23,VALID,0.6818181818181818,clip-zs
+Race,Marital,black,legally separated,10,VALID,0.761904761904762,clip-zs
+Race,Marital,black,married or partnered,124,VALID,0.6303571428571428,clip-zs
+Race,Marital,black,single,123,VALID,0.589487870619946,clip-zs
+Race,Marital,black,unknown,1,SPARSE,,clip-zs
+Race,Marital,black,widowed,24,VALID,0.30434782608695654,clip-zs
+Race,Marital,white,divorced,103,VALID,0.6344961240310079,clip-zs
+Race,Marital,white,legally separated,12,VALID,0.6,clip-zs
+Race,Marital,white,married or partnered,924,VALID,0.5984407209183576,clip-zs
+Race,Marital,white,single,372,VALID,0.5770387507229612,clip-zs
+Race,Marital,white,unknown,29,VALID,0.3333333333333333,clip-zs
+Race,Marital,white,widowed,97,VALID,0.5745341614906833,clip-zs
+Age,Ethnicity,0,hispanic,37,VALID,0.5617647058823529,clip-zs
+Age,Ethnicity,0,non-hispanic,430,VALID,0.567664919531737,clip-zs
+Age,Ethnicity,0,unknown,35,VALID,0.5884353741496599,clip-zs
+Age,Ethnicity,1,hispanic,14,VALID,0.4375,clip-zs
+Age,Ethnicity,1,non-hispanic,457,VALID,0.5880992513033594,clip-zs
+Age,Ethnicity,1,unknown,25,VALID,0.7279411764705882,clip-zs
+Age,Ethnicity,2,hispanic,15,VALID,0.8928571428571428,clip-zs
+Age,Ethnicity,2,non-hispanic,463,VALID,0.57417982308812,clip-zs
+Age,Ethnicity,2,unknown,24,VALID,0.6328125,clip-zs
+Age,Ethnicity,3,hispanic,10,VALID,0.5833333333333333,clip-zs
+Age,Ethnicity,3,non-hispanic,466,VALID,0.5831465919701213,clip-zs
+Age,Ethnicity,3,unknown,24,VALID,0.6125,clip-zs
+Race,Ethnicity,asian,hispanic,0,EMPTY,,clip-zs
+Race,Ethnicity,asian,non-hispanic,153,VALID,0.6139781271360218,clip-zs
+Race,Ethnicity,asian,unknown,5,SPARSE,,clip-zs
+Race,Ethnicity,black,hispanic,10,VALID,0.45833333333333337,clip-zs
+Race,Ethnicity,black,non-hispanic,277,VALID,0.5981492192018507,clip-zs
+Race,Ethnicity,black,unknown,18,VALID,0.7375,clip-zs
+Race,Ethnicity,white,hispanic,66,VALID,0.620404411764706,clip-zs
+Race,Ethnicity,white,non-hispanic,1386,VALID,0.5902650255854429,clip-zs
+Race,Ethnicity,white,unknown,85,VALID,0.6211111111111112,clip-zs
+Age,Race,0,asian,55,VALID,0.475,clip-zs
+Age,Race,0,black,74,VALID,0.6614583333333333,clip-zs
+Age,Race,0,white,373,VALID,0.5702964307320024,clip-zs
+Age,Race,1,asian,42,VALID,0.7324263038548753,clip-zs
+Age,Race,1,black,104,VALID,0.57109375,clip-zs
+Age,Race,1,white,350,VALID,0.5335410622828695,clip-zs
+Age,Race,2,asian,35,VALID,0.571969696969697,clip-zs
+Age,Race,2,black,68,VALID,0.540625,clip-zs
+Age,Race,2,white,399,VALID,0.5603687799949483,clip-zs
+Age,Race,3,asian,26,VALID,0.29323308270676696,clip-zs
+Age,Race,3,black,59,VALID,0.6236263736263736,clip-zs
+Age,Race,3,white,415,VALID,0.5884463276836158,clip-zs
+Language,Ethnicity,english,hispanic,50,VALID,0.49479166666666663,clip-zs
+Language,Ethnicity,english,non-hispanic,1717,VALID,0.594194187403327,clip-zs
+Language,Ethnicity,english,unknown,101,VALID,0.6151729559748428,clip-zs
+Language,Ethnicity,other,hispanic,0,EMPTY,,clip-zs
+Language,Ethnicity,other,non-hispanic,9,SPARSE,,clip-zs
+Language,Ethnicity,other,unknown,2,SPARSE,,clip-zs
+Language,Ethnicity,spanish,hispanic,25,VALID,0.6984126984126984,clip-zs
+Language,Ethnicity,spanish,non-hispanic,5,SPARSE,,clip-zs
+Language,Ethnicity,spanish,unknown,1,SPARSE,,clip-zs
+Language,Ethnicity,unknown,hispanic,1,SPARSE,,clip-zs
+Language,Ethnicity,unknown,non-hispanic,85,VALID,0.6248196248196248,clip-zs
+Language,Ethnicity,unknown,unknown,4,SPARSE,,clip-zs
+Gender,Language,female,english,1013,VALID,0.5813998814981134,clip-zs
+Gender,Language,female,other,8,SPARSE,,clip-zs
+Gender,Language,female,spanish,18,VALID,0.7222222222222223,clip-zs
+Gender,Language,female,unknown,57,VALID,0.5701219512195123,clip-zs
+Gender,Language,male,english,855,VALID,0.6097605701648748,clip-zs
+Gender,Language,male,other,3,SPARSE,,clip-zs
+Gender,Language,male,spanish,13,VALID,0.7333333333333334,clip-zs
+Gender,Language,male,unknown,33,VALID,0.7142857142857143,clip-zs
+Gender,Race,female,asian,84,VALID,0.6184807256235828,clip-zs
+Gender,Race,female,black,156,VALID,0.5447884227880565,clip-zs
+Gender,Race,female,white,856,VALID,0.5876856705985147,clip-zs
+Gender,Race,male,asian,74,VALID,0.5865595325054784,clip-zs
+Gender,Race,male,black,149,VALID,0.6730030721966206,clip-zs
+Gender,Race,male,white,681,VALID,0.6010459130795274,clip-zs
+Gender,Ethnicity,female,hispanic,44,VALID,0.5811965811965812,clip-zs
+Gender,Ethnicity,female,non-hispanic,997,VALID,0.5857176256237857,clip-zs
+Gender,Ethnicity,female,unknown,55,VALID,0.6904761904761905,clip-zs
+Gender,Ethnicity,male,hispanic,32,VALID,0.626984126984127,clip-zs
+Gender,Ethnicity,male,non-hispanic,819,VALID,0.6218408968930764,clip-zs
+Gender,Ethnicity,male,unknown,53,VALID,0.581159420289855,clip-zs
+Gender,Age,female,0,274,VALID,0.5592994161801501,clip-zs
+Gender,Age,female,1,266,VALID,0.5871049159639763,clip-zs
+Gender,Age,female,2,282,VALID,0.5789553140096618,clip-zs
+Gender,Age,female,3,274,VALID,0.5713080168776372,clip-zs
+Gender,Age,male,0,228,VALID,0.5920232654756958,clip-zs
+Gender,Age,male,1,230,VALID,0.5880306743616096,clip-zs
+Gender,Age,male,2,220,VALID,0.5839053841700437,clip-zs
+Gender,Age,male,3,226,VALID,0.5942583732057417,clip-zs
+Age,Marital,0,divorced,14,VALID,0.8,lp
+Age,Marital,0,legally separated,3,SPARSE,,lp
+Age,Marital,0,married or partnered,236,VALID,0.6559294871794872,lp
+Age,Marital,0,single,237,VALID,0.623990603435619,lp
+Age,Marital,0,unknown,11,VALID,0.6666666666666667,lp
+Age,Marital,0,widowed,1,SPARSE,,lp
+Age,Marital,1,divorced,38,VALID,0.782608695652174,lp
+Age,Marital,1,legally separated,10,VALID,0.8333333333333334,lp
+Age,Marital,1,married or partnered,303,VALID,0.7325919669669669,lp
+Age,Marital,1,single,124,VALID,0.6989583333333333,lp
+Age,Marital,1,unknown,8,SPARSE,,lp
+Age,Marital,1,widowed,13,VALID,0.675,lp
+Age,Marital,2,divorced,43,VALID,0.6359649122807017,lp
+Age,Marital,2,legally separated,4,SPARSE,,lp
+Age,Marital,2,married or partnered,321,VALID,0.7478991596638656,lp
+Age,Marital,2,single,99,VALID,0.6144527986633249,lp
+Age,Marital,2,unknown,8,SPARSE,,lp
+Age,Marital,2,widowed,27,VALID,0.6776315789473684,lp
+Age,Marital,3,divorced,35,VALID,0.7719999999999999,lp
+Age,Marital,3,legally separated,5,SPARSE,,lp
+Age,Marital,3,married or partnered,298,VALID,0.7079293919865509,lp
+Age,Marital,3,single,69,VALID,0.7212301587301587,lp
+Age,Marital,3,unknown,8,SPARSE,,lp
+Age,Marital,3,widowed,85,VALID,0.7263681592039801,lp
+Race,Language,asian,english,125,VALID,0.7279603547209181,lp
+Race,Language,asian,other,1,SPARSE,,lp
+Race,Language,asian,spanish,0,EMPTY,,lp
+Race,Language,asian,unknown,32,VALID,0.5572916666666666,lp
+Race,Language,black,english,276,VALID,0.6953264758497317,lp
+Race,Language,black,other,3,SPARSE,,lp
+Race,Language,black,spanish,5,SPARSE,,lp
+Race,Language,black,unknown,21,VALID,0.6481481481481481,lp
+Race,Language,white,english,1467,VALID,0.7237882427424911,lp
+Race,Language,white,other,7,SPARSE,,lp
+Race,Language,white,spanish,26,VALID,0.7669172932330828,lp
+Race,Language,white,unknown,37,VALID,0.7833333333333333,lp
+Gender,Marital,female,divorced,86,VALID,0.6570652173913043,lp
+Gender,Marital,female,legally separated,10,VALID,0.75,lp
+Gender,Marital,female,married or partnered,574,VALID,0.7269858674463938,lp
+Gender,Marital,female,single,304,VALID,0.6438356164383562,lp
+Gender,Marital,female,unknown,21,VALID,0.5,lp
+Gender,Marital,female,widowed,101,VALID,0.7478354978354979,lp
+Gender,Marital,male,divorced,44,VALID,0.8794642857142857,lp
+Gender,Marital,male,legally separated,12,VALID,0.6875,lp
+Gender,Marital,male,married or partnered,584,VALID,0.7656559732567004,lp
+Gender,Marital,male,single,225,VALID,0.7213698196773174,lp
+Gender,Marital,male,unknown,14,VALID,0.7346938775510203,lp
+Gender,Marital,male,widowed,25,VALID,0.6176470588235294,lp
+Language,Marital,english,divorced,123,VALID,0.7147058823529413,lp
+Language,Marital,english,legally separated,20,VALID,0.76,lp
+Language,Marital,english,married or partnered,1072,VALID,0.746451048951049,lp
+Language,Marital,english,single,504,VALID,0.6671706433577446,lp
+Language,Marital,english,unknown,31,VALID,0.6291666666666667,lp
+Language,Marital,english,widowed,118,VALID,0.7336482558139535,lp
+Language,Marital,other,divorced,0,EMPTY,,lp
+Language,Marital,other,legally separated,0,EMPTY,,lp
+Language,Marital,other,married or partnered,9,SPARSE,,lp
+Language,Marital,other,single,0,EMPTY,,lp
+Language,Marital,other,unknown,2,SPARSE,,lp
+Language,Marital,other,widowed,0,EMPTY,,lp
+Language,Marital,spanish,divorced,0,EMPTY,,lp
+Language,Marital,spanish,legally separated,1,SPARSE,,lp
+Language,Marital,spanish,married or partnered,20,VALID,0.7291666666666666,lp
+Language,Marital,spanish,single,5,SPARSE,,lp
+Language,Marital,spanish,unknown,1,SPARSE,,lp
+Language,Marital,spanish,widowed,4,SPARSE,,lp
+Language,Marital,unknown,divorced,7,SPARSE,,lp
+Language,Marital,unknown,legally separated,1,SPARSE,,lp
+Language,Marital,unknown,married or partnered,57,VALID,0.6571428571428571,lp
+Language,Marital,unknown,single,20,VALID,0.7142857142857143,lp
+Language,Marital,unknown,unknown,1,SPARSE,,lp
+Language,Marital,unknown,widowed,4,SPARSE,,lp
+Age,Language,0,english,476,VALID,0.6295396298054106,lp
+Age,Language,0,other,3,SPARSE,,lp
+Age,Language,0,spanish,6,SPARSE,,lp
+Age,Language,0,unknown,17,VALID,0.8428571428571429,lp
+Age,Language,1,english,468,VALID,0.7058072142149013,lp
+Age,Language,1,other,1,SPARSE,,lp
+Age,Language,1,spanish,6,SPARSE,,lp
+Age,Language,1,unknown,21,VALID,0.7,lp
+Age,Language,2,english,469,VALID,0.7090198217857793,lp
+Age,Language,2,other,3,SPARSE,,lp
+Age,Language,2,spanish,9,SPARSE,,lp
+Age,Language,2,unknown,21,VALID,0.5918367346938775,lp
+Age,Language,3,english,455,VALID,0.7230140072485062,lp
+Age,Language,3,other,4,SPARSE,,lp
+Age,Language,3,spanish,10,VALID,0.9375,lp
+Age,Language,3,unknown,31,VALID,0.6358695652173912,lp
+Ethnicity,Marital,hispanic,divorced,2,SPARSE,,lp
+Ethnicity,Marital,hispanic,legally separated,1,SPARSE,,lp
+Ethnicity,Marital,hispanic,married or partnered,38,VALID,0.6972222222222222,lp
+Ethnicity,Marital,hispanic,single,29,VALID,0.5480769230769231,lp
+Ethnicity,Marital,hispanic,unknown,3,SPARSE,,lp
+Ethnicity,Marital,hispanic,widowed,3,SPARSE,,lp
+Ethnicity,Marital,non-hispanic,divorced,117,VALID,0.7011834319526628,lp
+Ethnicity,Marital,non-hispanic,legally separated,20,VALID,0.7272727272727273,lp
+Ethnicity,Marital,non-hispanic,married or partnered,1066,VALID,0.7476779148997669,lp
+Ethnicity,Marital,non-hispanic,single,462,VALID,0.6809659517024149,lp
+Ethnicity,Marital,non-hispanic,unknown,29,VALID,0.5380952380952381,lp
+Ethnicity,Marital,non-hispanic,widowed,122,VALID,0.7368055555555555,lp
+Ethnicity,Marital,unknown,divorced,11,VALID,0.8333333333333333,lp
+Ethnicity,Marital,unknown,legally separated,1,SPARSE,,lp
+Ethnicity,Marital,unknown,married or partnered,54,VALID,0.7417582417582418,lp
+Ethnicity,Marital,unknown,single,38,VALID,0.6861111111111111,lp
+Ethnicity,Marital,unknown,unknown,3,SPARSE,,lp
+Ethnicity,Marital,unknown,widowed,1,SPARSE,,lp
+Race,Marital,asian,divorced,4,SPARSE,,lp
+Race,Marital,asian,legally separated,0,EMPTY,,lp
+Race,Marital,asian,married or partnered,110,VALID,0.7120158887785502,lp
+Race,Marital,asian,single,34,VALID,0.7543859649122807,lp
+Race,Marital,asian,unknown,5,SPARSE,,lp
+Race,Marital,asian,widowed,5,SPARSE,,lp
+Race,Marital,black,divorced,23,VALID,0.856060606060606,lp
+Race,Marital,black,legally separated,10,VALID,0.8095238095238095,lp
+Race,Marital,black,married or partnered,124,VALID,0.7142857142857143,lp
+Race,Marital,black,single,123,VALID,0.6560646900269541,lp
+Race,Marital,black,unknown,1,SPARSE,,lp
+Race,Marital,black,widowed,24,VALID,0.34782608695652173,lp
+Race,Marital,white,divorced,103,VALID,0.7155038759689922,lp
+Race,Marital,white,legally separated,12,VALID,0.7714285714285714,lp
+Race,Marital,white,married or partnered,924,VALID,0.7478487811335741,lp
+Race,Marital,white,single,372,VALID,0.6694331983805668,lp
+Race,Marital,white,unknown,29,VALID,0.6476190476190476,lp
+Race,Marital,white,widowed,97,VALID,0.7474120082815735,lp
+Age,Ethnicity,0,hispanic,37,VALID,0.5352941176470588,lp
+Age,Ethnicity,0,non-hispanic,430,VALID,0.6425454293564847,lp
+Age,Ethnicity,0,unknown,35,VALID,0.6870748299319729,lp
+Age,Ethnicity,1,hispanic,14,VALID,0.47916666666666674,lp
+Age,Ethnicity,1,non-hispanic,457,VALID,0.7228646466230253,lp
+Age,Ethnicity,1,unknown,25,VALID,0.7573529411764706,lp
+Age,Ethnicity,2,hispanic,15,VALID,0.8214285714285714,lp
+Age,Ethnicity,2,non-hispanic,463,VALID,0.6985220020154517,lp
+Age,Ethnicity,2,unknown,24,VALID,0.8515625,lp
+Age,Ethnicity,3,hispanic,10,VALID,0.9166666666666667,lp
+Age,Ethnicity,3,non-hispanic,466,VALID,0.717016806722689,lp
+Age,Ethnicity,3,unknown,24,VALID,0.6875,lp
+Race,Ethnicity,asian,hispanic,0,EMPTY,,lp
+Race,Ethnicity,asian,non-hispanic,153,VALID,0.7212918660287081,lp
+Race,Ethnicity,asian,unknown,5,SPARSE,,lp
+Race,Ethnicity,black,hispanic,10,VALID,0.45833333333333337,lp
+Race,Ethnicity,black,non-hispanic,277,VALID,0.6877385772122614,lp
+Race,Ethnicity,black,unknown,18,VALID,0.8,lp
+Race,Ethnicity,white,hispanic,66,VALID,0.6608455882352942,lp
+Race,Ethnicity,white,non-hispanic,1386,VALID,0.7276374891874147,lp
+Race,Ethnicity,white,unknown,85,VALID,0.7533333333333333,lp
+Age,Race,0,asian,55,VALID,0.5666666666666667,lp
+Age,Race,0,black,74,VALID,0.6480654761904762,lp
+Age,Race,0,white,373,VALID,0.6466727162734422,lp
+Age,Race,1,asian,42,VALID,0.8140589569160998,lp
+Age,Race,1,black,104,VALID,0.65,lp
+Age,Race,1,white,350,VALID,0.708212456573905,lp
+Age,Race,2,asian,35,VALID,0.5643939393939394,lp
+Age,Race,2,black,68,VALID,0.5822916666666667,lp
+Age,Race,2,white,399,VALID,0.7155342258145996,lp
+Age,Race,3,asian,26,VALID,0.4661654135338346,lp
+Age,Race,3,black,59,VALID,0.771978021978022,lp
+Age,Race,3,white,415,VALID,0.7251694915254236,lp
+Language,Ethnicity,english,hispanic,50,VALID,0.5399305555555556,lp
+Language,Ethnicity,english,non-hispanic,1717,VALID,0.7240074896203631,lp
+Language,Ethnicity,english,unknown,101,VALID,0.7613993710691824,lp
+Language,Ethnicity,other,hispanic,0,EMPTY,,lp
+Language,Ethnicity,other,non-hispanic,9,SPARSE,,lp
+Language,Ethnicity,other,unknown,2,SPARSE,,lp
+Language,Ethnicity,spanish,hispanic,25,VALID,0.7301587301587302,lp
+Language,Ethnicity,spanish,non-hispanic,5,SPARSE,,lp
+Language,Ethnicity,spanish,unknown,1,SPARSE,,lp
+Language,Ethnicity,unknown,hispanic,1,SPARSE,,lp
+Language,Ethnicity,unknown,non-hispanic,85,VALID,0.6976911976911977,lp
+Language,Ethnicity,unknown,unknown,4,SPARSE,,lp
+Gender,Language,female,english,1013,VALID,0.6992858702092495,lp
+Gender,Language,female,other,8,SPARSE,,lp
+Gender,Language,female,spanish,18,VALID,0.75,lp
+Gender,Language,female,unknown,57,VALID,0.6189024390243902,lp
+Gender,Language,male,english,855,VALID,0.7509907818966084,lp
+Gender,Language,male,other,3,SPARSE,,lp
+Gender,Language,male,spanish,13,VALID,0.7,lp
+Gender,Language,male,unknown,33,VALID,0.8461538461538461,lp
+Gender,Race,female,asian,84,VALID,0.7193877551020409,lp
+Gender,Race,female,black,156,VALID,0.6186114673017036,lp
+Gender,Race,female,white,856,VALID,0.7065640017474879,lp
+Gender,Race,male,asian,74,VALID,0.7246165084002921,lp
+Gender,Race,male,black,149,VALID,0.7789938556067588,lp
+Gender,Race,male,white,681,VALID,0.7509759552269745,lp
+Gender,Ethnicity,female,hispanic,44,VALID,0.6581196581196581,lp
+Gender,Ethnicity,female,non-hispanic,997,VALID,0.6951008134407172,lp
+Gender,Ethnicity,female,unknown,55,VALID,0.8253968253968254,lp
+Gender,Ethnicity,male,hispanic,32,VALID,0.6150793650793651,lp
+Gender,Ethnicity,male,non-hispanic,819,VALID,0.7642137277118493,lp
+Gender,Ethnicity,male,unknown,53,VALID,0.7202898550724637,lp
+Gender,Age,female,0,274,VALID,0.5909368918543231,lp
+Gender,Age,female,1,266,VALID,0.7169161934262606,lp
+Gender,Age,female,2,282,VALID,0.683876811594203,lp
+Gender,Age,female,3,274,VALID,0.7243102888672509,lp
+Gender,Age,male,0,228,VALID,0.7125882841711675,lp
+Gender,Age,male,1,230,VALID,0.7191872875326113,lp
+Gender,Age,male,2,220,VALID,0.7394756430402779,lp
+Gender,Age,male,3,226,VALID,0.7118553960659224,lp
+Age,Marital,0,divorced,14,VALID,0.75,clip-adapt
+Age,Marital,0,legally separated,3,SPARSE,,clip-adapt
+Age,Marital,0,married or partnered,236,VALID,0.670352564102564,clip-adapt
+Age,Marital,0,single,237,VALID,0.6425635002202321,clip-adapt
+Age,Marital,0,unknown,11,VALID,0.625,clip-adapt
+Age,Marital,0,widowed,1,SPARSE,,clip-adapt
+Age,Marital,1,divorced,38,VALID,0.773913043478261,clip-adapt
+Age,Marital,1,legally separated,10,VALID,0.8333333333333334,clip-adapt
+Age,Marital,1,married or partnered,303,VALID,0.7342342342342342,clip-adapt
+Age,Marital,1,single,124,VALID,0.6893229166666667,clip-adapt
+Age,Marital,1,unknown,8,SPARSE,,clip-adapt
+Age,Marital,1,widowed,13,VALID,0.6499999999999999,clip-adapt
+Age,Marital,2,divorced,43,VALID,0.631578947368421,clip-adapt
+Age,Marital,2,legally separated,4,SPARSE,,clip-adapt
+Age,Marital,2,married or partnered,321,VALID,0.75599128540305,clip-adapt
+Age,Marital,2,single,99,VALID,0.6198830409356725,clip-adapt
+Age,Marital,2,unknown,8,SPARSE,,clip-adapt
+Age,Marital,2,widowed,27,VALID,0.6513157894736843,clip-adapt
+Age,Marital,3,divorced,35,VALID,0.804,clip-adapt
+Age,Marital,3,legally separated,5,SPARSE,,clip-adapt
+Age,Marital,3,married or partnered,298,VALID,0.7070888203978705,clip-adapt
+Age,Marital,3,single,69,VALID,0.7490079365079365,clip-adapt
+Age,Marital,3,unknown,8,SPARSE,,clip-adapt
+Age,Marital,3,widowed,85,VALID,0.7139303482587065,clip-adapt
+Race,Language,asian,english,125,VALID,0.7287428273343767,clip-adapt
+Race,Language,asian,other,1,SPARSE,,clip-adapt
+Race,Language,asian,spanish,0,EMPTY,,clip-adapt
+Race,Language,asian,unknown,32,VALID,0.5729166666666666,clip-adapt
+Race,Language,black,english,276,VALID,0.6960532200357781,clip-adapt
+Race,Language,black,other,3,SPARSE,,clip-adapt
+Race,Language,black,spanish,5,SPARSE,,clip-adapt
+Race,Language,black,unknown,21,VALID,0.6481481481481481,clip-adapt
+Race,Language,white,english,1467,VALID,0.7284174068487794,clip-adapt
+Race,Language,white,other,7,SPARSE,,clip-adapt
+Race,Language,white,spanish,26,VALID,0.7593984962406015,clip-adapt
+Race,Language,white,unknown,37,VALID,0.7766666666666666,clip-adapt
+Gender,Marital,female,divorced,86,VALID,0.658695652173913,clip-adapt
+Gender,Marital,female,legally separated,10,VALID,0.75,clip-adapt
+Gender,Marital,female,married or partnered,574,VALID,0.7297027290448344,clip-adapt
+Gender,Marital,female,single,304,VALID,0.649601179122594,clip-adapt
+Gender,Marital,female,unknown,21,VALID,0.509090909090909,clip-adapt
+Gender,Marital,female,widowed,101,VALID,0.729978354978355,clip-adapt
+Gender,Marital,male,divorced,44,VALID,0.875,clip-adapt
+Gender,Marital,male,legally separated,12,VALID,0.71875,clip-adapt
+Gender,Marital,male,married or partnered,584,VALID,0.7735030203507125,clip-adapt
+Gender,Marital,male,single,225,VALID,0.7250474533375515,clip-adapt
+Gender,Marital,male,unknown,14,VALID,0.7551020408163265,clip-adapt
+Gender,Marital,male,widowed,25,VALID,0.5955882352941176,clip-adapt
+Language,Marital,english,divorced,123,VALID,0.7144385026737968,clip-adapt
+Language,Marital,english,legally separated,20,VALID,0.75,clip-adapt
+Language,Marital,english,married or partnered,1072,VALID,0.751763986013986,clip-adapt
+Language,Marital,english,single,504,VALID,0.6724230254350736,clip-adapt
+Language,Marital,english,unknown,31,VALID,0.625,clip-adapt
+Language,Marital,english,widowed,118,VALID,0.7172965116279071,clip-adapt
+Language,Marital,other,divorced,0,EMPTY,,clip-adapt
+Language,Marital,other,legally separated,0,EMPTY,,clip-adapt
+Language,Marital,other,married or partnered,9,SPARSE,,clip-adapt
+Language,Marital,other,single,0,EMPTY,,clip-adapt
+Language,Marital,other,unknown,2,SPARSE,,clip-adapt
+Language,Marital,other,widowed,0,EMPTY,,clip-adapt
+Language,Marital,spanish,divorced,0,EMPTY,,clip-adapt
+Language,Marital,spanish,legally separated,1,SPARSE,,clip-adapt
+Language,Marital,spanish,married or partnered,20,VALID,0.7291666666666666,clip-adapt
+Language,Marital,spanish,single,5,SPARSE,,clip-adapt
+Language,Marital,spanish,unknown,1,SPARSE,,clip-adapt
+Language,Marital,spanish,widowed,4,SPARSE,,clip-adapt
+Language,Marital,unknown,divorced,7,SPARSE,,clip-adapt
+Language,Marital,unknown,legally separated,1,SPARSE,,clip-adapt
+Language,Marital,unknown,married or partnered,57,VALID,0.6555555555555556,clip-adapt
+Language,Marital,unknown,single,20,VALID,0.75,clip-adapt
+Language,Marital,unknown,unknown,1,SPARSE,,clip-adapt
+Language,Marital,unknown,widowed,4,SPARSE,,clip-adapt
+Age,Language,0,english,476,VALID,0.6446891314665402,clip-adapt
+Age,Language,0,other,3,SPARSE,,clip-adapt
+Age,Language,0,spanish,6,SPARSE,,clip-adapt
+Age,Language,0,unknown,17,VALID,0.8428571428571429,clip-adapt
+Age,Language,1,english,468,VALID,0.7010028216273927,clip-adapt
+Age,Language,1,other,1,SPARSE,,clip-adapt
+Age,Language,1,spanish,6,SPARSE,,clip-adapt
+Age,Language,1,unknown,21,VALID,0.75,clip-adapt
+Age,Language,2,english,469,VALID,0.7132751409347153,clip-adapt
+Age,Language,2,other,3,SPARSE,,clip-adapt
+Age,Language,2,spanish,9,SPARSE,,clip-adapt
+Age,Language,2,unknown,21,VALID,0.5714285714285714,clip-adapt
+Age,Language,3,english,455,VALID,0.7273239298658047,clip-adapt
+Age,Language,3,other,4,SPARSE,,clip-adapt
+Age,Language,3,spanish,10,VALID,0.9375,clip-adapt
+Age,Language,3,unknown,31,VALID,0.6304347826086957,clip-adapt
+Ethnicity,Marital,hispanic,divorced,2,SPARSE,,clip-adapt
+Ethnicity,Marital,hispanic,legally separated,1,SPARSE,,clip-adapt
+Ethnicity,Marital,hispanic,married or partnered,38,VALID,0.7111111111111111,clip-adapt
+Ethnicity,Marital,hispanic,single,29,VALID,0.5817307692307693,clip-adapt
+Ethnicity,Marital,hispanic,unknown,3,SPARSE,,clip-adapt
+Ethnicity,Marital,hispanic,widowed,3,SPARSE,,clip-adapt
+Ethnicity,Marital,non-hispanic,divorced,117,VALID,0.6964497041420119,clip-adapt
+Ethnicity,Marital,non-hispanic,legally separated,20,VALID,0.7171717171717171,clip-adapt
+Ethnicity,Marital,non-hispanic,married or partnered,1066,VALID,0.7536051803207033,clip-adapt
+Ethnicity,Marital,non-hispanic,single,462,VALID,0.6840126743662818,clip-adapt
+Ethnicity,Marital,non-hispanic,unknown,29,VALID,0.5476190476190476,clip-adapt
+Ethnicity,Marital,non-hispanic,widowed,122,VALID,0.7211805555555555,clip-adapt
+Ethnicity,Marital,unknown,divorced,11,VALID,0.8333333333333333,clip-adapt
+Ethnicity,Marital,unknown,legally separated,1,SPARSE,,clip-adapt
+Ethnicity,Marital,unknown,married or partnered,54,VALID,0.7307692307692308,clip-adapt
+Ethnicity,Marital,unknown,single,38,VALID,0.7083333333333334,clip-adapt
+Ethnicity,Marital,unknown,unknown,3,SPARSE,,clip-adapt
+Ethnicity,Marital,unknown,widowed,1,SPARSE,,clip-adapt
+Race,Marital,asian,divorced,4,SPARSE,,clip-adapt
+Race,Marital,asian,legally separated,0,EMPTY,,clip-adapt
+Race,Marital,asian,married or partnered,110,VALID,0.7196292618338299,clip-adapt
+Race,Marital,asian,single,34,VALID,0.7543859649122807,clip-adapt
+Race,Marital,asian,unknown,5,SPARSE,,clip-adapt
+Race,Marital,asian,widowed,5,SPARSE,,clip-adapt
+Race,Marital,black,divorced,23,VALID,0.8484848484848485,clip-adapt
+Race,Marital,black,legally separated,10,VALID,0.8095238095238095,clip-adapt
+Race,Marital,black,married or partnered,124,VALID,0.7235119047619047,clip-adapt
+Race,Marital,black,single,123,VALID,0.6595687331536387,clip-adapt
+Race,Marital,black,unknown,1,SPARSE,,clip-adapt
+Race,Marital,black,widowed,24,VALID,0.21739130434782608,clip-adapt
+Race,Marital,white,divorced,103,VALID,0.7131782945736433,clip-adapt
+Race,Marital,white,legally separated,12,VALID,0.7999999999999999,clip-adapt
+Race,Marital,white,married or partnered,924,VALID,0.7541724190101556,clip-adapt
+Race,Marital,white,single,372,VALID,0.6768218623481781,clip-adapt
+Race,Marital,white,unknown,29,VALID,0.6476190476190476,clip-adapt
+Race,Marital,white,widowed,97,VALID,0.7313664596273293,clip-adapt
+Age,Ethnicity,0,hispanic,37,VALID,0.5676470588235294,clip-adapt
+Age,Ethnicity,0,non-hispanic,430,VALID,0.6555681267173105,clip-adapt
+Age,Ethnicity,0,unknown,35,VALID,0.6938775510204082,clip-adapt
+Age,Ethnicity,1,hispanic,14,VALID,0.5,clip-adapt
+Age,Ethnicity,1,non-hispanic,457,VALID,0.7184351848222336,clip-adapt
+Age,Ethnicity,1,unknown,25,VALID,0.7205882352941176,clip-adapt
+Age,Ethnicity,2,hispanic,15,VALID,0.8214285714285714,clip-adapt
+Age,Ethnicity,2,non-hispanic,463,VALID,0.7034859851453737,clip-adapt
+Age,Ethnicity,2,unknown,24,VALID,0.890625,clip-adapt
+Age,Ethnicity,3,hispanic,10,VALID,0.9166666666666667,clip-adapt
+Age,Ethnicity,3,non-hispanic,466,VALID,0.7226890756302521,clip-adapt
+Age,Ethnicity,3,unknown,24,VALID,0.675,clip-adapt
+Race,Ethnicity,asian,hispanic,0,EMPTY,,clip-adapt
+Race,Ethnicity,asian,non-hispanic,153,VALID,0.7259056732740944,clip-adapt
+Race,Ethnicity,asian,unknown,5,SPARSE,,clip-adapt
+Race,Ethnicity,black,hispanic,10,VALID,0.41666666666666663,clip-adapt
+Race,Ethnicity,black,non-hispanic,277,VALID,0.6879120879120879,clip-adapt
+Race,Ethnicity,black,unknown,18,VALID,0.8125,clip-adapt
+Race,Ethnicity,white,hispanic,66,VALID,0.6755514705882353,clip-adapt
+Race,Ethnicity,white,non-hispanic,1386,VALID,0.7318624743363938,clip-adapt
+Race,Ethnicity,white,unknown,85,VALID,0.7605555555555555,clip-adapt
+Age,Race,0,asian,55,VALID,0.575,clip-adapt
+Age,Race,0,black,74,VALID,0.6629464285714285,clip-adapt
+Age,Race,0,white,373,VALID,0.6627646702964308,clip-adapt
+Age,Race,1,asian,42,VALID,0.8049886621315192,clip-adapt
+Age,Race,1,black,104,VALID,0.646484375,clip-adapt
+Age,Race,1,white,350,VALID,0.7037713548941658,clip-adapt
+Age,Race,2,asian,35,VALID,0.6136363636363635,clip-adapt
+Age,Race,2,black,68,VALID,0.590625,clip-adapt
+Age,Race,2,white,399,VALID,0.7189694367264461,clip-adapt
+Age,Race,3,asian,26,VALID,0.406015037593985,clip-adapt
+Age,Race,3,black,59,VALID,0.7417582417582418,clip-adapt
+Age,Race,3,white,415,VALID,0.7335593220338983,clip-adapt
+Language,Ethnicity,english,hispanic,50,VALID,0.5694444444444444,clip-adapt
+Language,Ethnicity,english,non-hispanic,1717,VALID,0.7270827114596619,clip-adapt
+Language,Ethnicity,english,unknown,101,VALID,0.7661163522012578,clip-adapt
+Language,Ethnicity,other,hispanic,0,EMPTY,,clip-adapt
+Language,Ethnicity,other,non-hispanic,9,SPARSE,,clip-adapt
+Language,Ethnicity,other,unknown,2,SPARSE,,clip-adapt
+Language,Ethnicity,spanish,hispanic,25,VALID,0.7222222222222223,clip-adapt
+Language,Ethnicity,spanish,non-hispanic,5,SPARSE,,clip-adapt
+Language,Ethnicity,spanish,unknown,1,SPARSE,,clip-adapt
+Language,Ethnicity,unknown,hispanic,1,SPARSE,,clip-adapt
+Language,Ethnicity,unknown,non-hispanic,85,VALID,0.7157287157287158,clip-adapt
+Language,Ethnicity,unknown,unknown,4,SPARSE,,clip-adapt
+Gender,Language,female,english,1013,VALID,0.7007905323229489,clip-adapt
+Gender,Language,female,other,8,SPARSE,,clip-adapt
+Gender,Language,female,spanish,18,VALID,0.75,clip-adapt
+Gender,Language,female,unknown,57,VALID,0.6417682926829269,clip-adapt
+Gender,Language,male,english,855,VALID,0.7570805325042149,clip-adapt
+Gender,Language,male,other,3,SPARSE,,clip-adapt
+Gender,Language,male,spanish,13,VALID,0.7,clip-adapt
+Gender,Language,male,unknown,33,VALID,0.8516483516483516,clip-adapt
+Gender,Race,female,asian,84,VALID,0.7273242630385488,clip-adapt
+Gender,Race,female,black,156,VALID,0.6171459974354278,clip-adapt
+Gender,Race,female,white,856,VALID,0.7100753604193971,clip-adapt
+Gender,Race,male,asian,74,VALID,0.7297297297297297,clip-adapt
+Gender,Race,male,black,149,VALID,0.7824500768049156,clip-adapt
+Gender,Race,male,white,681,VALID,0.7572419332550266,clip-adapt
+Gender,Ethnicity,female,hispanic,44,VALID,0.6858974358974359,clip-adapt
+Gender,Ethnicity,female,non-hispanic,997,VALID,0.6969993792375102,clip-adapt
+Gender,Ethnicity,female,unknown,55,VALID,0.828042328042328,clip-adapt
+Gender,Ethnicity,male,hispanic,32,VALID,0.615079365079365,clip-adapt
+Gender,Ethnicity,male,non-hispanic,819,VALID,0.7699952292921461,clip-adapt
+Gender,Ethnicity,male,unknown,53,VALID,0.7202898550724638,clip-adapt
+Gender,Age,female,0,274,VALID,0.6080066722268557,clip-adapt
+Gender,Age,female,1,266,VALID,0.7056157861526989,clip-adapt
+Gender,Age,female,2,282,VALID,0.6876006441223833,clip-adapt
+Gender,Age,female,3,274,VALID,0.7338526452450503,clip-adapt
+Gender,Age,male,0,228,VALID,0.7250519318653926,clip-adapt
+Gender,Age,male,1,230,VALID,0.722507708119219,clip-adapt
+Gender,Age,male,2,220,VALID,0.7465883715160037,clip-adapt
+Gender,Age,male,3,226,VALID,0.7106858054226476,clip-adapt
+Age,Marital,0,divorced,14,VALID,0.775,lora-lp
+Age,Marital,0,legally separated,3,SPARSE,,lora-lp
+Age,Marital,0,married or partnered,236,VALID,0.7720352564102564,lora-lp
+Age,Marital,0,single,237,VALID,0.7163412127440905,lora-lp
+Age,Marital,0,unknown,11,VALID,0.7916666666666666,lora-lp
+Age,Marital,0,widowed,1,SPARSE,,lora-lp
+Age,Marital,1,divorced,38,VALID,0.8289855072463768,lora-lp
+Age,Marital,1,legally separated,10,VALID,0.7083333333333333,lora-lp
+Age,Marital,1,married or partnered,303,VALID,0.7797954204204204,lora-lp
+Age,Marital,1,single,124,VALID,0.7580729166666668,lora-lp
+Age,Marital,1,unknown,8,SPARSE,,lora-lp
+Age,Marital,1,widowed,13,VALID,0.775,lora-lp
+Age,Marital,2,divorced,43,VALID,0.7456140350877194,lora-lp
+Age,Marital,2,legally separated,4,SPARSE,,lora-lp
+Age,Marital,2,married or partnered,321,VALID,0.8522798008092125,lora-lp
+Age,Marital,2,single,99,VALID,0.7192982456140351,lora-lp
+Age,Marital,2,unknown,8,SPARSE,,lora-lp
+Age,Marital,2,widowed,27,VALID,0.6973684210526315,lora-lp
+Age,Marital,3,divorced,35,VALID,0.864,lora-lp
+Age,Marital,3,legally separated,5,SPARSE,,lora-lp
+Age,Marital,3,married or partnered,298,VALID,0.7822919585318017,lora-lp
+Age,Marital,3,single,69,VALID,0.8095238095238095,lora-lp
+Age,Marital,3,unknown,8,SPARSE,,lora-lp
+Age,Marital,3,widowed,85,VALID,0.8266998341625208,lora-lp
+Race,Language,asian,english,125,VALID,0.8622848200312988,lora-lp
+Race,Language,asian,other,1,SPARSE,,lora-lp
+Race,Language,asian,spanish,0,EMPTY,,lora-lp
+Race,Language,asian,unknown,32,VALID,0.49479166666666663,lora-lp
+Race,Language,black,english,276,VALID,0.7961203041144901,lora-lp
+Race,Language,black,other,3,SPARSE,,lora-lp
+Race,Language,black,spanish,5,SPARSE,,lora-lp
+Race,Language,black,unknown,21,VALID,0.6296296296296297,lora-lp
+Race,Language,white,english,1467,VALID,0.8053479321453176,lora-lp
+Race,Language,white,other,7,SPARSE,,lora-lp
+Race,Language,white,spanish,26,VALID,0.7744360902255638,lora-lp
+Race,Language,white,unknown,37,VALID,0.82,lora-lp
+Gender,Marital,female,divorced,86,VALID,0.7478260869565218,lora-lp
+Gender,Marital,female,legally separated,10,VALID,0.875,lora-lp
+Gender,Marital,female,married or partnered,574,VALID,0.8089668615984407,lora-lp
+Gender,Marital,female,single,304,VALID,0.7389457256805965,lora-lp
+Gender,Marital,female,unknown,21,VALID,0.6545454545454545,lora-lp
+Gender,Marital,female,widowed,101,VALID,0.8317099567099567,lora-lp
+Gender,Marital,male,divorced,44,VALID,0.90625,lora-lp
+Gender,Marital,male,legally separated,12,VALID,0.875,lora-lp
+Gender,Marital,male,married or partnered,584,VALID,0.8435751568822942,lora-lp
+Gender,Marital,male,single,225,VALID,0.7749920911104081,lora-lp
+Gender,Marital,male,unknown,14,VALID,1.0,lora-lp
+Gender,Marital,male,widowed,25,VALID,0.6323529411764706,lora-lp
+Language,Marital,english,divorced,123,VALID,0.7938502673796792,lora-lp
+Language,Marital,english,legally separated,20,VALID,0.83,lora-lp
+Language,Marital,english,married or partnered,1072,VALID,0.8304755244755245,lora-lp
+Language,Marital,english,single,504,VALID,0.7545948499881879,lora-lp
+Language,Marital,english,unknown,31,VALID,0.8416666666666667,lora-lp
+Language,Marital,english,widowed,118,VALID,0.7990552325581395,lora-lp
+Language,Marital,other,divorced,0,EMPTY,,lora-lp
+Language,Marital,other,legally separated,0,EMPTY,,lora-lp
+Language,Marital,other,married or partnered,9,SPARSE,,lora-lp
+Language,Marital,other,single,0,EMPTY,,lora-lp
+Language,Marital,other,unknown,2,SPARSE,,lora-lp
+Language,Marital,other,widowed,0,EMPTY,,lora-lp
+Language,Marital,spanish,divorced,0,EMPTY,,lora-lp
+Language,Marital,spanish,legally separated,1,SPARSE,,lora-lp
+Language,Marital,spanish,married or partnered,20,VALID,0.7916666666666666,lora-lp
+Language,Marital,spanish,single,5,SPARSE,,lora-lp
+Language,Marital,spanish,unknown,1,SPARSE,,lora-lp
+Language,Marital,spanish,widowed,4,SPARSE,,lora-lp
+Language,Marital,unknown,divorced,7,SPARSE,,lora-lp
+Language,Marital,unknown,legally separated,1,SPARSE,,lora-lp
+Language,Marital,unknown,married or partnered,57,VALID,0.6888888888888889,lora-lp
+Language,Marital,unknown,single,20,VALID,0.7023809523809524,lora-lp
+Language,Marital,unknown,unknown,1,SPARSE,,lora-lp
+Language,Marital,unknown,widowed,4,SPARSE,,lora-lp
+Age,Language,0,english,476,VALID,0.7566018035121025,lora-lp
+Age,Language,0,other,3,SPARSE,,lora-lp
+Age,Language,0,spanish,6,SPARSE,,lora-lp
+Age,Language,0,unknown,17,VALID,0.7285714285714285,lora-lp
+Age,Language,1,english,468,VALID,0.7711050102951269,lora-lp
+Age,Language,1,other,1,SPARSE,,lora-lp
+Age,Language,1,spanish,6,SPARSE,,lora-lp
+Age,Language,1,unknown,21,VALID,0.45,lora-lp
+Age,Language,2,english,469,VALID,0.8107655937443172,lora-lp
+Age,Language,2,other,3,SPARSE,,lora-lp
+Age,Language,2,spanish,9,SPARSE,,lora-lp
+Age,Language,2,unknown,21,VALID,0.6734693877551021,lora-lp
+Age,Language,3,english,455,VALID,0.8077431677931236,lora-lp
+Age,Language,3,other,4,SPARSE,,lora-lp
+Age,Language,3,spanish,10,VALID,1.0,lora-lp
+Age,Language,3,unknown,31,VALID,0.6793478260869565,lora-lp
+Ethnicity,Marital,hispanic,divorced,2,SPARSE,,lora-lp
+Ethnicity,Marital,hispanic,legally separated,1,SPARSE,,lora-lp
+Ethnicity,Marital,hispanic,married or partnered,38,VALID,0.7611111111111111,lora-lp
+Ethnicity,Marital,hispanic,single,29,VALID,0.7884615384615385,lora-lp
+Ethnicity,Marital,hispanic,unknown,3,SPARSE,,lora-lp
+Ethnicity,Marital,hispanic,widowed,3,SPARSE,,lora-lp
+Ethnicity,Marital,non-hispanic,divorced,117,VALID,0.8,lora-lp
+Ethnicity,Marital,non-hispanic,legally separated,20,VALID,0.8282828282828283,lora-lp
+Ethnicity,Marital,non-hispanic,married or partnered,1066,VALID,0.8313963530485848,lora-lp
+Ethnicity,Marital,non-hispanic,single,462,VALID,0.7545747712614369,lora-lp
+Ethnicity,Marital,non-hispanic,unknown,29,VALID,0.7952380952380953,lora-lp
+Ethnicity,Marital,non-hispanic,widowed,122,VALID,0.8,lora-lp
+Ethnicity,Marital,unknown,divorced,11,VALID,0.6111111111111112,lora-lp
+Ethnicity,Marital,unknown,legally separated,1,SPARSE,,lora-lp
+Ethnicity,Marital,unknown,married or partnered,54,VALID,0.7664835164835165,lora-lp
+Ethnicity,Marital,unknown,single,38,VALID,0.7111111111111111,lora-lp
+Ethnicity,Marital,unknown,unknown,3,SPARSE,,lora-lp
+Ethnicity,Marital,unknown,widowed,1,SPARSE,,lora-lp
+Race,Marital,asian,divorced,4,SPARSE,,lora-lp
+Race,Marital,asian,legally separated,0,EMPTY,,lora-lp
+Race,Marital,asian,married or partnered,110,VALID,0.8159549817941079,lora-lp
+Race,Marital,asian,single,34,VALID,0.8350877192982455,lora-lp
+Race,Marital,asian,unknown,5,SPARSE,,lora-lp
+Race,Marital,asian,widowed,5,SPARSE,,lora-lp
+Race,Marital,black,divorced,23,VALID,0.9242424242424242,lora-lp
+Race,Marital,black,legally separated,10,VALID,0.7619047619047619,lora-lp
+Race,Marital,black,married or partnered,124,VALID,0.8336309523809524,lora-lp
+Race,Marital,black,single,123,VALID,0.7452830188679245,lora-lp
+Race,Marital,black,unknown,1,SPARSE,,lora-lp
+Race,Marital,black,widowed,24,VALID,0.5652173913043478,lora-lp
+Race,Marital,white,divorced,103,VALID,0.7763565891472869,lora-lp
+Race,Marital,white,legally separated,12,VALID,0.9428571428571428,lora-lp
+Race,Marital,white,married or partnered,924,VALID,0.8219263573954649,lora-lp
+Race,Marital,white,single,372,VALID,0.7495951417004049,lora-lp
+Race,Marital,white,unknown,29,VALID,0.8476190476190476,lora-lp
+Race,Marital,white,widowed,97,VALID,0.8027950310559007,lora-lp
+Age,Ethnicity,0,hispanic,37,VALID,0.7470588235294118,lora-lp
+Age,Ethnicity,0,non-hispanic,430,VALID,0.7534461659239418,lora-lp
+Age,Ethnicity,0,unknown,35,VALID,0.6564625850340136,lora-lp
+Age,Ethnicity,1,hispanic,14,VALID,0.5833333333333334,lora-lp
+Age,Ethnicity,1,non-hispanic,457,VALID,0.7855826898200775,lora-lp
+Age,Ethnicity,1,unknown,25,VALID,0.7426470588235294,lora-lp
+Age,Ethnicity,2,hispanic,15,VALID,0.875,lora-lp
+Age,Ethnicity,2,non-hispanic,463,VALID,0.8064046579330423,lora-lp
+Age,Ethnicity,2,unknown,24,VALID,0.8359375,lora-lp
+Age,Ethnicity,3,hispanic,10,VALID,0.9166666666666667,lora-lp
+Age,Ethnicity,3,non-hispanic,466,VALID,0.8026610644257703,lora-lp
+Age,Ethnicity,3,unknown,24,VALID,0.6624999999999999,lora-lp
+Race,Ethnicity,asian,hispanic,0,EMPTY,,lora-lp
+Race,Ethnicity,asian,non-hispanic,153,VALID,0.8227956254272044,lora-lp
+Race,Ethnicity,asian,unknown,5,SPARSE,,lora-lp
+Race,Ethnicity,black,hispanic,10,VALID,0.6666666666666666,lora-lp
+Race,Ethnicity,black,non-hispanic,277,VALID,0.7977443609022556,lora-lp
+Race,Ethnicity,black,unknown,18,VALID,0.7374999999999999,lora-lp
+Race,Ethnicity,white,hispanic,66,VALID,0.7720588235294117,lora-lp
+Race,Ethnicity,white,non-hispanic,1386,VALID,0.8084562233593531,lora-lp
+Race,Ethnicity,white,unknown,85,VALID,0.7633333333333333,lora-lp
+Age,Race,0,asian,55,VALID,0.8,lora-lp
+Age,Race,0,black,74,VALID,0.6852678571428572,lora-lp
+Age,Race,0,white,373,VALID,0.7558076225045371,lora-lp
+Age,Race,1,asian,42,VALID,0.8412698412698413,lora-lp
+Age,Race,1,black,104,VALID,0.727734375,lora-lp
+Age,Race,1,white,350,VALID,0.7557752229504674,lora-lp
+Age,Race,2,asian,35,VALID,0.6515151515151515,lora-lp
+Age,Race,2,black,68,VALID,0.8604166666666667,lora-lp
+Age,Race,2,white,399,VALID,0.8039151300833545,lora-lp
+Age,Race,3,asian,26,VALID,0.6691729323308271,lora-lp
+Age,Race,3,black,59,VALID,0.7554945054945055,lora-lp
+Age,Race,3,white,415,VALID,0.8079661016949153,lora-lp
+Language,Ethnicity,english,hispanic,50,VALID,0.7708333333333333,lora-lp
+Language,Ethnicity,english,non-hispanic,1717,VALID,0.8125234050636347,lora-lp
+Language,Ethnicity,english,unknown,101,VALID,0.7641509433962264,lora-lp
+Language,Ethnicity,other,hispanic,0,EMPTY,,lora-lp
+Language,Ethnicity,other,non-hispanic,9,SPARSE,,lora-lp
+Language,Ethnicity,other,unknown,2,SPARSE,,lora-lp
+Language,Ethnicity,spanish,hispanic,25,VALID,0.7142857142857143,lora-lp
+Language,Ethnicity,spanish,non-hispanic,5,SPARSE,,lora-lp
+Language,Ethnicity,spanish,unknown,1,SPARSE,,lora-lp
+Language,Ethnicity,unknown,hispanic,1,SPARSE,,lora-lp
+Language,Ethnicity,unknown,non-hispanic,85,VALID,0.7063492063492063,lora-lp
+Language,Ethnicity,unknown,unknown,4,SPARSE,,lora-lp
+Gender,Language,female,english,1013,VALID,0.7928789721520566,lora-lp
+Gender,Language,female,other,8,SPARSE,,lora-lp
+Gender,Language,female,spanish,18,VALID,0.8055555555555556,lora-lp
+Gender,Language,female,unknown,57,VALID,0.6539634146341464,lora-lp
+Gender,Language,male,english,855,VALID,0.8299358455037115,lora-lp
+Gender,Language,male,other,3,SPARSE,,lora-lp
+Gender,Language,male,spanish,13,VALID,0.7,lora-lp
+Gender,Language,male,unknown,33,VALID,0.8186813186813187,lora-lp
+Gender,Race,female,asian,84,VALID,0.7925170068027211,lora-lp
+Gender,Race,female,black,156,VALID,0.7695548635281186,lora-lp
+Gender,Race,female,white,856,VALID,0.7929390563564876,lora-lp
+Gender,Race,male,asian,74,VALID,0.8699780861943025,lora-lp
+Gender,Race,male,black,149,VALID,0.8206605222734255,lora-lp
+Gender,Race,male,white,681,VALID,0.8209078974642439,lora-lp
+Gender,Ethnicity,female,hispanic,44,VALID,0.797008547008547,lora-lp
+Gender,Ethnicity,female,non-hispanic,997,VALID,0.7902427423190719,lora-lp
+Gender,Ethnicity,female,unknown,55,VALID,0.7896825396825398,lora-lp
+Gender,Ethnicity,male,hispanic,32,VALID,0.7023809523809524,lora-lp
+Gender,Ethnicity,male,non-hispanic,819,VALID,0.836138111992367,lora-lp
+Gender,Ethnicity,male,unknown,53,VALID,0.7507246376811594,lora-lp
+Gender,Age,female,0,274,VALID,0.7301640255768697,lora-lp
+Gender,Age,female,1,266,VALID,0.7519646647163426,lora-lp
+Gender,Age,female,2,282,VALID,0.8024859098228664,lora-lp
+Gender,Age,female,3,274,VALID,0.7991561181434599,lora-lp
+Gender,Age,male,0,228,VALID,0.7684254258412963,lora-lp
+Gender,Age,male,1,230,VALID,0.7993517274092814,lora-lp
+Gender,Age,male,2,220,VALID,0.8216028450913903,lora-lp
+Gender,Age,male,3,226,VALID,0.8058479532163743,lora-lp
+Age,Marital,0,divorced,14,VALID,0.8,lora-text
+Age,Marital,0,legally separated,3,SPARSE,,lora-text
+Age,Marital,0,married or partnered,236,VALID,0.7748397435897436,lora-text
+Age,Marital,0,single,237,VALID,0.6976214946410219,lora-text
+Age,Marital,0,unknown,11,VALID,0.5833333333333333,lora-text
+Age,Marital,0,widowed,1,SPARSE,,lora-text
+Age,Marital,1,divorced,38,VALID,0.8463768115942029,lora-text
+Age,Marital,1,legally separated,10,VALID,0.625,lora-text
+Age,Marital,1,married or partnered,303,VALID,0.7882882882882883,lora-text
+Age,Marital,1,single,124,VALID,0.7270833333333334,lora-text
+Age,Marital,1,unknown,8,SPARSE,,lora-text
+Age,Marital,1,widowed,13,VALID,0.9,lora-text
+Age,Marital,2,divorced,43,VALID,0.7258771929824561,lora-text
+Age,Marital,2,legally separated,4,SPARSE,,lora-text
+Age,Marital,2,married or partnered,321,VALID,0.8534858387799564,lora-text
+Age,Marital,2,single,99,VALID,0.7268170426065164,lora-text
+Age,Marital,2,unknown,8,SPARSE,,lora-text
+Age,Marital,2,widowed,27,VALID,0.6644736842105263,lora-text
+Age,Marital,3,divorced,35,VALID,0.848,lora-text
+Age,Marital,3,legally separated,5,SPARSE,,lora-text
+Age,Marital,3,married or partnered,298,VALID,0.7643597646399551,lora-text
+Age,Marital,3,single,69,VALID,0.7996031746031745,lora-text
+Age,Marital,3,unknown,8,SPARSE,,lora-text
+Age,Marital,3,widowed,85,VALID,0.8134328358208956,lora-text
+Race,Language,asian,english,125,VALID,0.8766301512780386,lora-text
+Race,Language,asian,other,1,SPARSE,,lora-text
+Race,Language,asian,spanish,0,EMPTY,,lora-text
+Race,Language,asian,unknown,32,VALID,0.5364583333333333,lora-text
+Race,Language,black,english,276,VALID,0.7822562611806799,lora-text
+Race,Language,black,other,3,SPARSE,,lora-text
+Race,Language,black,spanish,5,SPARSE,,lora-text
+Race,Language,black,unknown,21,VALID,0.7037037037037037,lora-text
+Race,Language,white,english,1467,VALID,0.8039569484013929,lora-text
+Race,Language,white,other,7,SPARSE,,lora-text
+Race,Language,white,spanish,26,VALID,0.7969924812030076,lora-text
+Race,Language,white,unknown,37,VALID,0.8466666666666667,lora-text
+Gender,Marital,female,divorced,86,VALID,0.7733695652173913,lora-text
+Gender,Marital,female,legally separated,10,VALID,0.6666666666666667,lora-text
+Gender,Marital,female,married or partnered,574,VALID,0.8139863547758284,lora-text
+Gender,Marital,female,single,304,VALID,0.7310560083232184,lora-text
+Gender,Marital,female,unknown,21,VALID,0.6272727272727273,lora-text
+Gender,Marital,female,widowed,101,VALID,0.8073593073593074,lora-text
+Gender,Marital,male,divorced,44,VALID,0.9174107142857143,lora-text
+Gender,Marital,male,legally separated,12,VALID,0.75,lora-text
+Gender,Marital,male,married or partnered,584,VALID,0.8440795261274997,lora-text
+Gender,Marital,male,single,225,VALID,0.7524517557734894,lora-text
+Gender,Marital,male,unknown,14,VALID,1.0,lora-text
+Gender,Marital,male,widowed,25,VALID,0.6764705882352942,lora-text
+Language,Marital,english,divorced,123,VALID,0.8085561497326202,lora-text
+Language,Marital,english,legally separated,20,VALID,0.72,lora-text
+Language,Marital,english,married or partnered,1072,VALID,0.8318741258741258,lora-text
+Language,Marital,english,single,504,VALID,0.7414914560201591,lora-text
+Language,Marital,english,unknown,31,VALID,0.7749999999999999,lora-text
+Language,Marital,english,widowed,118,VALID,0.8023255813953488,lora-text
+Language,Marital,other,divorced,0,EMPTY,,lora-text
+Language,Marital,other,legally separated,0,EMPTY,,lora-text
+Language,Marital,other,married or partnered,9,SPARSE,,lora-text
+Language,Marital,other,single,0,EMPTY,,lora-text
+Language,Marital,other,unknown,2,SPARSE,,lora-text
+Language,Marital,other,widowed,0,EMPTY,,lora-text
+Language,Marital,spanish,divorced,0,EMPTY,,lora-text
+Language,Marital,spanish,legally separated,1,SPARSE,,lora-text
+Language,Marital,spanish,married or partnered,20,VALID,0.78125,lora-text
+Language,Marital,spanish,single,5,SPARSE,,lora-text
+Language,Marital,spanish,unknown,1,SPARSE,,lora-text
+Language,Marital,spanish,widowed,4,SPARSE,,lora-text
+Language,Marital,unknown,divorced,7,SPARSE,,lora-text
+Language,Marital,unknown,legally separated,1,SPARSE,,lora-text
+Language,Marital,unknown,married or partnered,57,VALID,0.7476190476190476,lora-text
+Language,Marital,unknown,single,20,VALID,0.6309523809523809,lora-text
+Language,Marital,unknown,unknown,1,SPARSE,,lora-text
+Language,Marital,unknown,widowed,4,SPARSE,,lora-text
+Age,Language,0,english,476,VALID,0.7487802562885619,lora-text
+Age,Language,0,other,3,SPARSE,,lora-text
+Age,Language,0,spanish,6,SPARSE,,lora-text
+Age,Language,0,unknown,17,VALID,0.7571428571428571,lora-text
+Age,Language,1,english,468,VALID,0.7658621215587584,lora-text
+Age,Language,1,other,1,SPARSE,,lora-text
+Age,Language,1,spanish,6,SPARSE,,lora-text
+Age,Language,1,unknown,21,VALID,0.4,lora-text
+Age,Language,2,english,469,VALID,0.8124931805782871,lora-text
+Age,Language,2,other,3,SPARSE,,lora-text
+Age,Language,2,spanish,9,SPARSE,,lora-text
+Age,Language,2,unknown,21,VALID,0.7755102040816327,lora-text
+Age,Language,3,english,455,VALID,0.7903075717504164,lora-text
+Age,Language,3,other,4,SPARSE,,lora-text
+Age,Language,3,spanish,10,VALID,0.875,lora-text
+Age,Language,3,unknown,31,VALID,0.7065217391304348,lora-text
+Ethnicity,Marital,hispanic,divorced,2,SPARSE,,lora-text
+Ethnicity,Marital,hispanic,legally separated,1,SPARSE,,lora-text
+Ethnicity,Marital,hispanic,married or partnered,38,VALID,0.7749999999999999,lora-text
+Ethnicity,Marital,hispanic,single,29,VALID,0.7548076923076923,lora-text
+Ethnicity,Marital,hispanic,unknown,3,SPARSE,,lora-text
+Ethnicity,Marital,hispanic,widowed,3,SPARSE,,lora-text
+Ethnicity,Marital,non-hispanic,divorced,117,VALID,0.8168639053254437,lora-text
+Ethnicity,Marital,non-hispanic,legally separated,20,VALID,0.696969696969697,lora-text
+Ethnicity,Marital,non-hispanic,married or partnered,1066,VALID,0.8341881426491685,lora-text
+Ethnicity,Marital,non-hispanic,single,462,VALID,0.7351882405879706,lora-text
+Ethnicity,Marital,non-hispanic,unknown,29,VALID,0.7142857142857143,lora-text
+Ethnicity,Marital,non-hispanic,widowed,122,VALID,0.8038194444444444,lora-text
+Ethnicity,Marital,unknown,divorced,11,VALID,0.7777777777777778,lora-text
+Ethnicity,Marital,unknown,legally separated,1,SPARSE,,lora-text
+Ethnicity,Marital,unknown,married or partnered,54,VALID,0.75,lora-text
+Ethnicity,Marital,unknown,single,38,VALID,0.788888888888889,lora-text
+Ethnicity,Marital,unknown,unknown,3,SPARSE,,lora-text
+Ethnicity,Marital,unknown,widowed,1,SPARSE,,lora-text
+Race,Marital,asian,divorced,4,SPARSE,,lora-text
+Race,Marital,asian,legally separated,0,EMPTY,,lora-text
+Race,Marital,asian,married or partnered,110,VALID,0.8368090036411784,lora-text
+Race,Marital,asian,single,34,VALID,0.768421052631579,lora-text
+Race,Marital,asian,unknown,5,SPARSE,,lora-text
+Race,Marital,asian,widowed,5,SPARSE,,lora-text
+Race,Marital,black,divorced,23,VALID,0.9090909090909092,lora-text
+Race,Marital,black,legally separated,10,VALID,0.7619047619047619,lora-text
+Race,Marital,black,married or partnered,124,VALID,0.8241071428571428,lora-text
+Race,Marital,black,single,123,VALID,0.7247978436657683,lora-text
+Race,Marital,black,unknown,1,SPARSE,,lora-text
+Race,Marital,black,widowed,24,VALID,0.5217391304347826,lora-text
+Race,Marital,white,divorced,103,VALID,0.8,lora-text
+Race,Marital,white,legally separated,12,VALID,0.8285714285714286,lora-text
+Race,Marital,white,married or partnered,924,VALID,0.8233069198328195,lora-text
+Race,Marital,white,single,372,VALID,0.7429728166570272,lora-text
+Race,Marital,white,unknown,29,VALID,0.7761904761904762,lora-text
+Race,Marital,white,widowed,97,VALID,0.7955486542443064,lora-text
+Age,Ethnicity,0,hispanic,37,VALID,0.7441176470588236,lora-text
+Age,Ethnicity,0,non-hispanic,430,VALID,0.7423630192338775,lora-text
+Age,Ethnicity,0,unknown,35,VALID,0.7108843537414966,lora-text
+Age,Ethnicity,1,hispanic,14,VALID,0.5625,lora-text
+Age,Ethnicity,1,non-hispanic,457,VALID,0.776233781506017,lora-text
+Age,Ethnicity,1,unknown,25,VALID,0.8529411764705882,lora-text
+Age,Ethnicity,2,hispanic,15,VALID,0.8392857142857142,lora-text
+Age,Ethnicity,2,non-hispanic,463,VALID,0.8098757138058449,lora-text
+Age,Ethnicity,2,unknown,24,VALID,0.84375,lora-text
+Age,Ethnicity,3,hispanic,10,VALID,0.8333333333333334,lora-text
+Age,Ethnicity,3,non-hispanic,466,VALID,0.7932539682539683,lora-text
+Age,Ethnicity,3,unknown,24,VALID,0.525,lora-text
+Race,Ethnicity,asian,hispanic,0,EMPTY,,lora-text
+Race,Ethnicity,asian,non-hispanic,153,VALID,0.8311688311688312,lora-text
+Race,Ethnicity,asian,unknown,5,SPARSE,,lora-text
+Race,Ethnicity,black,hispanic,10,VALID,0.625,lora-text
+Race,Ethnicity,black,non-hispanic,277,VALID,0.7803354540196645,lora-text
+Race,Ethnicity,black,unknown,18,VALID,0.825,lora-text
+Race,Ethnicity,white,hispanic,66,VALID,0.7683823529411764,lora-text
+Race,Ethnicity,white,non-hispanic,1386,VALID,0.8073306723083176,lora-text
+Race,Ethnicity,white,unknown,85,VALID,0.7755555555555556,lora-text
+Age,Race,0,asian,55,VALID,0.8083333333333333,lora-text
+Age,Race,0,black,74,VALID,0.6964285714285714,lora-text
+Age,Race,0,white,373,VALID,0.7425589836660618,lora-text
+Age,Race,1,asian,42,VALID,0.8412698412698413,lora-text
+Age,Race,1,black,104,VALID,0.748046875,lora-text
+Age,Race,1,white,350,VALID,0.7479316643386699,lora-text
+Age,Race,2,asian,35,VALID,0.787878787878788,lora-text
+Age,Race,2,black,68,VALID,0.778125,lora-text
+Age,Race,2,white,399,VALID,0.8096994190452134,lora-text
+Age,Race,3,asian,26,VALID,0.631578947368421,lora-text
+Age,Race,3,black,59,VALID,0.7527472527472527,lora-text
+Age,Race,3,white,415,VALID,0.7987853107344633,lora-text
+Language,Ethnicity,english,hispanic,50,VALID,0.7482638888888888,lora-text
+Language,Ethnicity,english,non-hispanic,1717,VALID,0.8082304415076932,lora-text
+Language,Ethnicity,english,unknown,101,VALID,0.7900943396226415,lora-text
+Language,Ethnicity,other,hispanic,0,EMPTY,,lora-text
+Language,Ethnicity,other,non-hispanic,9,SPARSE,,lora-text
+Language,Ethnicity,other,unknown,2,SPARSE,,lora-text
+Language,Ethnicity,spanish,hispanic,25,VALID,0.7142857142857143,lora-text
+Language,Ethnicity,spanish,non-hispanic,5,SPARSE,,lora-text
+Language,Ethnicity,spanish,unknown,1,SPARSE,,lora-text
+Language,Ethnicity,unknown,hispanic,1,SPARSE,,lora-text
+Language,Ethnicity,unknown,non-hispanic,85,VALID,0.7525252525252525,lora-text
+Language,Ethnicity,unknown,unknown,4,SPARSE,,lora-text
+Gender,Language,female,english,1013,VALID,0.7938534942464216,lora-text
+Gender,Language,female,other,8,SPARSE,,lora-text
+Gender,Language,female,spanish,18,VALID,0.763888888888889,lora-text
+Gender,Language,female,unknown,57,VALID,0.7149390243902438,lora-text
+Gender,Language,male,english,855,VALID,0.8231919598870181,lora-text
+Gender,Language,male,other,3,SPARSE,,lora-text
+Gender,Language,male,spanish,13,VALID,0.7666666666666666,lora-text
+Gender,Language,male,unknown,33,VALID,0.8241758241758242,lora-text
+Gender,Race,female,asian,84,VALID,0.8276643990929705,lora-text
+Gender,Race,female,black,156,VALID,0.7539842461989376,lora-text
+Gender,Race,female,white,856,VALID,0.7921963739624289,lora-text
+Gender,Race,male,asian,74,VALID,0.8363769174579986,lora-text
+Gender,Race,male,black,149,VALID,0.8147081413210445,lora-text
+Gender,Race,male,white,681,VALID,0.819698749395426,lora-text
+Gender,Ethnicity,female,hispanic,44,VALID,0.7628205128205128,lora-text
+Gender,Ethnicity,female,non-hispanic,997,VALID,0.789206794527616,lora-text
+Gender,Ethnicity,female,unknown,55,VALID,0.843915343915344,lora-text
+Gender,Ethnicity,male,hispanic,32,VALID,0.6984126984126984,lora-text
+Gender,Ethnicity,male,non-hispanic,819,VALID,0.8314687816804818,lora-text
+Gender,Ethnicity,male,unknown,53,VALID,0.7463768115942028,lora-text
+Gender,Age,female,0,274,VALID,0.7343341673616904,lora-text
+Gender,Age,female,1,266,VALID,0.7427293064876958,lora-text
+Gender,Age,female,2,282,VALID,0.7955414653784219,lora-text
+Gender,Age,female,3,274,VALID,0.7998701720220708,lora-text
+Gender,Age,male,0,228,VALID,0.7500623182384711,lora-text
+Gender,Age,male,1,230,VALID,0.8040161277571349,lora-text
+Gender,Age,male,2,220,VALID,0.8379786618145727,lora-text
+Gender,Age,male,3,226,VALID,0.768421052631579,lora-text
+Age,Marital,0,divorced,14,VALID,0.75,full-ft
+Age,Marital,0,legally separated,3,SPARSE,,full-ft
+Age,Marital,0,married or partnered,236,VALID,0.7665064102564103,full-ft
+Age,Marital,0,single,237,VALID,0.6967405667302892,full-ft
+Age,Marital,0,unknown,11,VALID,0.6249999999999999,full-ft
+Age,Marital,0,widowed,1,SPARSE,,full-ft
+Age,Marital,1,divorced,38,VALID,0.8608695652173913,full-ft
+Age,Marital,1,legally separated,10,VALID,0.5,full-ft
+Age,Marital,1,married or partnered,303,VALID,0.789132882882883,full-ft
+Age,Marital,1,single,124,VALID,0.6973958333333333,full-ft
+Age,Marital,1,unknown,8,SPARSE,,full-ft
+Age,Marital,1,widowed,13,VALID,0.825,full-ft
+Age,Marital,2,divorced,43,VALID,0.8333333333333334,full-ft
+Age,Marital,2,legally separated,4,SPARSE,,full-ft
+Age,Marital,2,married or partnered,321,VALID,0.8437208216619981,full-ft
+Age,Marital,2,single,99,VALID,0.7355889724310777,full-ft
+Age,Marital,2,unknown,8,SPARSE,,full-ft
+Age,Marital,2,widowed,27,VALID,0.6776315789473684,full-ft
+Age,Marital,3,divorced,35,VALID,0.928,full-ft
+Age,Marital,3,legally separated,5,SPARSE,,full-ft
+Age,Marital,3,married or partnered,298,VALID,0.7453628467357803,full-ft
+Age,Marital,3,single,69,VALID,0.7559523809523809,full-ft
+Age,Marital,3,unknown,8,SPARSE,,full-ft
+Age,Marital,3,widowed,85,VALID,0.814262023217247,full-ft
+Race,Language,asian,english,125,VALID,0.8398539384454877,full-ft
+Race,Language,asian,other,1,SPARSE,,full-ft
+Race,Language,asian,spanish,0,EMPTY,,full-ft
+Race,Language,asian,unknown,32,VALID,0.4375,full-ft
+Race,Language,black,english,276,VALID,0.779796511627907,full-ft
+Race,Language,black,other,3,SPARSE,,full-ft
+Race,Language,black,spanish,5,SPARSE,,full-ft
+Race,Language,black,unknown,21,VALID,0.7592592592592592,full-ft
+Race,Language,white,english,1467,VALID,0.8051095841945515,full-ft
+Race,Language,white,other,7,SPARSE,,full-ft
+Race,Language,white,spanish,26,VALID,0.7669172932330828,full-ft
+Race,Language,white,unknown,37,VALID,0.8133333333333334,full-ft
+Gender,Marital,female,divorced,86,VALID,0.7831521739130435,full-ft
+Gender,Marital,female,legally separated,10,VALID,0.625,full-ft
+Gender,Marital,female,married or partnered,574,VALID,0.7984405458089667,full-ft
+Gender,Marital,female,single,304,VALID,0.7020981446159182,full-ft
+Gender,Marital,female,unknown,21,VALID,0.6909090909090909,full-ft
+Gender,Marital,female,widowed,101,VALID,0.8084415584415585,full-ft
+Gender,Marital,male,divorced,44,VALID,0.9553571428571428,full-ft
+Gender,Marital,male,legally separated,12,VALID,0.84375,full-ft
+Gender,Marital,male,married or partnered,584,VALID,0.8438801243328836,full-ft
+Gender,Marital,male,single,225,VALID,0.7749920911104082,full-ft
+Gender,Marital,male,unknown,14,VALID,1.0,full-ft
+Gender,Marital,male,widowed,25,VALID,0.75,full-ft
+Language,Marital,english,divorced,123,VALID,0.83475935828877,full-ft
+Language,Marital,english,legally separated,20,VALID,0.74,full-ft
+Language,Marital,english,married or partnered,1072,VALID,0.8278146853146853,full-ft
+Language,Marital,english,single,504,VALID,0.7347035199622016,full-ft
+Language,Marital,english,unknown,31,VALID,0.7875000000000001,full-ft
+Language,Marital,english,widowed,118,VALID,0.7965116279069766,full-ft
+Language,Marital,other,divorced,0,EMPTY,,full-ft
+Language,Marital,other,legally separated,0,EMPTY,,full-ft
+Language,Marital,other,married or partnered,9,SPARSE,,full-ft
+Language,Marital,other,single,0,EMPTY,,full-ft
+Language,Marital,other,unknown,2,SPARSE,,full-ft
+Language,Marital,other,widowed,0,EMPTY,,full-ft
+Language,Marital,spanish,divorced,0,EMPTY,,full-ft
+Language,Marital,spanish,legally separated,1,SPARSE,,full-ft
+Language,Marital,spanish,married or partnered,20,VALID,0.7604166666666667,full-ft
+Language,Marital,spanish,single,5,SPARSE,,full-ft
+Language,Marital,spanish,unknown,1,SPARSE,,full-ft
+Language,Marital,spanish,widowed,4,SPARSE,,full-ft
+Language,Marital,unknown,divorced,7,SPARSE,,full-ft
+Language,Marital,unknown,legally separated,1,SPARSE,,full-ft
+Language,Marital,unknown,married or partnered,57,VALID,0.680952380952381,full-ft
+Language,Marital,unknown,single,20,VALID,0.6309523809523809,full-ft
+Language,Marital,unknown,unknown,1,SPARSE,,full-ft
+Language,Marital,unknown,widowed,4,SPARSE,,full-ft
+Age,Language,0,english,476,VALID,0.7394589463692454,full-ft
+Age,Language,0,other,3,SPARSE,,full-ft
+Age,Language,0,spanish,6,SPARSE,,full-ft
+Age,Language,0,unknown,17,VALID,0.6571428571428571,full-ft
+Age,Language,1,english,468,VALID,0.7624876077175321,full-ft
+Age,Language,1,other,1,SPARSE,,full-ft
+Age,Language,1,spanish,6,SPARSE,,full-ft
+Age,Language,1,unknown,21,VALID,0.1,full-ft
+Age,Language,2,english,469,VALID,0.8214402618657937,full-ft
+Age,Language,2,other,3,SPARSE,,full-ft
+Age,Language,2,spanish,9,SPARSE,,full-ft
+Age,Language,2,unknown,21,VALID,0.7448979591836735,full-ft
+Age,Language,3,english,455,VALID,0.7786756783230483,full-ft
+Age,Language,3,other,4,SPARSE,,full-ft
+Age,Language,3,spanish,10,VALID,0.875,full-ft
+Age,Language,3,unknown,31,VALID,0.6467391304347826,full-ft
+Ethnicity,Marital,hispanic,divorced,2,SPARSE,,full-ft
+Ethnicity,Marital,hispanic,legally separated,1,SPARSE,,full-ft
+Ethnicity,Marital,hispanic,married or partnered,38,VALID,0.7333333333333333,full-ft
+Ethnicity,Marital,hispanic,single,29,VALID,0.7884615384615385,full-ft
+Ethnicity,Marital,hispanic,unknown,3,SPARSE,,full-ft
+Ethnicity,Marital,hispanic,widowed,3,SPARSE,,full-ft
+Ethnicity,Marital,non-hispanic,divorced,117,VALID,0.8437869822485207,full-ft
+Ethnicity,Marital,non-hispanic,legally separated,20,VALID,0.7070707070707071,full-ft
+Ethnicity,Marital,non-hispanic,married or partnered,1066,VALID,0.8292637359925834,full-ft
+Ethnicity,Marital,non-hispanic,single,462,VALID,0.7291322933853308,full-ft
+Ethnicity,Marital,non-hispanic,unknown,29,VALID,0.7809523809523808,full-ft
+Ethnicity,Marital,non-hispanic,widowed,122,VALID,0.7989583333333333,full-ft
+Ethnicity,Marital,unknown,divorced,11,VALID,0.5,full-ft
+Ethnicity,Marital,unknown,legally separated,1,SPARSE,,full-ft
+Ethnicity,Marital,unknown,married or partnered,54,VALID,0.7005494505494505,full-ft
+Ethnicity,Marital,unknown,single,38,VALID,0.7305555555555556,full-ft
+Ethnicity,Marital,unknown,unknown,3,SPARSE,,full-ft
+Ethnicity,Marital,unknown,widowed,1,SPARSE,,full-ft
+Race,Marital,asian,divorced,4,SPARSE,,full-ft
+Race,Marital,asian,legally separated,0,EMPTY,,full-ft
+Race,Marital,asian,married or partnered,110,VALID,0.7765640516385302,full-ft
+Race,Marital,asian,single,34,VALID,0.7964912280701755,full-ft
+Race,Marital,asian,unknown,5,SPARSE,,full-ft
+Race,Marital,asian,widowed,5,SPARSE,,full-ft
+Race,Marital,black,divorced,23,VALID,0.8787878787878787,full-ft
+Race,Marital,black,legally separated,10,VALID,0.7142857142857143,full-ft
+Race,Marital,black,married or partnered,124,VALID,0.8327380952380953,full-ft
+Race,Marital,black,single,123,VALID,0.7215633423180593,full-ft
+Race,Marital,black,unknown,1,SPARSE,,full-ft
+Race,Marital,black,widowed,24,VALID,0.6956521739130435,full-ft
+Race,Marital,white,divorced,103,VALID,0.8321705426356589,full-ft
+Race,Marital,white,legally separated,12,VALID,0.8285714285714285,full-ft
+Race,Marital,white,married or partnered,924,VALID,0.8229097717344025,full-ft
+Race,Marital,white,single,372,VALID,0.7331694621168305,full-ft
+Race,Marital,white,unknown,29,VALID,0.7666666666666668,full-ft
+Race,Marital,white,widowed,97,VALID,0.8146997929606625,full-ft
+Age,Ethnicity,0,hispanic,37,VALID,0.7794117647058824,full-ft
+Age,Ethnicity,0,non-hispanic,430,VALID,0.7367521762220324,full-ft
+Age,Ethnicity,0,unknown,35,VALID,0.6462585034013606,full-ft
+Age,Ethnicity,1,hispanic,14,VALID,0.4375,full-ft
+Age,Ethnicity,1,non-hispanic,457,VALID,0.7789776958958881,full-ft
+Age,Ethnicity,1,unknown,25,VALID,0.713235294117647,full-ft
+Age,Ethnicity,2,hispanic,15,VALID,0.8392857142857142,full-ft
+Age,Ethnicity,2,non-hispanic,463,VALID,0.8169297950957339,full-ft
+Age,Ethnicity,2,unknown,24,VALID,0.828125,full-ft
+Age,Ethnicity,3,hispanic,10,VALID,0.9166666666666666,full-ft
+Age,Ethnicity,3,non-hispanic,466,VALID,0.7717086834733893,full-ft
+Age,Ethnicity,3,unknown,24,VALID,0.7375,full-ft
+Race,Ethnicity,asian,hispanic,0,EMPTY,,full-ft
+Race,Ethnicity,asian,non-hispanic,153,VALID,0.7882775119617226,full-ft
+Race,Ethnicity,asian,unknown,5,SPARSE,,full-ft
+Race,Ethnicity,black,hispanic,10,VALID,0.6666666666666666,full-ft
+Race,Ethnicity,black,non-hispanic,277,VALID,0.7910931174089069,full-ft
+Race,Ethnicity,black,unknown,18,VALID,0.6875,full-ft
+Race,Ethnicity,white,hispanic,66,VALID,0.7564338235294118,full-ft
+Race,Ethnicity,white,non-hispanic,1386,VALID,0.8081498233510156,full-ft
+Race,Ethnicity,white,unknown,85,VALID,0.7516666666666667,full-ft
+Age,Race,0,asian,55,VALID,0.7766666666666666,full-ft
+Age,Race,0,black,74,VALID,0.6867559523809524,full-ft
+Age,Race,0,white,373,VALID,0.7431639443436178,full-ft
+Age,Race,1,asian,42,VALID,0.8140589569160998,full-ft
+Age,Race,1,black,104,VALID,0.71953125,full-ft
+Age,Race,1,white,350,VALID,0.7509043372372048,full-ft
+Age,Race,2,asian,35,VALID,0.7386363636363636,full-ft
+Age,Race,2,black,68,VALID,0.81875,full-ft
+Age,Race,2,white,399,VALID,0.814271280626421,full-ft
+Age,Race,3,asian,26,VALID,0.406015037593985,full-ft
+Age,Race,3,black,59,VALID,0.8186813186813188,full-ft
+Age,Race,3,white,415,VALID,0.7927966101694914,full-ft
+Language,Ethnicity,english,hispanic,50,VALID,0.7309027777777777,full-ft
+Language,Ethnicity,english,non-hispanic,1717,VALID,0.8072779571789097,full-ft
+Language,Ethnicity,english,unknown,101,VALID,0.7574685534591196,full-ft
+Language,Ethnicity,other,hispanic,0,EMPTY,,full-ft
+Language,Ethnicity,other,non-hispanic,9,SPARSE,,full-ft
+Language,Ethnicity,other,unknown,2,SPARSE,,full-ft
+Language,Ethnicity,spanish,hispanic,25,VALID,0.7142857142857143,full-ft
+Language,Ethnicity,spanish,non-hispanic,5,SPARSE,,full-ft
+Language,Ethnicity,spanish,unknown,1,SPARSE,,full-ft
+Language,Ethnicity,unknown,hispanic,1,SPARSE,,full-ft
+Language,Ethnicity,unknown,non-hispanic,85,VALID,0.6875901875901876,full-ft
+Language,Ethnicity,unknown,unknown,4,SPARSE,,full-ft
+Gender,Language,female,english,1013,VALID,0.7781364019085041,full-ft
+Gender,Language,female,other,8,SPARSE,,full-ft
+Gender,Language,female,spanish,18,VALID,0.7916666666666667,full-ft
+Gender,Language,female,unknown,57,VALID,0.6478658536585367,full-ft
+Gender,Language,male,english,855,VALID,0.8337894944275361,full-ft
+Gender,Language,male,other,3,SPARSE,,full-ft
+Gender,Language,male,spanish,13,VALID,0.7666666666666666,full-ft
+Gender,Language,male,unknown,33,VALID,0.7967032967032968,full-ft
+Gender,Race,female,asian,84,VALID,0.7698412698412699,full-ft
+Gender,Race,female,black,156,VALID,0.7442755083348599,full-ft
+Gender,Race,female,white,856,VALID,0.778893621668851,full-ft
+Gender,Race,male,asian,74,VALID,0.8108108108108109,full-ft
+Gender,Race,male,black,149,VALID,0.8231566820276498,full-ft
+Gender,Race,male,white,681,VALID,0.834104884958198,full-ft
+Gender,Ethnicity,female,hispanic,44,VALID,0.6944444444444444,full-ft
+Gender,Ethnicity,female,non-hispanic,997,VALID,0.7785812755459889,full-ft
+Gender,Ethnicity,female,unknown,55,VALID,0.7605820105820106,full-ft
+Gender,Ethnicity,male,hispanic,32,VALID,0.7817460317460317,full-ft
+Gender,Ethnicity,male,non-hispanic,819,VALID,0.8376051046574035,full-ft
+Gender,Ethnicity,male,unknown,53,VALID,0.7376811594202899,full-ft
+Gender,Age,female,0,274,VALID,0.7012510425354463,full-ft
+Gender,Age,female,1,266,VALID,0.7235702403487638,full-ft
+Gender,Age,female,2,282,VALID,0.8028884863123994,full-ft
+Gender,Age,female,3,274,VALID,0.7815644271340473,full-ft
+Gender,Age,male,0,228,VALID,0.7756543415039466,full-ft
+Gender,Age,male,1,230,VALID,0.810973199462408,full-ft
+Gender,Age,male,2,220,VALID,0.8384748986849723,full-ft
+Gender,Age,male,3,226,VALID,0.7585326953748006,full-ft
+Age,Marital,0,divorced,14,VALID,0.775,full-ft-text
+Age,Marital,0,legally separated,3,SPARSE,,full-ft-text
+Age,Marital,0,married or partnered,236,VALID,0.7670673076923077,full-ft-text
+Age,Marital,0,single,237,VALID,0.7182498898840112,full-ft-text
+Age,Marital,0,unknown,11,VALID,0.5833333333333334,full-ft-text
+Age,Marital,0,widowed,1,SPARSE,,full-ft-text
+Age,Marital,1,divorced,38,VALID,0.8202898550724638,full-ft-text
+Age,Marital,1,legally separated,10,VALID,0.7916666666666666,full-ft-text
+Age,Marital,1,married or partnered,303,VALID,0.7952796546546547,full-ft-text
+Age,Marital,1,single,124,VALID,0.6958333333333334,full-ft-text
+Age,Marital,1,unknown,8,SPARSE,,full-ft-text
+Age,Marital,1,widowed,13,VALID,0.875,full-ft-text
+Age,Marital,2,divorced,43,VALID,0.7017543859649122,full-ft-text
+Age,Marital,2,legally separated,4,SPARSE,,full-ft-text
+Age,Marital,2,married or partnered,321,VALID,0.8507236227824463,full-ft-text
+Age,Marital,2,single,99,VALID,0.720969089390142,full-ft-text
+Age,Marital,2,unknown,8,SPARSE,,full-ft-text
+Age,Marital,2,widowed,27,VALID,0.6118421052631579,full-ft-text
+Age,Marital,3,divorced,35,VALID,0.948,full-ft-text
+Age,Marital,3,legally separated,5,SPARSE,,full-ft-text
+Age,Marital,3,married or partnered,298,VALID,0.7688428131129168,full-ft-text
+Age,Marital,3,single,69,VALID,0.7718253968253969,full-ft-text
+Age,Marital,3,unknown,8,SPARSE,,full-ft-text
+Age,Marital,3,widowed,85,VALID,0.7545605306799337,full-ft-text
+Race,Language,asian,english,125,VALID,0.8620239958268128,full-ft-text
+Race,Language,asian,other,1,SPARSE,,full-ft-text
+Race,Language,asian,spanish,0,EMPTY,,full-ft-text
+Race,Language,asian,unknown,32,VALID,0.4270833333333333,full-ft-text
+Race,Language,black,english,276,VALID,0.7623546511627906,full-ft-text
+Race,Language,black,other,3,SPARSE,,full-ft-text
+Race,Language,black,spanish,5,SPARSE,,full-ft-text
+Race,Language,black,unknown,21,VALID,0.6296296296296297,full-ft-text
+Race,Language,white,english,1467,VALID,0.8087294936968139,full-ft-text
+Race,Language,white,other,7,SPARSE,,full-ft-text
+Race,Language,white,spanish,26,VALID,0.7293233082706767,full-ft-text
+Race,Language,white,unknown,37,VALID,0.83,full-ft-text
+Gender,Marital,female,divorced,86,VALID,0.7853260869565218,full-ft-text
+Gender,Marital,female,legally separated,10,VALID,0.9583333333333334,full-ft-text
+Gender,Marital,female,married or partnered,574,VALID,0.8083698830409358,full-ft-text
+Gender,Marital,female,single,304,VALID,0.7176608288538234,full-ft-text
+Gender,Marital,female,unknown,21,VALID,0.6,full-ft-text
+Gender,Marital,female,widowed,101,VALID,0.7743506493506493,full-ft-text
+Gender,Marital,male,divorced,44,VALID,0.921875,full-ft-text
+Gender,Marital,male,legally separated,12,VALID,0.71875,full-ft-text
+Gender,Marital,male,married or partnered,584,VALID,0.8401618673391591,full-ft-text
+Gender,Marital,male,single,225,VALID,0.7549035115469788,full-ft-text
+Gender,Marital,male,unknown,14,VALID,0.979591836734694,full-ft-text
+Gender,Marital,male,widowed,25,VALID,0.588235294117647,full-ft-text
+Language,Marital,english,divorced,123,VALID,0.8227272727272728,full-ft-text
+Language,Marital,english,legally separated,20,VALID,0.79,full-ft-text
+Language,Marital,english,married or partnered,1072,VALID,0.8345699300699301,full-ft-text
+Language,Marital,english,single,504,VALID,0.7336640680368534,full-ft-text
+Language,Marital,english,unknown,31,VALID,0.825,full-ft-text
+Language,Marital,english,widowed,118,VALID,0.7387354651162791,full-ft-text
+Language,Marital,other,divorced,0,EMPTY,,full-ft-text
+Language,Marital,other,legally separated,0,EMPTY,,full-ft-text
+Language,Marital,other,married or partnered,9,SPARSE,,full-ft-text
+Language,Marital,other,single,0,EMPTY,,full-ft-text
+Language,Marital,other,unknown,2,SPARSE,,full-ft-text
+Language,Marital,other,widowed,0,EMPTY,,full-ft-text
+Language,Marital,spanish,divorced,0,EMPTY,,full-ft-text
+Language,Marital,spanish,legally separated,1,SPARSE,,full-ft-text
+Language,Marital,spanish,married or partnered,20,VALID,0.6458333333333333,full-ft-text
+Language,Marital,spanish,single,5,SPARSE,,full-ft-text
+Language,Marital,spanish,unknown,1,SPARSE,,full-ft-text
+Language,Marital,spanish,widowed,4,SPARSE,,full-ft-text
+Language,Marital,unknown,divorced,7,SPARSE,,full-ft-text
+Language,Marital,unknown,legally separated,1,SPARSE,,full-ft-text
+Language,Marital,unknown,married or partnered,57,VALID,0.6158730158730158,full-ft-text
+Language,Marital,unknown,single,20,VALID,0.75,full-ft-text
+Language,Marital,unknown,unknown,1,SPARSE,,full-ft-text
+Language,Marital,unknown,widowed,4,SPARSE,,full-ft-text
+Age,Language,0,english,476,VALID,0.7559373516848599,full-ft-text
+Age,Language,0,other,3,SPARSE,,full-ft-text
+Age,Language,0,spanish,6,SPARSE,,full-ft-text
+Age,Language,0,unknown,17,VALID,0.7142857142857143,full-ft-text
+Age,Language,1,english,468,VALID,0.7678067566537026,full-ft-text
+Age,Language,1,other,1,SPARSE,,full-ft-text
+Age,Language,1,spanish,6,SPARSE,,full-ft-text
+Age,Language,1,unknown,21,VALID,0.05,full-ft-text
+Age,Language,2,english,469,VALID,0.8089107110383708,full-ft-text
+Age,Language,2,other,3,SPARSE,,full-ft-text
+Age,Language,2,spanish,9,SPARSE,,full-ft-text
+Age,Language,2,unknown,21,VALID,0.7244897959183674,full-ft-text
+Age,Language,3,english,455,VALID,0.7900137133901459,full-ft-text
+Age,Language,3,other,4,SPARSE,,full-ft-text
+Age,Language,3,spanish,10,VALID,0.9375,full-ft-text
+Age,Language,3,unknown,31,VALID,0.6467391304347826,full-ft-text
+Ethnicity,Marital,hispanic,divorced,2,SPARSE,,full-ft-text
+Ethnicity,Marital,hispanic,legally separated,1,SPARSE,,full-ft-text
+Ethnicity,Marital,hispanic,married or partnered,38,VALID,0.7,full-ft-text
+Ethnicity,Marital,hispanic,single,29,VALID,0.8076923076923077,full-ft-text
+Ethnicity,Marital,hispanic,unknown,3,SPARSE,,full-ft-text
+Ethnicity,Marital,hispanic,widowed,3,SPARSE,,full-ft-text
+Ethnicity,Marital,non-hispanic,divorced,117,VALID,0.8192307692307692,full-ft-text
+Ethnicity,Marital,non-hispanic,legally separated,20,VALID,0.7878787878787878,full-ft-text
+Ethnicity,Marital,non-hispanic,married or partnered,1066,VALID,0.8330707218115613,full-ft-text
+Ethnicity,Marital,non-hispanic,single,462,VALID,0.7280823458827057,full-ft-text
+Ethnicity,Marital,non-hispanic,unknown,29,VALID,0.7619047619047619,full-ft-text
+Ethnicity,Marital,non-hispanic,widowed,122,VALID,0.7385416666666667,full-ft-text
+Ethnicity,Marital,unknown,divorced,11,VALID,0.7777777777777777,full-ft-text
+Ethnicity,Marital,unknown,legally separated,1,SPARSE,,full-ft-text
+Ethnicity,Marital,unknown,married or partnered,54,VALID,0.7225274725274726,full-ft-text
+Ethnicity,Marital,unknown,single,38,VALID,0.7611111111111111,full-ft-text
+Ethnicity,Marital,unknown,unknown,3,SPARSE,,full-ft-text
+Ethnicity,Marital,unknown,widowed,1,SPARSE,,full-ft-text
+Race,Marital,asian,divorced,4,SPARSE,,full-ft-text
+Race,Marital,asian,legally separated,0,EMPTY,,full-ft-text
+Race,Marital,asian,married or partnered,110,VALID,0.8166170142336975,full-ft-text
+Race,Marital,asian,single,34,VALID,0.8035087719298246,full-ft-text
+Race,Marital,asian,unknown,5,SPARSE,,full-ft-text
+Race,Marital,asian,widowed,5,SPARSE,,full-ft-text
+Race,Marital,black,divorced,23,VALID,0.9090909090909091,full-ft-text
+Race,Marital,black,legally separated,10,VALID,0.8571428571428571,full-ft-text
+Race,Marital,black,married or partnered,124,VALID,0.7776785714285714,full-ft-text
+Race,Marital,black,single,123,VALID,0.6994609164420484,full-ft-text
+Race,Marital,black,unknown,1,SPARSE,,full-ft-text
+Race,Marital,black,widowed,24,VALID,0.43478260869565216,full-ft-text
+Race,Marital,white,divorced,103,VALID,0.812015503875969,full-ft-text
+Race,Marital,white,legally separated,12,VALID,0.9142857142857143,full-ft-text
+Race,Marital,white,married or partnered,924,VALID,0.8279970497569832,full-ft-text
+Race,Marital,white,single,372,VALID,0.7405725853094274,full-ft-text
+Race,Marital,white,unknown,29,VALID,0.838095238095238,full-ft-text
+Race,Marital,white,widowed,97,VALID,0.756728778467909,full-ft-text
+Age,Ethnicity,0,hispanic,37,VALID,0.8441176470588236,full-ft-text
+Age,Ethnicity,0,non-hispanic,430,VALID,0.7416241427878733,full-ft-text
+Age,Ethnicity,0,unknown,35,VALID,0.7108843537414966,full-ft-text
+Age,Ethnicity,1,hispanic,14,VALID,0.3541666666666667,full-ft-text
+Age,Ethnicity,1,non-hispanic,457,VALID,0.7810748304652896,full-ft-text
+Age,Ethnicity,1,unknown,25,VALID,0.7426470588235293,full-ft-text
+Age,Ethnicity,2,hispanic,15,VALID,0.7857142857142857,full-ft-text
+Age,Ethnicity,2,non-hispanic,463,VALID,0.8014966595752622,full-ft-text
+Age,Ethnicity,2,unknown,24,VALID,0.875,full-ft-text
+Age,Ethnicity,3,hispanic,10,VALID,0.875,full-ft-text
+Age,Ethnicity,3,non-hispanic,466,VALID,0.7869747899159664,full-ft-text
+Age,Ethnicity,3,unknown,24,VALID,0.5874999999999999,full-ft-text
+Race,Ethnicity,asian,hispanic,0,EMPTY,,full-ft-text
+Race,Ethnicity,asian,non-hispanic,153,VALID,0.8028024606971975,full-ft-text
+Race,Ethnicity,asian,unknown,5,SPARSE,,full-ft-text
+Race,Ethnicity,black,hispanic,10,VALID,0.5833333333333334,full-ft-text
+Race,Ethnicity,black,non-hispanic,277,VALID,0.7659340659340659,full-ft-text
+Race,Ethnicity,black,unknown,18,VALID,0.7375,full-ft-text
+Race,Ethnicity,white,hispanic,66,VALID,0.7757352941176471,full-ft-text
+Race,Ethnicity,white,non-hispanic,1386,VALID,0.809919439725699,full-ft-text
+Race,Ethnicity,white,unknown,85,VALID,0.7816666666666667,full-ft-text
+Age,Race,0,asian,55,VALID,0.8083333333333333,full-ft-text
+Age,Race,0,black,74,VALID,0.7098214285714286,full-ft-text
+Age,Race,0,white,373,VALID,0.7518451300665457,full-ft-text
+Age,Race,1,asian,42,VALID,0.8163265306122449,full-ft-text
+Age,Race,1,black,104,VALID,0.701953125,full-ft-text
+Age,Race,1,white,350,VALID,0.7674152071917195,full-ft-text
+Age,Race,2,asian,35,VALID,0.8030303030303031,full-ft-text
+Age,Race,2,black,68,VALID,0.7510416666666666,full-ft-text
+Age,Race,2,white,399,VALID,0.8037383177570092,full-ft-text
+Age,Race,3,asian,26,VALID,0.4736842105263158,full-ft-text
+Age,Race,3,black,59,VALID,0.7087912087912088,full-ft-text
+Age,Race,3,white,415,VALID,0.8031355932203389,full-ft-text
+Language,Ethnicity,english,hispanic,50,VALID,0.7777777777777778,full-ft-text
+Language,Ethnicity,english,non-hispanic,1717,VALID,0.8069523215109494,full-ft-text
+Language,Ethnicity,english,unknown,101,VALID,0.77437106918239,full-ft-text
+Language,Ethnicity,other,hispanic,0,EMPTY,,full-ft-text
+Language,Ethnicity,other,non-hispanic,9,SPARSE,,full-ft-text
+Language,Ethnicity,other,unknown,2,SPARSE,,full-ft-text
+Language,Ethnicity,spanish,hispanic,25,VALID,0.5793650793650793,full-ft-text
+Language,Ethnicity,spanish,non-hispanic,5,SPARSE,,full-ft-text
+Language,Ethnicity,spanish,unknown,1,SPARSE,,full-ft-text
+Language,Ethnicity,unknown,hispanic,1,SPARSE,,full-ft-text
+Language,Ethnicity,unknown,non-hispanic,85,VALID,0.676046176046176,full-ft-text
+Language,Ethnicity,unknown,unknown,4,SPARSE,,full-ft-text
+Gender,Language,female,english,1013,VALID,0.7898345651292605,full-ft-text
+Gender,Language,female,other,8,SPARSE,,full-ft-text
+Gender,Language,female,spanish,18,VALID,0.6944444444444444,full-ft-text
+Gender,Language,female,unknown,57,VALID,0.6387195121951219,full-ft-text
+Gender,Language,male,english,855,VALID,0.82397473232467,full-ft-text
+Gender,Language,male,other,3,SPARSE,,full-ft-text
+Gender,Language,male,spanish,13,VALID,0.6000000000000001,full-ft-text
+Gender,Language,male,unknown,33,VALID,0.7472527472527473,full-ft-text
+Gender,Race,female,asian,84,VALID,0.8078231292517006,full-ft-text
+Gender,Race,female,black,156,VALID,0.7092874152775235,full-ft-text
+Gender,Race,female,white,856,VALID,0.7926878549584973,full-ft-text
+Gender,Race,male,asian,74,VALID,0.7969320672023374,full-ft-text
+Gender,Race,male,black,149,VALID,0.8077956989247311,full-ft-text
+Gender,Race,male,white,681,VALID,0.8236716644786845,full-ft-text
+Gender,Ethnicity,female,hispanic,44,VALID,0.7542735042735043,full-ft-text
+Gender,Ethnicity,female,non-hispanic,997,VALID,0.7832168395933602,full-ft-text
+Gender,Ethnicity,female,unknown,55,VALID,0.7976190476190476,full-ft-text
+Gender,Ethnicity,male,hispanic,32,VALID,0.7341269841269842,full-ft-text
+Gender,Ethnicity,male,non-hispanic,819,VALID,0.8270499135309202,full-ft-text
+Gender,Ethnicity,male,unknown,53,VALID,0.7565217391304347,full-ft-text
+Gender,Age,female,0,274,VALID,0.7342229635807618,full-ft-text
+Gender,Age,female,1,266,VALID,0.7368783341937705,full-ft-text
+Gender,Age,female,2,282,VALID,0.7946356682769727,full-ft-text
+Gender,Age,female,3,274,VALID,0.7904576436222006,full-ft-text
+Gender,Age,male,0,228,VALID,0.7626090569173245,full-ft-text
+Gender,Age,male,1,230,VALID,0.8034627243260337,full-ft-text
+Gender,Age,male,2,220,VALID,0.8177983624183277,full-ft-text
+Gender,Age,male,3,226,VALID,0.7698032961190857,full-ft-text

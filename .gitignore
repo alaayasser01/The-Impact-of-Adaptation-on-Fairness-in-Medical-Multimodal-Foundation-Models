@@ -179,6 +179,7 @@ output_*/*
 pretrained/
 allisgood*/
 output_test/
+CheXpert/
 
 # experiment outputs
 refactored_code_output/
@@ -186,6 +187,15 @@ refactored_code_output_*/
 runs/
 logs/
 wandb/
+Harvard FairVLMed (Harvard-FairVLMed）/
+manual_test/
+chexpert_biomedclip_results/
+chexpert_clip_results/
+biomedclip_results/
+chexpert.zip
+FairVLMed10k_clip_results/
+FairVLMed10k_clip_results_BINARY/
+Fairmedvlm_biomedclip_results_BINARY/
 
 # results files (VERY IMPORTANT for your case)
 final_results_*.csv

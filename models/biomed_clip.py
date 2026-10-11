@@ -27,6 +27,10 @@ class BiomedCLIP(nn.Module):
     def encode_text(self, text):
         return self.model.encode_text(text.to(next(self.model.parameters()).device), normalize=False)
 
+# ADDED THIS: So the wrappers successfully trigger hasattr(self.model, 'encode_image')
+    def encode_image(self, images):
+        return self.model.encode_image(images)
+    
     def forward(self, images):
         return self.model.visual(images)
 

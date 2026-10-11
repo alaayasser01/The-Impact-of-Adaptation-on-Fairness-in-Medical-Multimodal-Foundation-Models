@@ -204,7 +204,7 @@ def get_dataset(args, split):
             batch_size=args.batch_size,
             sampler=sampler,
             shuffle=(args.method != "resampling"),
-            num_workers=6,
+            num_workers=5,
             worker_init_fn=seed_worker,
             generator=g,
             pin_memory=True,

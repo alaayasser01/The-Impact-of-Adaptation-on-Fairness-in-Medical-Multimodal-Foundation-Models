@@ -69,8 +69,10 @@ class FairVLMed10k(BaseDataset):
 
     def set_sensitive(self):
         if self.sens_name == "Sex":
-            # female: 1, male: 0
-            sa_array = np.asarray(self.dataframe["gender"].values != "male").astype(np.float32)
+            # Female: 1, Male: 0
+            sa_array = np.asarray(self.dataframe["gender"].str.lower() != "male").astype(np.float32)
+            
+            # (Optional: Weights calculation kept from your original code)
             class_0_count = np.sum(sa_array == 0)
             class_1_count = np.sum(sa_array == 1)
             total_count_sa = len(sa_array)
@@ -80,27 +82,67 @@ class FairVLMed10k(BaseDataset):
             return sa_array
             
         elif self.sens_name == "Age":
-            return self.dataframe["age_group"].values.astype(np.float32)
+            # Senior (>60): 1, Non-Senior (<=60): 0
+            return np.asarray(self.dataframe["age"] > 60).astype(np.float32)
             
         elif self.sens_name == "Race":
-            return self.dataframe["race_group"].values.astype(np.float32)
+            # White: 1, Non-White: 0
+            return np.asarray(self.dataframe["race"].str.lower() == "white").astype(np.float32)
             
-        elif self.sens_name == "Language" or self.sens_name == "language":
-            return self.dataframe["language_group"].values.astype(np.float32)
+        elif self.sens_name in ["Language", "language"]:
+            # English: 1, Non-English: 0
+            return np.asarray(self.dataframe["language"].str.lower() == "english").astype(np.float32)
         
         elif self.sens_name == "Ethnicity":
-            # Map every unique string to an integer automatically
-            return self.dataframe["ethnicity"].astype('category').cat.codes.values.astype(np.float32)
+            # Hispanic: 1, Non-Hispanic/Unknown: 0
+            # Note: The data uses "non-hispanic", so we check if it DOES NOT equal that.
+            return np.asarray(self.dataframe["ethnicity"].str.lower() != "non-hispanic").astype(np.float32)
 
         elif self.sens_name == "MaritalStatus":
-            # Same – preserves all original categories
-            return self.dataframe["maritalstatus"].astype('category').cat.codes.values.astype(np.float32)
+            # Married/Partnered: 1, Unmarried (Single, Widowed, etc.): 0
+            return np.asarray(self.dataframe["maritalstatus"].str.lower() == "married or partnered").astype(np.float32)
+            
         elif self.sens_name == "All":
             # Dummy array just to keep PyTorch happy during the training loop.
             return np.zeros(len(self.dataframe)).astype(np.float32)
             
         else:
-            raise NotImplementedError
+            raise NotImplementedError(f"Sensitive attribute '{self.sens_name}' is not supported.")
+#     def set_sensitive(self):
+#         if self.sens_name == "Sex":
+#             # female: 1, male: 0
+#             sa_array = np.asarray(self.dataframe["gender"].values != "male").astype(np.float32)
+#             class_0_count = np.sum(sa_array == 0)
+#             class_1_count = np.sum(sa_array == 1)
+#             total_count_sa = len(sa_array)
+#             weight_class_0 = total_count_sa / (2 * class_0_count)
+#             weight_class_1 = total_count_sa / (2 * class_1_count)
+#             self.class_weights_sa = torch.tensor([weight_class_0, weight_class_1], dtype=torch.float32)
+#             return sa_array
+            
+#         elif self.sens_name == "Age":
+#             return self.dataframe["age_group"].values.astype(np.float32)
+            
+#         elif self.sens_name == "Race":
+#             return self.dataframe["race_group"].values.astype(np.float32)
+            
+#         elif self.sens_name == "Language" or self.sens_name == "language":
+#             return self.dataframe["language_group"].values.astype(np.float32)
+        
+#         elif self.sens_name == "Ethnicity":
+#             # Map every unique string to an integer automatically
+#             return self.dataframe["ethnicity"].astype('category').cat.codes.values.astype(np.float32)
+
+#         elif self.sens_name == "MaritalStatus":
+#             # Same – preserves all original categories
+#             return self.dataframe["maritalstatus"].astype('category').cat.codes.values.astype(np.float32)
+#         elif self.sens_name == "All":
+#             # Dummy array just to keep PyTorch happy during the training loop.
+#             return np.zeros(len(self.dataframe)).astype(np.float32)
+            
+#         else:
+#             raise NotImplementedError
+
 
     def set_label(self):
         Y = np.where(

@@ -1,10 +1,11 @@
 {
-    "train_meta_path": "./data/CXP/split/new_train.csv",
-    "test_sex_meta_path": "./data/CXP/split/new_test.csv",
-    "test_age_meta_path": "./data/CXP/split/test_age.csv",
-    "test_race_meta_path": "./data/CXP/split/test_race.csv",
-    "image_train_path": "../DataSets/",
-    "image_test_path": "../DataSets/",
+    "train_meta_path": "/home/alaa/papersubmission/The-Impact-of-Adaptation-on-Fairness-in-Medical-Multimodal-Foundation-Models/CheXpert/train_processed.csv",
+    "validation_meta_path": "/home/alaa/papersubmission/The-Impact-of-Adaptation-on-Fairness-in-Medical-Multimodal-Foundation-Models/CheXpert/val_processed.csv",
+    "test_sex_meta_path": "/home/alaa/papersubmission/The-Impact-of-Adaptation-on-Fairness-in-Medical-Multimodal-Foundation-Models/CheXpert/test_processed.csv",
+    "test_age_meta_path": "/home/alaa/papersubmission/The-Impact-of-Adaptation-on-Fairness-in-Medical-Multimodal-Foundation-Models/CheXpert/test_processed.csv",
+    "image_train_path": "/home/alaa/papersubmission/The-Impact-of-Adaptation-on-Fairness-in-Medical-Multimodal-Foundation-Models/CheXpert",
+    "image_validation_path": "/home/alaa/papersubmission/The-Impact-of-Adaptation-on-Fairness-in-Medical-Multimodal-Foundation-Models/CheXpert",
+    "image_test_path": "/home/alaa/papersubmission/The-Impact-of-Adaptation-on-Fairness-in-Medical-Multimodal-Foundation-Models/CheXpert",
     "text_template": "a chest X-ray of a {}",
     "class_names": ["diseased", "normal"]
 }

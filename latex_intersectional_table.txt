@@ -1,0 +1,28 @@
+\begin{table}[htbp]
+\centering
+\caption{Intersectional subgroup cell details for FairVLMed10k. We evaluate all Cartesian combinations of subgroups for each pair of attributes. Cells were excluded if they were empty, contained fewer than 10 samples (sparse), or contained only a single diagnostic class (making AUC undefined).}
+\label{tab:supp_intersections}
+\renewcommand{\arraystretch}{1.1}
+\small
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Intersection} & \textbf{Total Cells} & \textbf{Valid Cells} & \textbf{Excluded} & \textbf{Avg $N$ (Valid)} \\
+\midrule
+Age $\times$ Marital & 24 & 17 & 7 & 115 \\
+Race $\times$ Language & 12 & 7 & 5 & 283 \\
+Gender $\times$ Marital & 12 & 12 & 0 & 167 \\
+Language $\times$ Marital & 24 & 9 & 15 & 218 \\
+Age $\times$ Language & 16 & 9 & 7 & 219 \\
+Ethnicity $\times$ Marital & 18 & 11 & 7 & 181 \\
+Race $\times$ Marital & 18 & 13 & 5 & 153 \\
+Age $\times$ Ethnicity & 12 & 12 & 0 & 167 \\
+Race $\times$ Ethnicity & 9 & 7 & 2 & 285 \\
+Age $\times$ Race & 12 & 12 & 0 & 167 \\
+Language $\times$ Ethnicity & 12 & 5 & 7 & 396 \\
+Gender $\times$ Language & 8 & 6 & 2 & 332 \\
+Gender $\times$ Race & 6 & 6 & 0 & 333 \\
+Gender $\times$ Ethnicity & 6 & 6 & 0 & 333 \\
+Gender $\times$ Age & 8 & 8 & 0 & 250 \\
+\bottomrule
+\end{tabular}
+\end{table}
