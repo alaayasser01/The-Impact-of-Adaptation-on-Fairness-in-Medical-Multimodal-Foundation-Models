@@ -1,14 +1,15 @@
 # The Impact of Adaptation on Fairness in Medical Multimodal Foundation Models
 
-This repository contains the official PyTorch implementation and reproduction benchmark for the paper:
+[Alaa Yasser](https://openreview.net/profile?id=~Alaa_Yasser1), [Catarina Barata](https://openreview.net/profile?id=~Catarina_Barata1), [Luis Herranz](https://openreview.net/profile?id=~Luis_Herranz2), [Marcos Escudero-Viñolo](https://openreview.net/profile?id=~Marcos_Escudero-Vi%C3%B1olo1)
 
-> **The Impact of Adaptation on Fairness in Medical Multimodal Foundation Models**  
+Official PyTorch implementation and reproduction benchmark for the paper:  
+**"The Impact of Adaptation on Fairness in Medical Multimodal Foundation Models"**
 
 ---
 
 ## Abstract
 
-Fairness benchmarks for medical vision-language models are recent, and the conventions they use to measure demographic disparity are still forming. We ask whether four of those conventions are consequential, that is, whether a reader would reach a different conclusion had they been made otherwise. Treating the adaptation strategy as the variable of interest, we evaluate seven strategies on ophthalmology (FairVLMed10k) and radiology (CheXpert) with a general-domain and a medical-specific backbone, and four of them on dermatology (DDI). We find that binarising demographic attributes can only make a model look fairer, so a benchmark that binarises reports a bound on disparity rather than an estimate. Fairness varies across the epochs from which a checkpoint could plausibly be drawn, and that variation is three to five times larger for methods that update the visual encoder than for those that keep it frozen. Intersectional gaps run several times larger than the marginal gaps they are built from, and adaptation narrows some while widening others. Under-representation and disease prevalence have separable effects, and which adaptation strategy benefits from correcting them depends on the mechanism rather than on the number of updated parameters. We close with reporting recommendations for fairness evaluations of adapted medical VLMs.
+Fairness benchmarks for medical vision-language models are recent, and the conventions they use to measure demographic disparity are still forming. We ask whether four of those conventions are consequential, that is, whether a reader would reach a different conclusion had they been made otherwise. Treating the adaptation strategy as the variable of interest, we evaluate seven strategies on ophthalmology (FairVLMed10k) and radiology (CheXpert) with a general-domain and a medical-specific backbone, and four of them on dermatology (DDI). We find that binarising demographic attributes can only make a model look fairer, so a benchmark that binarises reports a bound on disparity rather than an estimate. Fairness varies across the epochs from which a checkpoint could plausibly be drawn, and that variation is three to five times larger for methods that update the visual encoder than for those that keep it frozen. Intersectional gaps run several times larger than the marginal gaps they are built from, and adaptation narrows some while widening others. Under-representation and disease prevalence have separable effects, and which adaptation strategy benefits from correcting them depends on the mechanism rather than on the number of updated parameters. 
 
 ---
 
@@ -236,9 +237,9 @@ Outputs are saved to `results/` and `figures/paper/`.
 ## Citation
 
 ```bibtex
-@article{abdelhamid2026impact,
+@article{yasser2026impact,
   title={The Impact of Adaptation on Fairness in Medical Multimodal Foundation Models},
-  author={Abdelhamid, Alaa Yasser Mahmoud},
+  author={Yasser, Alaa and Barata, Catarina and Herranz, Luis and Escudero-Vi{\~n}olo, Marcos},
   year={2026}
 }
 ```
