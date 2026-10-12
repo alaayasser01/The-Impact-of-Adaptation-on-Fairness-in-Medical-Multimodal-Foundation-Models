@@ -17,11 +17,6 @@ OUTPUT_DIR="./output/chexpert_clip_seed${SEED}"
 USAGES=("clip-zs" "lp" "clip-adapt" "lora-lp" "lora-text" "full-ft" "full-ft-text")
 
 mkdir -p "$OUTPUT_DIR"
-SUMMARY_FILE="$OUTPUT_DIR/chexpert_summary.csv"
-
-if [ ! -f "$SUMMARY_FILE" ]; then
-    echo "usage,lr,seed,best_val_auc,best_epoch" > "$SUMMARY_FILE"
-fi
 
 for usage in "${USAGES[@]}"; do
     if [ "$usage" == "full-ft-text" ] || [ "$usage" == "full-ft" ] || [ "$usage" == "full-ft-zs" ]; then

@@ -17,12 +17,6 @@ OUTPUT_DIR="./output/fairvlmed_clip_seed${SEED}"
 # All 7 adaptation protocols evaluated in the paper
 USAGES=("clip-zs" "lp" "clip-adapt" "lora-lp" "lora-text" "full-ft" "full-ft-text")
 
-mkdir -p "$OUTPUT_DIR"
-SUMMARY_FILE="$OUTPUT_DIR/summary.csv"
-
-if [ ! -f "$SUMMARY_FILE" ]; then
-    echo "usage,lr,seed,best_val_auc,best_epoch" > "$SUMMARY_FILE"
-fi
 
 for usage in "${USAGES[@]}"; do
     # Dynamic learning rate selected per protocol:

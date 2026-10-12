@@ -84,10 +84,12 @@ def get_dataset(args, split):
 
     image_path = data_setting.get(f"image_{split}_path", data_setting.get("image_train_path"))
     binarize = getattr(args, "binarize_attributes", False)
+    dataset_name = getattr(datasets, args.dataset)
     try:
         data = dataset_name(meta, args.sensitive_name, transform, path_to_images=image_path, binarize=binarize)
     except TypeError:
         data = dataset_name(meta, args.sensitive_name, transform, path_to_images=image_path)
+
 
     if split == "train":
         data_loader = torch.utils.data.DataLoader(
