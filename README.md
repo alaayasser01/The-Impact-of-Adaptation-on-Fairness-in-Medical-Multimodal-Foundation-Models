@@ -1,174 +1,257 @@
-# <div align =center><img src=./figs/icon.png width=40> FairMedFM
-## <div align =center> Fairness Benchmarking for Medical Imaging Foundation Models
-![main](./figs/main.png)
+# The Impact of Adaptation on Fairness in Medical Multimodal Foundation Models
+
+[Alaa Yasser](https://openreview.net/profile?id=~Alaa_Yasser1), [Catarina Barata](https://openreview.net/profile?id=~Catarina_Barata1), [Luis Herranz](https://openreview.net/profile?id=~Luis_Herranz2), [Marcos Escudero-Viñolo](https://openreview.net/profile?id=~Marcos_Escudero-Vi%C3%B1olo1)
+
+Official PyTorch implementation and reproduction benchmark for the paper:  
+**"The Impact of Adaptation on Fairness in Medical Multimodal Foundation Models"**
+
+---
 
 ## Abstract
-The advent of foundation models (FMs) in healthcare offers unprecedented opportunities to enhance medical diagnostics through automated classification and segmentation tasks. However, these models also raise significant concerns about their fairness, especially when applied to diverse and underrepresented populations in healthcare applications. Currently, there is a lack of comprehensive benchmarks, standardized pipelines, and easily adaptable libraries to evaluate and understand the fairness performance of FMs in medical imaging, leading to considerable challenges in formulating and implementing solutions that ensure equitable outcomes across diverse patient populations. To fill this gap, we introduce FairMedFM, a fairness benchmark for FM research in medical imaging. FairMedFM integrates with 17 popular medical imaging datasets, encompassing different modalities, dimensionalities, and sensitive attributes. It explores 20 widely used FMs, with various usages such as zero-shot learning, linear probing, parameter-efficient fine-tuning, and prompting in various downstream tasks -- classification and segmentation. Our exhaustive analysis evaluates the fairness performance over different evaluation metrics from multiple perspectives, revealing the existence of bias, varied utility-fairness trade-offs on different FMs, consistent disparities on the same datasets regardless FMs, and limited effectiveness of existing unfairness mitigation methods. 
 
-## Structure
+Fairness benchmarks for medical vision-language models are recent, and the conventions they use to measure demographic disparity are still forming. We ask whether four of those conventions are consequential, that is, whether a reader would reach a different conclusion had they been made otherwise. Treating the adaptation strategy as the variable of interest, we evaluate seven strategies on ophthalmology (FairVLMed10k) and radiology (CheXpert) with a general-domain and a medical-specific backbone, and four of them on dermatology (DDI). We find that binarising demographic attributes can only make a model look fairer, so a benchmark that binarises reports a bound on disparity rather than an estimate. Fairness varies across the epochs from which a checkpoint could plausibly be drawn, and that variation is three to five times larger for methods that update the visual encoder than for those that keep it frozen. Intersectional gaps run several times larger than the marginal gaps they are built from, and adaptation narrows some while widening others. Under-representation and disease prevalence have separable effects, and which adaptation strategy benefits from correcting them depends on the mechanism rather than on the number of updated parameters. 
 
-FairMedFM captures comprehensive modules for benchmarking the fairness of foundation models in medical image analysis.
+---
 
-![main](./figs/package.png)
+## Adaptation Taxonomy
 
-- **Dataloader**: provides a consistent interface for loading and processing imaging data across various modalities and dimensions, supporting both classification and segmentation tasks.
-- **Model**: a one-stop library that includes implementations of the most popular pre-trained foundation models for medical image analysis.
-- **Usage Wrapper**: encapsulates foundation models for various use cases and tasks, including linear probe, zero-shot inference, PEFT, promptable segmentation, etc.
-- **Trainer**: offers a unified workflow for fine-tuning and testing wrapped models, and includes state-of-the-art unfairness mitigation algorithms.
-- **Evaluation** includes a set of metrics and tools to visualize and analyze fairness across different tasks.
+Downstream adaptation of multimodal foundation models is structured across two axes: **how predictions are formed** (unimodal classifier head vs. vision-language cosine alignment) and **which components are updated** (frozen vision backbone, parameter-efficient LoRA, or full fine-tuning).
 
-|        Tasks         | Supported Usages                                        |                       Supported Models                       |                      Supported Datasets                      |
-| :------------------: | ------------------------------------------------------- | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| Image Classification | Linear probe, zero-shot, CLIP adaptaion, PEFT           | CLIP, BLIP, BLIP2, MedCLIP, BiomedCLIP, PubMedCLIP, DINOv2, C2L, LVM-Med, MedMAE, MoCo-CXR, PLIP, SigLIP, MedSigLIP | CheXpert, MIMIC-CXR, HAM10000, FairVLMed10k, GF3300, PAPILA, BRSET, COVID-CT-MD, ADNI-1.5T |
-|  Image Segmentation  | Interactive segmentation prompted with boxes and points | SAM, MobileSAM, TinySAM, MedSAM, SAM-Med2D, FT-SAM, SAM-Med3D, FastSAM3D, SegVol | HAM10000, TUSC, FairSeg, Montgomery County X-ray, KiTS, CANDI, IRCADb, SPIDER |
+<p align="center">
+  <img src="./readme-figs/main.png" alt="Taxonomy of Adaptation Protocols" width="92%">
+  <br>
+  <em><b>Figure 1: Taxonomy of Adaptation Protocols in Medical Multimodal Foundation Models.</b><br>
+  (Left, Blue): Unimodal adaptation discarding the text encoder and training a linear classification head (<code>lp</code>, <code>lora-lp</code>, <code>full-ft</code>).<br>
+  (Right, Green): Multimodal adaptation retaining vision-language cosine similarity against prompt anchors or learned prototypes (<code>clip-adapt</code>, <code>lora-text</code>, <code>full-ft-text</code>).</em>
+</p>
 
+The benchmark evaluates 7 adaptation protocols:
 
+| Protocol | `--usage` Flag | Trainable Parameters | Prediction Paradigm | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| **Zero-Shot** | `clip-zs` | None (0%) | Cosine Similarity | Zero-shot inference against fixed prompt text prototypes |
+| **Linear Probing** | `lp` | Classifier Head only | Linear Classifier | Freeze vision backbone; train linear classification head |
+| **CLIP-Adapt** | `clip-adapt` | Residual Bottleneck Head | Cosine Similarity | Two-layer residual adapter on frozen vision embeddings |
+| **LoRA (Linear Probe)** | `lora-lp` | LoRA weights + Head | Linear Classifier | Low-Rank Adaptation on attention layers with linear head |
+| **LoRA (Text-Guided)** | `lora-text` | LoRA weights only | Cosine Similarity | LoRA on vision backbone aligned with fixed text embeddings |
+| **Full Fine-Tuning** | `full-ft` | Entire Backbone + Head | Linear Classifier | End-to-end retraining of vision backbone with linear head |
+| **Full-FT (Text-Guided)** | `full-ft-text` | Entire Vision Backbone | Cosine Similarity | End-to-end retraining aligned with text anchor embeddings |
 
-## Schedule
+---
 
-- [x] Release the classification tasks.
+## Datasets and Demographic Attributes
 
-- [x] Release the segmentation tasks.
-  - [x] 2D dataset + 2D SAMs
-  - [x] 3D dataset + 2D SAMs
-  - [x] 3D dataset + 3D SAMs
+The benchmark evaluates three medical imaging modalities across distinct demographic axes, preserving native demographic cardinality by default:
 
-- [x] Release more models 
+| Dataset | Modality | Target Task | Sensitive Attributes Evaluated |
+| :--- | :--- | :--- | :--- |
+| **FairVLMed10k** | SLO Fundus Imaging | Glaucoma Detection | Sex (2), Age (4 quartiles), Race (3), Language (4), Ethnicity (3), Marital Status (6) |
+| **CheXpert** | Chest Radiography | Diagnostic Abnormality | Sex (2), Age (4 quartiles) |
+| **DDI** | Dermoscopy | Skin Lesion Malignancy | Fitzpatrick Skin Tone (I–VI) |
 
-- [x] Release the preprocessed datasets for classification.
+---
 
-- [x] Release examples and tutorials.
+## Repository Structure
 
-## Evolving
-Your are welcome to post your thoughts about updated features and we will try to make this repo evolving as the development of more FMs.
-
-## Installation
-The installation requires three steps.
-1. Download from github
-
-   ```git
-   git clone https://github.com/FairMedFM/FairMedFM.git
-   cd FairMedFM
-   ```
-
-2. Creating conda environment
-
-   ```
-   conda env create -f environment.yaml
-   conda activate fairmedfm
-   ```
-
-3. Download Pretrained FMs
-
-    ```
-    wget https://object-arbutus.cloud.computecanada.ca:443/rjin/pretrained.zip
-    unzip pretrained.zip
-    rm -f pretrained.zip
-    ```
-
-Our notebook tutorials also contains how to setup the environment in Colab. [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/FairMedFM/FairMedFM/blob/main/notebooks/linear_probing.ipynb)
-
-## Data
-
-You can either download our pre-processed data directly (see [next section](#use-our-pre-processed-data)) or pre-process customized data your self. However, not all dataset we used permit us to release the data on our end (e.g., dataset like MIMIC and ADNI requires the user go through their data usage application first). In such case, we cannot provide the download link of our preprocessed dataset for them, but we have the original dataset downloading link and our pre-process scripts released.
-
-### Preprocess data on your own
-We provide data preprocessing scripts for each datasets [here](./notebooks/preprocess). The data preprocessing contains 3 steps:
-
-- (Optional) preprocess imaging data.
-- Preprocess metadata and sensitive attributes.
-- Split dataset into training set and test set with balanced subgroups (for classification only).
-
-Our data is downloaded uisng the following links.
-
-#### Classification Dataset
-
-| Dataset         | Link                                                                                               |
-|-----------------|------------------------------------------------------------------------------------------------------|
-| **CheXpert**    | [Original data](https://stanfordmlgroup.github.io/competitions/chexpert/) <br> [Demographic data](https://stanfordaimi.azurewebsites.net/datasets/192ada7c-4d43-466e-b8bb-b81992bb80cf) |
-| **MIMIC-CXR**   | [MIMIC-CXR](https://physionet.org/content/mimic-cxr-jpg/2.0.0/)                                      |
-| **PAPILA**      | [PAPILA](https://www.nature.com/articles/s41597-022-01388-1#Sec6)                                    |
-| **HAM10000**    | [HAM10000](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/DBW86T)          |
-| **OCT**         | [OCT](https://people.duke.edu/~sf59/RPEDC_Ophth_2013_dataset.htm)                                    |
-| **OL3I**        | [OL3I](https://stanfordaimi.azurewebsites.net/datasets/3263e34a-252e-460f-8f63-d585a9bfecfc)         |
-| **COVID-CT-MD** | [COVID-CT-MD](https://doi.org/10.6084/m9.figshare.12991592)                                          |
-| **ADNI**   | [ADNI-1.5T](https://ida.loni.usc.edu/login.jsp?project=ADNI)                                         |
-
-#### Segmentation Dataset
-
-| Dataset         | Link                                                                                               |
-|-----------------|------------------------------------------------------------------------------------------------------|
-| **HAM10000**    | [HAM10000](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/DBW86T)|
-| **TUSC**   | [TUSC](https://stanfordaimi.azurewebsites.net/datasets/a72f2b02-7b53-4c5d-963c-d7253220bfd5)                                      |
-| **FairSeg**      | [FairSeg](https://ophai.hms.harvard.edu/datasets/harvard-fairseg10k)                                    |
-| **Montgomery County X-ray**    | [Montgomery County X-ray](https://data.lhncbc.nlm.nih.gov/public/Tuberculosis-Chest-X-ray-Datasets/Montgomery-County-CXR-Set/MontgomerySet/index.html)          |
-| **KiTS2023**         | [KiTS2023](https://kits-challenge.org/kits23/)                                    |
-| **IRCADb**        | [IRCADb](https://www.ircad.fr/research/data-sets/liver-segmentation-3d-ircadb-01/)         |
-| **CANDI** | [CANDI](https://www.nitrc.org/projects/candi_share)                                          |
-| **SPIDER**   | [SPIDER](http://spider.grand-challenge.org)|
-
-
-### Use Our Pre-processed Data
-We offer data downloading through the S3 link. We are working to build this feature now.
-#### Classification Dataset
-
-| Dataset         | Link                                                                                               |
-|-----------------|------------------------------------------------------------------------------------------------------|
-| **CheXpert**    | Requires application on original data provider. |
-| **MIMIC-CXR**   | Requires application on original data provider.                   |
-| **PAPILA**      | [PAPILA](https://object-arbutus.cloud.computecanada.ca/rjin/PAPILA.zip)                            |
-| **HAM10000**    | [HAM10000](https://object-arbutus.cloud.computecanada.ca/rjin/HAM10000.zip)         |
-| **OCT**         | Waiting for more storage resources                   |
-| **OL3I**        | Waiting for more storage resources         |
-| **COVID-CT-MD** | Waiting for more storage resources                |
-| **ADNI**   | Requires application on original data provider.
-
-## Notebook Tutorial
-We offer some examples of how to use our package through the notebook.
-
-| Feature | Notebook  |
-|-----------------|------------------------------------------------------------------------------------------------------|
-| **Linear Probing**    | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/FairMedFM/FairMedFM/blob/main/notebooks/linear_probing.ipynb) |
-| **CLIP Zero-shot and Adaptor**   | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/FairMedFM/FairMedFM/blob/main/notebooks/clip_downstream.ipynb) |
-| **Segmentation**   | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/FairMedFM/FairMedFM/blob/main/notebooks/segmentation.ipynb) |
-<!-- | **More Coming Soon**   | TODO | -->
-
-## Running Experiment
-
-### Classification
-
-We provide an example of running a linear-probe (classification) experiment of the CLIP model on the MIMIC-CXR dataset to evaluate fairness on sex. Please refer to [parse_args.py](./parse_args.py) for more details.
-
-```bash
-python main.py --task cls --usage lp --dataset CXP --sensitive_name Sex --method erm --total_epochs 100 --warmup_epochs 5 --blr 2.5e-4 --batch_size 128 --optimizer adamw --min_lr 1e-5 --weight_decay 0.05
+```
+.
+├── configs/
+│   ├── datasets/               # Dataset paths and label template configurations
+│   │   ├── FairVLMed10k.json
+│   │   ├── CXP.json
+│   │   └── DDI.json
+│   └── models/                 # Model parameters (LoRA target projection layers)
+│       ├── CLIP.json
+│       └── BiomedCLIP.json
+├── datasets/                   # Modular dataset loaders with demographic subgroup splits
+│   ├── base.py
+│   ├── FairVLMed.py
+│   ├── CXP.py
+│   ├── DDI.py
+│   └── utils.py
+├── models/                     # Foundation model implementations
+│   ├── clip.py                 # OpenAI CLIP ViT-B/32
+│   ├── biomed_clip.py          # Microsoft BiomedCLIP
+│   └── utils.py
+├── wrappers/                   # Adaptation protocol wrappers
+│   ├── clip.py                 # Zero-shot and CLIP-Adapt
+│   ├── linear_probe.py         # Linear probing
+│   ├── lora.py                 # LoRA-LP and LoRA-Text
+│   ├── full_ft.py              # Full fine-tuning and text-guided fine-tuning
+│   └── utils.py
+├── trainers/                   # Training loop with validation and early stopping
+│   ├── cls.py                  # Classification trainer with multi-attribute logging
+│   └── utils.py
+├── scripts/                    # Reproduction bash scripts for each experiment
+│   ├── reproduce_fairvlmed.sh  # Main benchmark on FairVLMed10k
+│   ├── reproduce_biomedclip.sh # BiomedCLIP experiments
+│   ├── reproduce_chexpert.sh   # CheXpert generalization
+│   ├── reproduce_ddi.sh        # DDI generalization
+│   ├── eval_only.sh            # Checkpoint evaluation script
+│   └── verify_reproduction.py  # Reproduction validation utility
+├── analysis/                   # Paper figure and metric generation scripts
+│   ├── intersectional_analysis.py  # Generates intersectional summary table
+│   ├── training_dynamics.py        # Computes convergence plateaus and fairness stability
+│   └── text_source_ablation.py     # Generates text prototype similarity heatmaps
+├── figures/                    # Publication and thesis figures
+│   ├── paper/                  # Figures appearing in paper / supplementary
+│   └── thesis/                 # Extended demographic and ablation figures
+├── results/                    # Curated experiment summary CSVs and evaluation metrics
+├── pre-processing/             # Dataset preprocessing notebooks
+│   └── classification/
+│       ├── FairVLMed-10k.ipynb # Generates official train/val/test splits
+│       ├── CXP.ipynb
+│       └── DDI.ipynb
+├── main.py                     # Unified entry point for training and evaluation
+├── parse_args.py               # Argument definitions and parser
+└── prompts.json                # Standard and augmented clinical prompt templates
 ```
 
-### Segmentation (2D SAMs)
+---
 
-We also provide an example of using SAM with center point prompt on the TUSC dataset to evaluate fairness on sex.
-Please refer to [parse_args.py](./parse_args.py) for more details.
+## Environment Setup
+
+Create an environment with Python 3.10 and PyTorch:
 
 ```bash
-python main.py --task seg --usage seg2d --dataset TUSC --sensitive_name Sex --method erm --batch_size 1 --pos_class 255 --model SAM --sam_ckpt_path ./weights/SAM.pth --img_size 1024 --prompt center
+# Create and activate environment
+conda create -n fairmed python=3.10 -y
+conda activate fairmed
+
+# Install PyTorch with CUDA support
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+
+# Install dependencies
+pip install open_clip_torch ftfy regex scikit-learn pandas matplotlib seaborn
 ```
 
+---
 
-## Acknowledgement
+## Data Preparation
 
-We thank [MEDFAIR](https://github.com/ys-zong/MEDFAIR) for their pioneering works on benchmarking fairness for medical image analysis, and [Slide-SAM](https://github.com/Curli-quan/Slide-SAM) for the SAM inference framework.
+1. Download the datasets from their official sources:
+   - **FairVLMed10k**: [Harvard FairVLMed Dataset](https://ophai.hms.harvard.edu/datasets/harvard-fairvlmed10k/)
+   - **CheXpert**: [CheXpert Dataset](https://stanfordmlgroup.github.io/competitions/chexpert/)
+   - **DDI**: [Diverse Dermatology Images](https://ddi-dataset.github.io/)
+
+2. Run the corresponding preprocessing notebook in `pre-processing/classification/` to format metadata and demographic groups.
+
+3. Configure local dataset paths in `configs/datasets/`:
+   - `configs/datasets/FairVLMed10k.json`
+   - `configs/datasets/CXP.json`
+   - `configs/datasets/DDI.json`
+
+---
+
+## Reproducing Benchmark Experiments
+
+### Full Benchmark Runs
+
+Run all 7 adaptation protocols on FairVLMed10k with OpenAI CLIP:
+```bash
+bash scripts/reproduce_fairvlmed.sh
+```
+
+Run BiomedCLIP experiments:
+```bash
+bash scripts/reproduce_biomedclip.sh
+```
+
+Run CheXpert and DDI generalization experiments:
+```bash
+bash scripts/reproduce_chexpert.sh
+bash scripts/reproduce_ddi.sh
+```
+
+### Running an Individual Protocol
+
+Execute any single model, protocol, and dataset directly with `main.py`:
+
+```bash
+# Example: Train LoRA with text guidance (lora-text) on FairVLMed10k
+python main.py \
+    --task cls \
+    --usage lora-text \
+    --dataset FairVLMed10k \
+    --model CLIP \
+    --backbone "ViT-B/32" \
+    --sensitive_name All \
+    --method erm \
+    --batch_size 128 \
+    --total_epochs 100 \
+    --blr 1e-2 \
+    --random_seed 0 \
+    --exp_path "./output/my_experiment"
+```
+
+```bash
+# Example: Zero-shot evaluation with OpenAI CLIP
+python main.py \
+    --task cls \
+    --usage clip-zs \
+    --dataset FairVLMed10k \
+    --model CLIP \
+    --backbone "ViT-B/32" \
+    --sensitive_name All \
+    --batch_size 128 \
+    --exp_path "./output/zero_shot_eval"
+```
+
+### Checkpoint Evaluation
+
+To re-evaluate an existing checkpoint across all sensitive attributes:
+
+```bash
+python main.py \
+    --task cls \
+    --usage full-ft-text \
+    --dataset FairVLMed10k \
+    --model CLIP \
+    --backbone "ViT-B/32" \
+    --sensitive_name All \
+    --exp_path "./output/my_experiment" \
+    --eval_only
+```
+
+---
+
+## Downstream Analysis
+
+Scripts in `analysis/` compute paper metrics and figures:
+
+```bash
+# 1. Generate intersectional LaTeX table from evaluation outputs
+python analysis/intersectional_analysis.py
+
+# 2. Evaluate training dynamics and fairness stability near convergence
+python analysis/training_dynamics.py
+
+# 3. Generate clinical text prototype cosine similarity heatmaps
+python analysis/text_source_ablation.py
+```
+
+Outputs are saved to `results/` and `figures/paper/`.
+
+---
+
+## Citation
+
+```bibtex
+@article{yasser2026impact,
+  title={The Impact of Adaptation on Fairness in Medical Multimodal Foundation Models},
+  author={Yasser, Alaa and Barata, Catarina and Herranz, Luis and Escudero-Vi{\~n}olo, Marcos},
+  year={2026}
+}
+```
+
+---
+
+## Acknowledgements
+
+This research builds upon the architectural framework of [FairMedFM](https://github.com/FairMedFM/FairMedFM). This work is part of the Fair, Explainable and Sustainable Transfer and Adaptation of computer vision models (FESTA) (PID2024-156186OB-I00) project, funded by the Ministerio de Ciencia, Innovación y Universidades of the Spanish Government.
+
+---
 
 ## License
 
-This project is released under the CC BY 4.0 license. Please see the LICENSE file for more information.
-
-## Citation
-If you think our project is helpful and love our project, it's nice if you can cite us. Such supports will help us secure resources for further developing similar projects.
-
-```
-@article{jin2024fairmedfm,
-  title={FairMedFM: Fairness Benchmarking for Medical Imaging Foundation Models},
-  author={Jin, Ruinan and Xu, Zikang and Zhong, Yuan and Yao, Qiongsong and Dou, Qi and Zhou, S Kevin and Li, Xiaoxiao},
-  journal={arXiv preprint arXiv:2407.00983},
-  year={2024}
-}
-```
+This project is licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License - see the [LICENSE](./LICENSE) file for details.

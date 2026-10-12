@@ -3,4 +3,6 @@ from .linear_probe import LinearProbeWrapper
 from .lora import LoRALPWrapper, LoRAZSWrapper
 from .full_ft import FullFTWrapper, FullFTZSWrapper
 
-# from .sam import SAMWrapper
+# Aliases matching paper terminology (text-guided adaptation)
+LoRATextWrapper = LoRAZSWrapper
+FullFTTextWrapper = FullFTZSWrapper

@@ -50,7 +50,9 @@ def get_warpped_model(args, model, data_engine=None):
     elif args.usage in [
         "clip-zs",
         "clip-adapt",
+        "lora-text",
         "lora-zs",
+        "full-ft-text",
         "full-ft-zs",
     ]:
 
@@ -77,10 +79,10 @@ def get_warpped_model(args, model, data_engine=None):
             )
 
         # -----------------------------
-        # LoRA zero-shot alignment
+        # LoRA text-guided alignment (LoRA-Text)
         # -----------------------------
 
-        elif args.usage == "lora-zs":
+        elif args.usage in ["lora-text", "lora-zs"]:
 
             from wrappers.lora import LoRAZSWrapper
 
@@ -99,10 +101,10 @@ def get_warpped_model(args, model, data_engine=None):
             )
 
         # -----------------------------
-        # Full fine-tuning with text anchors
+        # Full fine-tuning with text anchors (Full-FT-Text)
         # -----------------------------
 
-        elif args.usage == "full-ft-zs":
+        elif args.usage in ["full-ft-text", "full-ft-zs"]:
 
             from wrappers.full_ft import FullFTZSWrapper
 
