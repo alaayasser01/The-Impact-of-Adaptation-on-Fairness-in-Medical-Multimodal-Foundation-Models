@@ -93,10 +93,7 @@ The benchmark evaluates three medical imaging modalities across distinct demogra
 │   ├── intersectional_analysis.py  # Generates intersectional summary table
 │   ├── training_dynamics.py        # Computes convergence plateaus and fairness stability
 │   └── text_source_ablation.py     # Generates text prototype similarity heatmaps
-├── figures/                    # Publication and thesis figures
-│   ├── paper/                  # Figures appearing in paper / supplementary
-│   └── thesis/                 # Extended demographic and ablation figures
-├── results/                    # Curated experiment summary CSVs and evaluation metrics
+├── results/                    # Curated benchmark evaluation tables (CSV) from the paper
 ├── pre-processing/             # Dataset preprocessing notebooks
 │   └── classification/
 │       ├── FairVLMed-10k.ipynb # Generates official train/val/test splits
@@ -230,7 +227,7 @@ python analysis/training_dynamics.py
 python analysis/text_source_ablation.py
 ```
 
-Outputs are saved to `results/` and `figures/paper/`.
+Outputs are saved to `results/`.
 
 ---
 
