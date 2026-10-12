@@ -1,29 +1,20 @@
 # The Impact of Adaptation on Fairness in Medical Multimodal Foundation Models
 
-This repository contains the official PyTorch implementation, reproduction scripts, and fairness evaluation benchmarks for the research study:
+This repository contains the official PyTorch implementation and reproduction benchmark for the paper:
 
 > **The Impact of Adaptation on Fairness in Medical Multimodal Foundation Models**  
-> *Master's Thesis & Research Paper*
 
 ---
 
-## 📌 Abstract
+## Abstract
 
-Vision-language foundation models (e.g., OpenAI CLIP and BiomedCLIP) offer substantial diagnostic promise in medical imaging. However, safely integrating these models into clinical workflows demands rigorous evaluation of their fairness across diverse patient populations.
-
-In this work, we present a comprehensive empirical investigation into how downstream **adaptation protocols**—ranging from zero-shot inference to parameter-efficient tuning and full model fine-tuning—influence demographic performance parity. We evaluate **7 adaptation paradigms** across **6 sensitive demographic attributes** (Sex, Age, Race, Language, Ethnicity, and Marital Status) on **FairVLMed10k** (ophthalmology/glaucoma), and demonstrate generalization on **CheXpert** (chest radiography) and the **Diverse Dermatology Images (DDI)** dataset.
-
-### Key Insights
-1. **Capacity vs. Fairness Trade-off**: Increasing adaptation capacity (e.g., transitioning from Linear Probing or LoRA to Full Fine-Tuning) consistently improves average diagnostic performance (AUC), but frequently amplifies fairness gaps across vulnerable subgroups.
-2. **Text-Anchored Regularization**: Text-guided adaptation protocols (`lora-text`, `full-ft-text`) preserve multimodal semantic alignment better than purely visual heads, serving as an implicit regularizer against catastrophic group disparity.
-3. **Severe Intersectional Vulnerabilities**: Marginal (single-attribute) fairness evaluations mask compounded performance degradation when evaluating multiple intersecting demographic axes (e.g., Non-English speaking, senior female patients).
-4. **Domain Pretraining vs. Generic Pretraining**: BiomedCLIP exhibits different baseline inductive biases than OpenAI CLIP, affecting how disparate error rates manifest post-adaptation.
+Fairness benchmarks for medical vision-language models are recent, and the conventions they use to measure demographic disparity are still forming. We ask whether four of those conventions are consequential, that is, whether a reader would reach a different conclusion had they been made otherwise. Treating the adaptation strategy as the variable of interest, we evaluate seven strategies on ophthalmology (FairVLMed10k) and radiology (CheXpert) with a general-domain and a medical-specific backbone, and four of them on dermatology (DDI). We find that binarising demographic attributes can only make a model look fairer, so a benchmark that binarises reports a bound on disparity rather than an estimate. Fairness varies across the epochs from which a checkpoint could plausibly be drawn, and that variation is three to five times larger for methods that update the visual encoder than for those that keep it frozen. Intersectional gaps run several times larger than the marginal gaps they are built from, and adaptation narrows some while widening others. Under-representation and disease prevalence have separable effects, and which adaptation strategy benefits from correcting them depends on the mechanism rather than on the number of updated parameters. We close with reporting recommendations for fairness evaluations of adapted medical VLMs.
 
 ---
 
-## 🔬 Adaptation Protocols & Architectural Taxonomy
+## Adaptation Taxonomy
 
-Downstream adaptation of multimodal foundation models can be structured along two fundamental axes: **how predictions are formed** (unimodal classifier vs. vision-language cosine alignment) and **which components are updated** (frozen, parameter-efficient LoRA, or full fine-tuning).
+Downstream adaptation of multimodal foundation models is structured across two axes: **how predictions are formed** (unimodal classifier head vs. vision-language cosine alignment) and **which components are updated** (frozen vision backbone, parameter-efficient LoRA, or full fine-tuning).
 
 <p align="center">
   <img src="./readme-figs/main.png" alt="Taxonomy of Adaptation Protocols" width="92%">
@@ -33,7 +24,7 @@ Downstream adaptation of multimodal foundation models can be structured along tw
   (Right, Green): Multimodal adaptation retaining vision-language cosine similarity against prompt anchors or learned prototypes (<code>clip-adapt</code>, <code>lora-text</code>, <code>full-ft-text</code>).</em>
 </p>
 
-We evaluate 7 adaptation protocols ranked by their trainable capacity and multimodal integration:
+The benchmark evaluates 7 adaptation protocols:
 
 | Protocol | `--usage` Flag | Trainable Parameters | Prediction Paradigm | Description |
 | :--- | :--- | :--- | :--- | :--- |
@@ -47,18 +38,19 @@ We evaluate 7 adaptation protocols ranked by their trainable capacity and multim
 
 ---
 
+## Datasets and Demographic Attributes
 
-## 📊 Datasets & Benchmarks
+The benchmark evaluates three medical imaging modalities across distinct demographic axes, preserving native demographic cardinality by default:
 
 | Dataset | Modality | Target Task | Sensitive Attributes Evaluated |
 | :--- | :--- | :--- | :--- |
-| **FairVLMed10k** (Primary) | SLO Fundus Imaging | Glaucoma Detection | Sex, Age, Race, Language, Ethnicity, Marital Status |
-| **CheXpert** (Generalization) | Chest X-Ray | Diagnostic Abnormality | Sex, Age |
-| **DDI** (Generalization) | Dermoscopy | Skin Lesion Malignancy | Fitzpatrick Skin Tone (I–VI) |
+| **FairVLMed10k** | SLO Fundus Imaging | Glaucoma Detection | Sex (2), Age (4 quartiles), Race (3), Language (4), Ethnicity (3), Marital Status (6) |
+| **CheXpert** | Chest Radiography | Diagnostic Abnormality | Sex (2), Age (4 quartiles) |
+| **DDI** | Dermoscopy | Skin Lesion Malignancy | Fitzpatrick Skin Tone (I–VI) |
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 .
@@ -67,7 +59,7 @@ We evaluate 7 adaptation protocols ranked by their trainable capacity and multim
 │   │   ├── FairVLMed10k.json
 │   │   ├── CXP.json
 │   │   └── DDI.json
-│   └── models/                 # Model parameters (e.g. LoRA target projection layers)
+│   └── models/                 # Model parameters (LoRA target projection layers)
 │       ├── CLIP.json
 │       └── BiomedCLIP.json
 ├── datasets/                   # Modular dataset loaders with demographic subgroup splits
@@ -80,13 +72,13 @@ We evaluate 7 adaptation protocols ranked by their trainable capacity and multim
 │   ├── clip.py                 # OpenAI CLIP ViT-B/32
 │   ├── biomed_clip.py          # Microsoft BiomedCLIP
 │   └── utils.py
-├── wrappers/                   # 7 adaptation protocol wrappers
-│   ├── clip.py                 # Zero-shot & CLIP-Adapt
+├── wrappers/                   # Adaptation protocol wrappers
+│   ├── clip.py                 # Zero-shot and CLIP-Adapt
 │   ├── linear_probe.py         # Linear probing
 │   ├── lora.py                 # LoRA-LP and LoRA-Text
-│   ├── full_ft.py              # Full fine-tuning & text-guided fine-tuning
+│   ├── full_ft.py              # Full fine-tuning and text-guided fine-tuning
 │   └── utils.py
-├── trainers/                   # Training loop with validation & early stopping
+├── trainers/                   # Training loop with validation and early stopping
 │   ├── cls.py                  # Classification trainer with multi-attribute logging
 │   └── utils.py
 ├── scripts/                    # Reproduction bash scripts for each experiment
@@ -94,22 +86,21 @@ We evaluate 7 adaptation protocols ranked by their trainable capacity and multim
 │   ├── reproduce_biomedclip.sh # BiomedCLIP experiments
 │   ├── reproduce_chexpert.sh   # CheXpert generalization
 │   ├── reproduce_ddi.sh        # DDI generalization
-│   └── eval_only.sh            # Checkpoint evaluation script
-├── analysis/                   # Paper figure and metric reproduction scripts
-│   ├── intersectional_analysis.py  # Generates intersectional LaTeX summary table
-│   ├── training_dynamics.py        # Computes convergence plateaus & fairness stability
+│   ├── eval_only.sh            # Checkpoint evaluation script
+│   └── verify_reproduction.py  # Reproduction validation utility
+├── analysis/                   # Paper figure and metric generation scripts
+│   ├── intersectional_analysis.py  # Generates intersectional summary table
+│   ├── training_dynamics.py        # Computes convergence plateaus and fairness stability
 │   └── text_source_ablation.py     # Generates text prototype similarity heatmaps
-├── figures/                    # Publication figures
+├── figures/                    # Publication and thesis figures
 │   ├── paper/                  # Figures appearing in paper / supplementary
 │   └── thesis/                 # Extended demographic and ablation figures
-├── results/                    # Curated experiment summary CSVs & evaluation metrics
+├── results/                    # Curated experiment summary CSVs and evaluation metrics
 ├── pre-processing/             # Dataset preprocessing notebooks
 │   └── classification/
 │       ├── FairVLMed-10k.ipynb # Generates official train/val/test splits
 │       ├── CXP.ipynb
 │       └── DDI.ipynb
-├── readme-figs/                # README visual assets
-│   └── main.png
 ├── main.py                     # Unified entry point for training and evaluation
 ├── parse_args.py               # Argument definitions and parser
 └── prompts.json                # Standard and augmented clinical prompt templates
@@ -117,62 +108,66 @@ We evaluate 7 adaptation protocols ranked by their trainable capacity and multim
 
 ---
 
-## ⚙️ Environment Setup
+## Environment Setup
 
-We recommend creating a fresh Conda environment with Python 3.10:
+Create an environment with Python 3.10 and PyTorch:
 
 ```bash
-# 1. Create and activate environment
+# Create and activate environment
 conda create -n fairmed python=3.10 -y
 conda activate fairmed
 
-# 2. Install PyTorch (select the appropriate CUDA version for your hardware)
+# Install PyTorch with CUDA support
 pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
 
-# 3. Install core dependencies
+# Install dependencies
 pip install open_clip_torch ftfy regex scikit-learn pandas matplotlib seaborn
 ```
 
 ---
 
-## 🗂️ Data Preparation
+## Data Preparation
 
-1. Download the respective datasets:
+1. Download the datasets from their official sources:
    - **FairVLMed10k**: [Harvard FairVLMed Dataset](https://ophai.hms.harvard.edu/datasets/harvard-fairvlmed10k/)
    - **CheXpert**: [CheXpert Dataset](https://stanfordmlgroup.github.io/competitions/chexpert/)
    - **DDI**: [Diverse Dermatology Images](https://ddi-dataset.github.io/)
+
 2. Run the corresponding preprocessing notebook in `pre-processing/classification/` to format metadata and demographic groups.
-3. Update the dataset paths in `configs/datasets/`:
+
+3. Configure local dataset paths in `configs/datasets/`:
    - `configs/datasets/FairVLMed10k.json`
    - `configs/datasets/CXP.json`
    - `configs/datasets/DDI.json`
 
 ---
 
-## 🚀 Quick Start & Reproduction
+## Reproducing Benchmark Experiments
 
-### Reproducing Benchmark Experiments
-To run all 7 adaptation protocols on FairVLMed10k with CLIP:
+### Full Benchmark Runs
+
+Run all 7 adaptation protocols on FairVLMed10k with OpenAI CLIP:
 ```bash
 bash scripts/reproduce_fairvlmed.sh
 ```
 
-To run BiomedCLIP experiments:
+Run BiomedCLIP experiments:
 ```bash
 bash scripts/reproduce_biomedclip.sh
 ```
 
-To run CheXpert and DDI generalization experiments:
+Run CheXpert and DDI generalization experiments:
 ```bash
 bash scripts/reproduce_chexpert.sh
 bash scripts/reproduce_ddi.sh
 ```
 
-### Running an Individual Experiment
-You can execute any single model, protocol, and dataset directly via `main.py`:
+### Running an Individual Protocol
+
+Execute any single model, protocol, and dataset directly with `main.py`:
 
 ```bash
-# Example: Train LoRA with text anchors (lora-text) on FairVLMed10k
+# Example: Train LoRA with text guidance (lora-text) on FairVLMed10k
 python main.py \
     --task cls \
     --usage lora-text \
@@ -201,7 +196,10 @@ python main.py \
     --exp_path "./output/zero_shot_eval"
 ```
 
-### Evaluating Existing Checkpoints
+### Checkpoint Evaluation
+
+To re-evaluate an existing checkpoint across all sensitive attributes:
+
 ```bash
 python main.py \
     --task cls \
@@ -216,9 +214,9 @@ python main.py \
 
 ---
 
-## 📈 Downstream Analysis Scripts
+## Downstream Analysis
 
-Scripts in `analysis/` reproduce figures and summary tables from the paper:
+Scripts in `analysis/` compute paper metrics and figures:
 
 ```bash
 # 1. Generate intersectional LaTeX table from evaluation outputs
@@ -231,30 +229,28 @@ python analysis/training_dynamics.py
 python analysis/text_source_ablation.py
 ```
 
-Generated outputs are stored in `results/` and `figures/paper/`.
+Outputs are saved to `results/` and `figures/paper/`.
 
 ---
 
-## 📑 Citation
-
-If you find this research or codebase useful in your work, please cite:
+## Citation
 
 ```bibtex
-@article{yasser2026impact,
+@article{abdelhamid2026impact,
   title={The Impact of Adaptation on Fairness in Medical Multimodal Foundation Models},
-  author={Yasser, Alaa},
+  author={Abdelhamid, Alaa Yasser Mahmoud},
   year={2026}
 }
 ```
 
 ---
 
-## 🙏 Acknowledgements
+## Acknowledgements
 
-This research builds upon the architectural framework of the open-source benchmark [FairMedFM](https://github.com/FairMedFM/FairMedFM). We express our appreciation to the authors and contributors of FairMedFM.
+This research builds upon the architectural framework of [FairMedFM](https://github.com/FairMedFM/FairMedFM). This work is part of the Fair, Explainable and Sustainable Transfer and Adaptation of computer vision models (FESTA) (PID2024-156186OB-I00) project, funded by the Ministerio de Ciencia, Innovación y Universidades of the Spanish Government.
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License - see the [LICENSE](./LICENSE) file for details.
